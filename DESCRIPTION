@@ -1,0 +1,24 @@
+Package: tidytree
+Title: What the Package Does (one line, title case)
+Version: 0.0.1
+Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Depends:
+    R (>= 3.3.2)
+Imports:
+    ape,
+    ggplot2,
+    magrittr,
+    methods,
+    treeio
+Suggests:
+    knitr,
+    prettydoc
+VignetteBuilder: knitr
+ByteCompile: true
+License: Artistic-2.0
+URL: https://guangchuangyu.github.io/tidytree
+BugReports: https://github.com/GuangchuangYu/tidytree/issues
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 5.0.1
