@@ -1,0 +1,70 @@
+---
+title: "tidytree: A Tidy Tool for Phylogenetic Tree Data Manipulation"
+author: "Guangchuang Yu\\
+
+        School of Public Health, The University of Hong Kong"
+date: "`r Sys.Date()`"
+csl: nature.csl
+output:
+  prettydoc::html_pretty:
+    toc: true
+    theme: cayman
+    highlight: github
+  pdf_document:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{tidytree introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r style, echo=FALSE, results="asis", message=FALSE}
+knitr::opts_chunk$set(tidy = FALSE,
+		   message = FALSE)
+```
+
+
+```{r echo=FALSE, results="hide", message=FALSE}
+library("ape")
+library("treeio")
+library("tidytree")
+```
+
+
+
+# Convert tree to tidy data frame
+
+## phylo object
+
+```{r}
+library(ape)
+
+tree <- rtree(4)
+tree
+x <- as_data_frame(tree)
+x
+```
+
+## treedata object
+
+```{r}
+library(treeio)
+
+file <- system.file("extdata/BEAST", "beast_mcc.tree", package="treeio")
+beast <- read.beast(file)
+beast
+y <- as_data_frame(beast)
+y
+```
+
+# Convert tibble object to a tree object
+
+```{r}
+as.phylo(x)
+as.treedata(y)
+```
+
+
+
+
+

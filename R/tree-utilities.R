@@ -5,23 +5,23 @@
 ##' @param x tree object or graphic object return by ggtree
 ##' @param label tip or node label(s)
 ##' @return internal node number
+##' @importFrom methods is
 ##' @export
 ##' @author Guangchuang Yu
 nodeid <- function(x, label) {
-    if (is.ggtree(x))
-        return(nodeid.ggtree(x, label))
+    if (is(x, "gg"))
+        return(nodeid.gg(x, label))
 
     nodeid.tree(x, label)
 }
 
-##' @importFrom treeio get.tree
 nodeid.tree <- function(tree, label) {
     tr <- get.tree(tree)
     lab <- c(tr$tip.label, tr$node.label)
     match(label, lab)
 }
 
-nodeid.ggtree <- function(p, label) {
+nodeid.gg <- function(p, label) {
     p$data$node[match(label, p$data$label)]
 }
 
@@ -60,75 +60,29 @@ reroot_node_mapping <- function(tree, tree2) {
 
 
 
-##' @importFrom ape reorder.phylo
-layout.unrooted <- function(tree) {
-    N <- getNodeNum(tree)
-    root <- getRoot(tree)
-
-    df <- as.data.frame(tree)
-    df$x <- NA
-    df$y <- NA
-    df$start <- NA
-    df$end   <- NA
-    df$angle <- NA
-    df[root, "x"] <- 0
-    df[root, "y"] <- 0
-    df[root, "start"] <- 0
-    df[root, "end"]   <- 2
-    df[root, "angle"] <- 0
-
-    nb.sp <- sapply(1:N, function(i) length(get.offspring.tip(tree, i)))
-
-    nodes <- getNodes_by_postorder(tree)
-
-    for(curNode in nodes) {
-        curNtip <- nb.sp[curNode]
-        children <- getChild(tree, curNode)
-
-        start <- df[curNode, "start"]
-        end <- df[curNode, "end"]
-
-        if (length(children) == 0) {
-            ## is a tip
-            next
-        }
-
-        for (i in seq_along(children)) {
-            child <- children[i]
-            ntip.child <- nb.sp[child]
-
-            alpha <- (end - start) * ntip.child/curNtip
-            beta <- start + alpha / 2
-
-            length.child <- df[child, "length"]
-            df[child, "x"] <- df[curNode, "x"] + cospi(beta) * length.child
-            df[child, "y"] <- df[curNode, "y"] + sinpi(beta) * length.child
-            df[child, "angle"] <- -90 -180 * beta * sign(beta - 1)
-            df[child, "start"] <- start
-            df[child, "end"] <- start + alpha
-            start <- start + alpha
-        }
-
-    }
-
-    return(df)
-}
-
+##' Get parent node id of child node.
+##'
+##' @title getParent.df
+##' @param df tree data.frame
+##' @param node is the node id of child in tree.
+##' @return integer node id of parent
 getParent.df <- function(df, node) {
     i <- which(df$node == node)
-    res <- df$parent[i]
-    if (res == node) {
+    parent_id <- df$parent[i]
+    if (parent_id == node | is.na(parent_id)) {
         ## root node
         return(0)
     }
-    return(res)
+    return(parent_id)
 }
+
 
 getAncestor.df <- function(df, node) {
     anc <- getParent.df(df, node)
     anc <- anc[anc != 0]
     if (length(anc) == 0) {
-        stop("selected node is root...")
+        # stop("selected node is root...")
+      return(0)
     }
     i <- 1
     while(i<= length(anc)) {
@@ -140,21 +94,29 @@ getAncestor.df <- function(df, node) {
 }
 
 
+
+##' Get list of child node id numbers of parent node
+##'
+##' @title getChild.df
+##' @param df tree data.frame
+##' @param node is the node id of child in tree.
+##' @return list of child node ids of parent
 getChild.df <- function(df, node) {
     i <- which(df$parent == node)
     if (length(i) == 0) {
-        return(0)
+        return(0) # it has no children, hence tip node.
     }
-    res <- df[i, "node"]
+    res <- df$node[i]
     res <- res[res != node] ## node may root
     return(res)
 }
 
 get.offspring.df <- function(df, node) {
     sp <- getChild.df(df, node)
-    sp <- sp[sp != 0]
+    sp <- sp[sp != 0] # Remove root node.
     if (length(sp) == 0) {
-        stop("input node is a tip...")
+        #stop("input node is a tip...")
+      return(0)
     }
 
     i <- 1
@@ -165,6 +127,7 @@ get.offspring.df <- function(df, node) {
     }
     return(sp)
 }
+
 
 
 ##' extract offspring tips
@@ -187,21 +150,7 @@ get.offspring.tip <- function(tr, node) {
 }
 
 
-##' calculate total number of nodes
-##'
-##'
-##' @title getNodeNum
-##' @param tr phylo object
-##' @return number
-##' @author Guangchuang Yu
-##' @export
-getNodeNum <- function(tr) {
-    Ntip <- length(tr[["tip.label"]])
-    Nnode <- tr[["Nnode"]]
-    ## total nodes
-    N <- Ntip + Nnode
-    return(N)
-}
+
 
 getParent <- function(tr, node) {
     if ( node == getRoot(tr) )
@@ -219,8 +168,13 @@ getParent <- function(tr, node) {
     return(res)
 }
 
+
+
+
 getChild <- function(tr, node) {
+    # Get edge matrix from phylo object.
     edge <- tr[["edge"]]
+    # Select all rows that match "node".
     res <- edge[edge[,1] == node, 2]
     ## if (length(res) == 0) {
     ##     ## is a tip
@@ -228,6 +182,7 @@ getChild <- function(tr, node) {
     ## }
     return(res)
 }
+
 
 getSibling <- function(tr, node) {
     root <- getRoot(tr)
@@ -256,6 +211,7 @@ getAncestor <- function(tr, node) {
     return(res)
 }
 
+
 isRoot <- function(tr, node) {
     getRoot(tr) == node
 }
@@ -273,30 +229,7 @@ getNodeName <- function(tr) {
     return(nodeName)
 }
 
-##' get the root number
-##'
-##'
-##' @title getRoot
-##' @param tr phylo object
-##' @return root number
-##' @export
-##' @author Guangchuang Yu
-getRoot <- function(tr) {
-    edge <- tr[["edge"]]
-    ## 1st col is parent,
-    ## 2nd col is child,
-    if (!is.null(attr(tr, "order")) && attr(tr, "order") == "postorder")
-        return(edge[nrow(edge), 1])
 
-    parent <- unique(edge[,1])
-    child <- unique(edge[,2])
-    ## the node that has no parent should be the root
-    root <- parent[ ! parent %in% child ]
-    if (length(root) > 1) {
-        stop("multiple roots founded...")
-    }
-    return(root)
-}
 
 get.trunk <- function(tr) {
     root <- getRoot(tr)
@@ -329,6 +262,7 @@ get.path <- function(phylo, from, to) {
     return(path)
 }
 
+
 get.path_length <- function(phylo, from, to, weight=NULL) {
     path <- get.path(phylo, from, to)
     if (is.null(weight)) {
@@ -355,8 +289,9 @@ get.path_length <- function(phylo, from, to, weight=NULL) {
     return(res)
 }
 
+##' @importFrom ape reorder.phylo
 getNodes_by_postorder <- function(tree) {
-    tree <- reorder.phylo(tree, "postorder")
+  tree <- reorder.phylo(tree, "postorder")
     unique(rev(as.vector(t(tree$edge[,c(2,1)]))))
 }
 
@@ -369,6 +304,7 @@ getXcoord2 <- function(x, root, parent, child, len, start=0, rev=FALSE) {
     if (rev == TRUE) {
         direction <- -1
     }
+
     while(anyNA(x)) {
         idx <- which(parent %in% currentNode)
         newNode <- child[idx]
@@ -378,6 +314,11 @@ getXcoord2 <- function(x, root, parent, child, len, start=0, rev=FALSE) {
 
     return(x)
 }
+
+
+
+
+
 
 getXcoord_no_length <- function(tr) {
     edge <- tr$edge
@@ -425,6 +366,8 @@ getXcoord_no_length <- function(tr) {
 }
 
 
+
+
 getXcoord <- function(tr) {
     edge <- tr$edge
     parent <- edge[,1]
@@ -439,23 +382,28 @@ getXcoord <- function(tr) {
     return(x)
 }
 
-getXYcoord_slanted <- function(tr) {
 
-    edge <- tr$edge
-    parent <- edge[,1]
-    child <- edge[,2]
-    root <- getRoot(tr)
 
-    N <- getNodeNum(tr)
-    len <- tr$edge.length
-    y <- getYcoord(tr, step=min(len)/2)
 
-    len <- sqrt(len^2 - (y[parent]-y[child])^2)
-    x <- numeric(N)
-    x <- getXcoord2(x, root, parent, child, len)
-    res <- data.frame(x=x, y=y)
-    return(res)
-}
+## scale the branch (the line plotted) to the actual value of edge length
+## but it seems not the good idea as if we want to add x-axis (e.g. time-scaled tree)
+## then the x-value is not corresponding to edge length as in rectangular layout
+## getXYcoord_slanted <- function(tr) {
+##     edge <- tr$edge
+##     parent <- edge[,1]
+##     child <- edge[,2]
+##     root <- getRoot(tr)
+
+##     N <- getNodeNum(tr)
+##     len <- tr$edge.length
+##     y <- getYcoord(tr, step=min(len)/2)
+##     len <- sqrt(len^2 - (y[parent]-y[child])^2)
+##     x <- numeric(N)
+##     x <- getXcoord2(x, root, parent, child, len)
+##     res <- data.frame(x=x, y=y)
+##     return(res)
+## }
+
 
 
 ## @importFrom magrittr %>%
@@ -477,9 +425,15 @@ getYcoord <- function(tr, step=1) {
     y[tip.idx] <- 1:Ntip * step
     y[-tip.idx] <- NA
 
+    ## use lookup table
+    pvec <- integer(max(tr$edge))
+    pvec[child] = parent
+
     currentNode <- 1:Ntip
     while(anyNA(y)) {
-        pNode <- unique(parent[child %in% currentNode])
+        ## pNode <- unique(parent[child %in% currentNode])
+        pNode <- unique(pvec[currentNode])
+
         ## piping of magrittr is slower than nested function call.
         ## pipeR is fastest, may consider to use pipeR
         ##
@@ -537,6 +491,7 @@ getYcoord_scale <- function(tr, df, yscale) {
     }
     return(y)
 }
+
 
 getYcoord_scale2 <- function(tr, df, yscale) {
     root <- getRoot(tr)
@@ -616,6 +571,8 @@ getYcoord_scale2 <- function(tr, df, yscale) {
     return(y)
 }
 
+
+
 getYcoord_scale_numeric <- function(tr, df, yscale, ...) {
     df <- .assign_parent_status(tr, df, yscale)
     df <- .assign_child_status(tr, df, yscale)
@@ -630,8 +587,9 @@ getYcoord_scale_numeric <- function(tr, df, yscale, ...) {
     return(y)
 }
 
+
 .assign_parent_status <- function(tr, df, variable) {
-    yy <- df[, variable]
+    yy <- df[[variable]]
     na.idx <- which(is.na(yy))
     if (length(na.idx) > 0) {
         tree <- get.tree(tr)
@@ -651,8 +609,9 @@ getYcoord_scale_numeric <- function(tr, df, yscale, ...) {
     return(df)
 }
 
+
 .assign_child_status <- function(tr, df, variable, yscale_mapping=NULL) {
-    yy <- df[, variable]
+    yy <- df[[variable]]
     if (!is.null(yscale_mapping)) {
         yy <- yscale_mapping[yy]
     }
@@ -689,7 +648,7 @@ getYcoord_scale_category <- function(tr, df, yscale, yscale_mapping=NULL, ...) {
     }
 
     if (yscale == "label") {
-        yy <- df[, yscale]
+        yy <- df[[yscale]]
         ii <- which(is.na(yy))
         if (length(ii)) {
             df[ii, yscale] <- df[ii, "node"]
@@ -700,7 +659,7 @@ getYcoord_scale_category <- function(tr, df, yscale, yscale_mapping=NULL, ...) {
     df <- .assign_parent_status(tr, df, yscale)
     df <- .assign_child_status(tr, df, yscale, yscale_mapping)
 
-    y <- df[, yscale]
+    y <- df[[yscale]]
 
     if (anyNA(y)) {
         warning("NA found in y scale mapping, all were setting to 0")
@@ -711,22 +670,26 @@ getYcoord_scale_category <- function(tr, df, yscale, yscale_mapping=NULL, ...) {
 
 
 add_angle_slanted <- function(res) {
-    dy <- (res[, "y"] - res[res$parent, "y"]) / diff(range(res[, "y"]))
-    dx <- (res[, "x"] - res[res$parent, "x"]) / diff(range(res[, "x"]))
+    x <- res[["x"]]
+    y <- res[["y"]]
+    dy <- (y - y[match(res$parent, res$node)]) / diff(range(y))
+    dx <- (x - x[match(res$parent, res$node)]) / diff(range(x))
     theta <- atan(dy/dx)
     theta[is.na(theta)] <- 0 ## root node
     res$angle <- theta/pi * 180
-    branch.y <- (res[res$parent, "y"] + res[, "y"])/2
+
+    branch.y <- (y[match(res$parent, res$node)] + y)/2
     idx <- is.na(branch.y)
-    branch.y[idx] <- res[idx, "y"]
+    branch.y[idx] <- y[idx]
     res[, "branch.y"] <- branch.y
     return(res)
 }
 
+
 calculate_branch_mid <- function(res) {
-    res$branch <- (res[res$parent, "x"] + res[, "x"])/2
-    if (!is.null(res$length)) {
-        res$length[is.na(res$length)] <- 0
+    res$branch <- with(res, (x[match(parent, node)] + x)/2)
+    if (!is.null(res$branch.length)) {
+        res$branch.length[is.na(res$branch.length)] <- 0
     }
     res$branch[is.na(res$branch)] <- 0
     return(res)
@@ -747,46 +710,5 @@ re_assign_ycoord_df <- function(df, currentNode) {
         currentNode <- c(currentNode[! currentNode %in% traced_node], newNode)
     }
     return(df)
-}
-
-calculate_angle <- function(data) {
-    data$angle <- 360/(diff(range(data$y)) + 1) * data$y
-    return(data)
-}
-
-set_branch_length <- function(tree_object, branch.length) {
-    if (branch.length == "branch.length") {
-        return(tree_object)
-    } else if (branch.length == "none") {
-        tree_object@phylo$edge.length <- NULL
-        return(tree_object)
-    }
-
-    tree_anno <- get_tree_data(tree_object)
-
-    cn <- colnames(tree_anno)
-    cn <- cn[!cn %in% c('node', 'parent')]
-
-    length <- match.arg(branch.length, cn)
-
-    if (all(is.na(as.numeric(tree_anno[, length])))) {
-        stop("branch.length should be numerical attributes...")
-    }
-
-    edge <- as.data.frame(phylo$edge)
-    colnames(edge) <- c("parent", "node")
-
-    dd <- merge(edge, tree_anno,
-                by  = "node",
-                all.x = TRUE)
-    dd <- dd[match(edge$node, dd$node),]
-    len <- unlist(dd[, length])
-    len <- as.numeric(len)
-    len[is.na(len)] <- 0
-
-    phylo$edge.length <- len
-    tree_object@phylo <- phylo
-
-    return(tree_object)
 }
 

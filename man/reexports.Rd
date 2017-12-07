@@ -2,15 +2,21 @@
 % Please edit documentation in R/reexports.R
 \docType{import}
 \name{reexports}
+\alias{reexports}
 \alias{\%>\%}
 \alias{reexports}
+\alias{\%<>\%}
+\alias{reexports}
+\alias{as_data_frame}
 \title{Objects exported from other packages}
+\keyword{internal}
 \description{
 These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%<>\%}}}
+
+  \item{tibble}{\code{\link[tibble]{as_data_frame}}}
 }}
-\keyword{internal}
 
