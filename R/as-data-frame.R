@@ -48,6 +48,7 @@ as_data_frame.phylo <- function(x, ...) {
 ##' @export
 ##' @importFrom treeio Nnode
 ##' @importFrom treeio Ntip
+##' @importFrom treeio get_tree_data
 as_data_frame.treedata <- function(x, ...) {
     res <- as_data_frame(x@phylo)
     tree_anno <- as_data_frame(get_tree_data(x))
@@ -58,24 +59,9 @@ as_data_frame.treedata <- function(x, ...) {
             by <- c(by, "parent")
             tree_anno$parent <- as.integer(tree_anno$parent)
         }
-
         res <- full_join(res, tree_anno, by=by)
     }
     return(res)
-}
-
-get_tree_data <- function(tree_object) {
-    tree_anno <- tree_object@data
-    extraInfo <- tree_object@extraInfo
-
-    if (nrow(tree_anno) == 0) {
-        return(extraInfo)
-    }
-    if (nrow(extraInfo) == 0) {
-        return(tree_anno)
-    }
-
-    full_join(tree_anno, extraInfo, by = "node")
 }
 
 
