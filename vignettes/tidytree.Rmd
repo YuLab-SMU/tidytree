@@ -70,7 +70,7 @@ as.treedata(y)
 addition, `tidytree` provides several verbs to filter related nodes, including
 `child`, `parent`, `offspring`, `ancestor` and `sibling`.
 
-These verbs accept a `tree_tbl` and selected node which can be node number of label.
+These verbs accept a `tree_tbl` and a selected node which can be node number or label.
 
 
 ```{r}

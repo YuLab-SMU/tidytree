@@ -100,7 +100,7 @@ tree</code></pre></div>
 ## Phylogenetic tree with 4 tips and 3 internal nodes.
 ## 
 ## Tip labels:
-## [1] &quot;t2&quot; &quot;t1&quot; &quot;t4&quot; &quot;t3&quot;
+## [1] &quot;t2&quot; &quot;t4&quot; &quot;t3&quot; &quot;t1&quot;
 ## 
 ## Rooted; includes branch lengths.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">as_data_frame</span>(tree)
@@ -108,13 +108,13 @@ x</code></pre></div>
 <pre><code>## # A tibble: 7 x 5
 ##   parent  node branch.length label isTip
 ##    &lt;int&gt; &lt;int&gt;         &lt;dbl&gt; &lt;chr&gt; &lt;lgl&gt;
-## 1      6     1    0.04377757    t2  TRUE
-## 2      6     2    0.63751026    t1  TRUE
-## 3      7     3    0.45951911    t4  TRUE
-## 4      7     4    0.01492814    t3  TRUE
+## 1      6     1    0.00937827    t2  TRUE
+## 2      6     2    0.51479536    t4  TRUE
+## 3      7     3    0.23488657    t3  TRUE
+## 4      7     4    0.09516342    t1  TRUE
 ## 5      5     5            NA  &lt;NA&gt; FALSE
-## 6      5     6    0.49068861  &lt;NA&gt; FALSE
-## 7      5     7    0.83812463  &lt;NA&gt; FALSE</code></pre>
+## 6      5     6    0.35527704  &lt;NA&gt; FALSE
+## 7      5     7    0.16888465  &lt;NA&gt; FALSE</code></pre>
 </div>
 <div id="treedata-object" class="section level2">
 <h2>treedata object</h2>
@@ -166,7 +166,7 @@ y</code></pre></div>
 ## Phylogenetic tree with 4 tips and 3 internal nodes.
 ## 
 ## Tip labels:
-## [1] &quot;t2&quot; &quot;t1&quot; &quot;t4&quot; &quot;t3&quot;
+## [1] &quot;t2&quot; &quot;t4&quot; &quot;t3&quot; &quot;t1&quot;
 ## 
 ## Rooted; includes branch lengths.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.treedata</span>(y)</code></pre></div>
@@ -189,7 +189,7 @@ y</code></pre></div>
 <div id="access-related-nodes" class="section level1">
 <h1>Access related nodes</h1>
 <p><code>dplyr</code> verbs can be applied to <code>tree_tbl</code> directly to manipulate tree data. In addition, <code>tidytree</code> provides several verbs to filter related nodes, including <code>child</code>, <code>parent</code>, <code>offspring</code>, <code>ancestor</code> and <code>sibling</code>.</p>
-<p>These verbs accept a <code>tree_tbl</code> and selected node which can be node number of label.</p>
+<p>These verbs accept a <code>tree_tbl</code> and a selected node which can be node number or label.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">child</span>(y, <span class="dv">23</span>)</code></pre></div>
 <pre><code>## # A tibble: 2 x 18
 ##   parent  node branch.length  label isTip   height height_0.95_HPD
