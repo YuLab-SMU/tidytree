@@ -35,3 +35,6 @@ clean:
 	cd ..;\
 	$(RM) -r $(PKGNAME).Rcheck/
 
+vignette:
+	Rscript -e 'rmarkdown::render("vignettes/tidytree.Rmd")';\
+	mv vignettes/tidytree.html docs/index.html

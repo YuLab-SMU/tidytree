@@ -39,6 +39,7 @@ as_data_frame.phylo <- function(x, ...) {
             }
         }
     }
+    class(res) <- c("tree_tbl", class(res))
     return(res)
 }
 
