@@ -1,4 +1,4 @@
-context("all.R")
+context("related_nodes")
 
 library(ape)
 set.seed(42)
@@ -84,15 +84,13 @@ test_that("ancestor works for non-bifurcating trees", {
 })
 
 test_that("sibling works for bifurcating trees", {
-  ### FIXME: the sibling of root should either be an empty table or raise an
-  ### error with a clear message
-  # expect_equal(sibling(as_data_frame(bi_tree), 11), empty_tbl)
+  expect_equal(sibling(as_data_frame(bi_tree), 11), empty_tbl)
   expect_equal(sibling(as_data_frame(bi_tree), 1)$node, 2)
   expect_equal(sibling(as_data_frame(bi_tree), 17)$node, 19)
 })
 
 test_that("sibling works for non-bifurcating trees", {
-  # expect_equal(sibling(as_data_frame(multi_tree), 11), empty_tbl)
+  expect_equal(sibling(as_data_frame(multi_tree), 11), empty_tbl)
   expect_equal(sibling(as_data_frame(multi_tree), 12)$node, 10)
   expect_equal(sibling(as_data_frame(multi_tree), 3)$node, c(9,13,14))
   expect_equal(sibling(as_data_frame(multi_tree), 4)$node, 5)
