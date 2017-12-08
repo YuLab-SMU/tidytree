@@ -85,13 +85,17 @@ test_that("ancestor works for non-bifurcating trees", {
 
 
 test_that("mrca works for bifurcating trees", {
+    ## 11 is the root node
     expect_equal(mrca(as_data_frame(multi_tree), 11, 5), empty_tbl)
     expect_equal(mrca(as_data_frame(bi_tree), 5, 7)$node, 16)
+    ## 16 is ancestor of 5
+    expect_equal(mrca(as_data_frame(bi_tree), 5, 16)$node, 16)
 })
 
 test_that("mrca works for non-bifurcating trees", {
   expect_equal(mrca(as_data_frame(multi_tree), 11, 5), empty_tbl)
   expect_equal(mrca(as_data_frame(multi_tree), 5, 7)$node, 14)
+  expect_equal(mrca(as_data_frame(multi_tree), 5, 14)$node, 14)
 })
 
 

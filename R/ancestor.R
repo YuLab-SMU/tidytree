@@ -33,6 +33,10 @@ mrca.tbl_tree <- function(.data, .node1, .node2, ...) {
         ## .node1 is root
         return(anc1)
     }
+    if (.node2 %in% anc1$node) {
+        ## .node2 is the ancestor of .node1
+        return(filter_(anc1, ~ node == .node2))
+    }
     p <- parent(.data, .node2)
     if (nrow(p) == 0) {
         ## .node2 is root
