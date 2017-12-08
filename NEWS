@@ -1,3 +1,11 @@
+CHANGES IN VERSION 0.0.2
+------------------------
+ o mrca method <2017-12-08, Fri>
+ o access method for related nodes, including child, parent, offspring and ancestor <2017-12-07, Thu>
+   + test added by @arendsee
+ o remove fortify method, which should belong to ggtree <2017-12-07, Thu>
+ o re-implement as.data.frame to as_data_frame <2017-12-07, Thu>
+
 CHANGES IN VERSION 0.0.1
 ------------------------
  o as.data.frame & fortify method for treedata object <2016-12-06, Tue>

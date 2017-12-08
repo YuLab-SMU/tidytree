@@ -1,6 +1,6 @@
-##' @method sibling tree_tbl
+##' @method sibling tbl_tree
 ##' @export
-sibling.tree_tbl <- function(.data, .node, ...) {
+sibling.tbl_tree <- function(.data, .node, ...) {
     p <- parent(.data, .node)
     if (nrow(p) == 0) # if root node, return empty tibble
         return(p)

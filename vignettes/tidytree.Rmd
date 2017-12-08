@@ -32,7 +32,7 @@ library("tidytree")
 
 
 
-# Convert tree to tidy data frame (tree_tbl object)
+# Convert tree to tidy data frame (tbl_tree object)
 
 ## phylo object
 
@@ -57,7 +57,7 @@ y <- as_data_frame(beast)
 y
 ```
 
-# Convert tree_tbl object to a tree object
+# Convert tbl_tree object to a tree object
 
 ```{r}
 as.phylo(x)
@@ -66,11 +66,11 @@ as.treedata(y)
 
 # Access related nodes
 
-`dplyr` verbs can be applied to `tree_tbl` directly to manipulate tree data. In
+`dplyr` verbs can be applied to `tbl_tree` directly to manipulate tree data. In
 addition, `tidytree` provides several verbs to filter related nodes, including
-`child`, `parent`, `offspring`, `ancestor` and `sibling`.
+`child`, `parent`, `offspring`, `ancestor`, `sibling` and `mrca`.
 
-These verbs accept a `tree_tbl` and a selected node which can be node number or label.
+These verbs accept a `tbl_tree` and a selected node which can be node number or label.
 
 
 ```{r}
@@ -79,5 +79,6 @@ parent(y, 23)
 offspring(y, 23)
 ancestor(y, 23)
 sibling(y, 23)
+mrca(y, 20, 23)
 ```
 

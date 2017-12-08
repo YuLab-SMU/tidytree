@@ -7,12 +7,12 @@
 offspring(.data, ...)
 }
 \arguments{
-\item{.data}{A tree_tbl data frame}
+\item{.data}{A tbl_tree data frame}
 
-\item{...}{additional parameter}
+\item{...}{additional parameters}
 }
 \value{
-tree_tbl data frame
+tbl_tree data frame
 }
 \description{
 access offspring data

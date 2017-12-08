@@ -1,13 +1,13 @@
-##' @method child tree_tbl
+##' @method child tbl_tree
 ##' @importFrom dplyr filter_
 ##' @export
-child.tree_tbl <- function(.data, .node, ...) {
+child.tbl_tree <- function(.data, .node, ...) {
     filter_(.data, ~(parent == .node | label == .node) & node != parent)
 }
 
-##' @method offspring tree_tbl
+##' @method offspring tbl_tree
 ##' @export
-offspring.tree_tbl <- function(.data, .node, ...) {
+offspring.tbl_tree <- function(.data, .node, ...) {
     x <- child(.data, .node)
     if (nrow(x) == 0)
         return(x)

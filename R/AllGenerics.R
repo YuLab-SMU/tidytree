@@ -2,9 +2,9 @@
 ##'
 ##'
 ##' @title child
-##' @param .data A tree_tbl data frame
+##' @param .data A tbl_tree data frame
 ##' @param ... additional parameters
-##' @return tree_tbl data frame
+##' @return tbl_tree data frame
 ##' @export
 ##' @author guangchuang yu
 child <- function(.data, ...) {
@@ -15,9 +15,8 @@ child <- function(.data, ...) {
 ##'
 ##'
 ##' @title offspring
-##' @param .data A tree_tbl data frame
-##' @param ... additional parameter
-##' @return tree_tbl data frame
+##' @inheritParams child
+##' @return tbl_tree data frame
 ##' @export
 ##' @author guangchuang yu
 offspring <- function(.data, ...) {
@@ -29,9 +28,8 @@ offspring <- function(.data, ...) {
 ##'
 ##'
 ##' @title parent
-##' @param .data A tree_tbl data frame
-##' @param ... additional parameter
-##' @return tree_tbl data frame
+##' @inheritParams child
+##' @return tbl_tree data frame
 ##' @export
 ##' @author guangchuang yu
 parent <- function(.data, ...) {
@@ -43,23 +41,45 @@ parent <- function(.data, ...) {
 ##'
 ##'
 ##' @title ancestor
-##' @param .data A tree_tbl data frame
-##' @param ... additional parameter
-##' @return tree_tbl data frame
+##' @inheritParams child
+##' @return tbl_tree data frame
 ##' @export
 ##' @author guangchuang yu
 ancestor <- function(.data, ...) {
     UseMethod("ancestor")
 }
 
+##' access most recent common ancestor data
+##'
+##'
+##' @title mrca
+##' @inheritParams child
+##' @return tbl_tree data frame
+##' @export
+##' @author guangchuang yu
+mrca <- function(.data, ...) {
+    UseMethod("mrca")
+}
+
+
+##' access root data
+##'
+##'
+##' @title root
+##' @inheritParams child
+##' @return tbl_tree data frame
+##' @export
+##' @author guangchuang yu
+root <- function(.data, ...) {
+    UseMethod("root")
+}
 
 ##' access sibling data
 ##'
 ##'
 ##' @title sibling
-##' @param .data A tree_tbl data frame
-##' @param ... additional parameter
-##' @return tree_tbl data frame
+##' @inheritParams child
+##' @return tbl_tree data frame
 ##' @export
 ##' @author guangchuang yu
 sibling <- function(.data, ...) {
