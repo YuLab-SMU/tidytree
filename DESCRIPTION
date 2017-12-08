@@ -15,7 +15,8 @@ Imports:
 Suggests:
     ape,
     knitr,
-    prettydoc
+    prettydoc,
+    testthat
 VignetteBuilder: knitr
 ByteCompile: true
 License: Artistic-2.0
