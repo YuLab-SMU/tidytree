@@ -11,6 +11,7 @@ Depends:
 Imports:
     ape,
     dplyr,
+    lazyeval,
     magrittr,
     methods,
     tibble,

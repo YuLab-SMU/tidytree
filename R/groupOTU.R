@@ -11,6 +11,8 @@ groupOTU.tbl_tree <- function(.data, .node, group_name = "group", ...) {
     } else {
         .data <- groupOTU.tbl_tree_item(.data, .node, group_name = group_name, ...)
     }
+
+    .data[[group_name]] <- factor(.data[[group_name]])
     return(.data)
 }
 

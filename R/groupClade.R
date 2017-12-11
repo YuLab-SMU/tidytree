@@ -9,7 +9,7 @@ groupClade.tbl_tree <- function(.data, .node, group_name = "group", overlab = "o
     if (length(.node) == 1) {
         ids <- c(.node, offspring(.data, .node)$node)
         foc[ids] <- 1
-        .data[[group_name]] <- foc[match(1:n, .data$node)]
+        .data[[group_name]] <- factor(foc[match(1:n, .data$node)])
         return(.data)
     }
 
@@ -34,6 +34,6 @@ groupClade.tbl_tree <- function(.data, .node, group_name = "group", overlab = "o
             }
         }
     }
-    .data[[group_name]] <- foc[match(1:n, .data$node)]
+    .data[[group_name]] <- factor(foc[match(1:n, .data$node)])
     return(.data)
 }

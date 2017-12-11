@@ -1,11 +1,13 @@
 ##' @importFrom treeio parent
+##' @importFrom lazyeval interp
 ##' @method parent tbl_tree
 ##' @export
 parent.tbl_tree <- function(.data, .node, ...) {
     x <- filter_(.data, ~ (node == .node | label == .node) & node != parent)
     if (nrow(x) == 0) ## root node
         return(x)
-    filter_(.data, ~( node == x$parent))
+    ## https://stackoverflow.com/questions/34219912/how-to-use-a-variable-in-dplyrfilter
+    filter_(.data, interp(~node == p, p = x$parent))
 }
 
 ##' @importFrom treeio ancestor
