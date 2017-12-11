@@ -8,6 +8,26 @@
 \alias{\%<>\%}
 \alias{reexports}
 \alias{as_data_frame}
+\alias{reexports}
+\alias{groupOTU}
+\alias{reexports}
+\alias{groupClade}
+\alias{reexports}
+\alias{rootnode}
+\alias{reexports}
+\alias{rootnode}
+\alias{reexports}
+\alias{sibling}
+\alias{reexports}
+\alias{offspring}
+\alias{reexports}
+\alias{parent}
+\alias{reexports}
+\alias{ancestor}
+\alias{reexports}
+\alias{as.treedata}
+\alias{reexports}
+\alias{as.phylo}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -18,5 +38,7 @@ below to see their documentation.
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%<>\%}}}
 
   \item{tibble}{\code{\link[tibble]{as_data_frame}}}
+
+  \item{treeio}{\code{\link[treeio]{groupOTU}}, \code{\link[treeio]{groupClade}}, \code{\link[treeio]{rootnode}}, \code{\link[treeio]{rootnode}}, \code{\link[treeio]{sibling}}, \code{\link[treeio]{offspring}}, \code{\link[treeio]{parent}}, \code{\link[treeio]{ancestor}}, \code{\link[treeio]{as.treedata}}, \code{\link[treeio]{as.phylo}}}
 }}
 

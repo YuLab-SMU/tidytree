@@ -2,6 +2,8 @@
 ##' @export
 ##' @importFrom tibble data_frame
 ##' @importFrom dplyr full_join
+##' @importFrom ape Ntip
+##' @importFrom ape Nnode
 as_data_frame.phylo <- function(x, ...) {
     phylo <- x
     ntip <- Ntip(phylo)
@@ -47,9 +49,6 @@ as_data_frame.phylo <- function(x, ...) {
 ##' @method as_data_frame treedata
 ##' @importFrom tibble as_data_frame
 ##' @export
-##' @importFrom treeio Nnode
-##' @importFrom treeio Ntip
-##' @importFrom treeio get_tree_data
 as_data_frame.treedata <- function(x, ...) {
     res <- as_data_frame(x@phylo)
     tree_anno <- as_data_frame(get_tree_data(x))
@@ -65,4 +64,25 @@ as_data_frame.treedata <- function(x, ...) {
     return(res)
 }
 
+
+##' get associated data stored in treedata object
+##'
+##'
+##' @title get_tree_data
+##' @param tree_object a \code{treedata} object
+##' @return tbl_df
+##' @export
+##' @author guangchuang yu
+get_tree_data <- function(tree_object) {
+    tree_anno <- tree_object@data
+    extraInfo <- tree_object@extraInfo
+
+    if (nrow(tree_anno) == 0) {
+        return(extraInfo)
+    }
+    if (nrow(extraInfo) == 0) {
+        return(tree_anno)
+    }
+    full_join(tree_anno, extraInfo, by = "node")
+}
 

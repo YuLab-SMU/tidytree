@@ -1,6 +1,9 @@
 context("related_nodes")
 
 library(ape)
+library(treeio)
+
+
 set.seed(42)
 # sample bifurcating tree
 bi_tree <- ape::rtree(10)

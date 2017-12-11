@@ -1,3 +1,4 @@
+##' @importFrom treeio parent
 ##' @method parent tbl_tree
 ##' @export
 parent.tbl_tree <- function(.data, .node, ...) {
@@ -7,6 +8,7 @@ parent.tbl_tree <- function(.data, .node, ...) {
     filter_(.data, ~( node == x$parent))
 }
 
+##' @importFrom treeio ancestor
 ##' @method ancestor tbl_tree
 ##' @export
 ancestor.tbl_tree <- function(.data, .node, ...) {
@@ -25,6 +27,7 @@ ancestor.tbl_tree <- function(.data, .node, ...) {
     filter_(.data, ~ node %in% id)
 }
 
+##' @importFrom treeio mrca
 ##' @method mrca tbl_tree
 ##' @export
 mrca.tbl_tree <- function(.data, .node1, .node2, ...) {
@@ -48,8 +51,9 @@ mrca.tbl_tree <- function(.data, .node1, .node2, ...) {
     return(p)
 }
 
-##' @method root tbl_tree
+##' @importFrom treeio rootnode
+##' @method rootnode tbl_tree
 ##' @export
-root.tbl_tree <- function(.data, ...) {
+rootnode.tbl_tree <- function(.data, ...) {
     filter_(.data, ~ parent == node)
 }

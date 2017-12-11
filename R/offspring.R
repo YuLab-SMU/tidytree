@@ -1,3 +1,4 @@
+##' @importFrom treeio child
 ##' @method child tbl_tree
 ##' @importFrom dplyr filter_
 ##' @export
@@ -5,6 +6,7 @@ child.tbl_tree <- function(.data, .node, ...) {
     filter_(.data, ~(parent == .node | label == .node) & node != parent)
 }
 
+##' @importFrom treeio offspring
 ##' @method offspring tbl_tree
 ##' @export
 offspring.tbl_tree <- function(.data, .node, ...) {

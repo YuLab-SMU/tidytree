@@ -1,3 +1,4 @@
+##' @importFrom treeio sibling
 ##' @method sibling tbl_tree
 ##' @export
 sibling.tbl_tree <- function(.data, .node, ...) {
