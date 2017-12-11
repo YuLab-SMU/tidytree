@@ -9,6 +9,20 @@
 \alias{reexports}
 \alias{as_data_frame}
 \alias{reexports}
+\alias{filter}
+\alias{reexports}
+\alias{arrange}
+\alias{reexports}
+\alias{select}
+\alias{reexports}
+\alias{rename}
+\alias{reexports}
+\alias{mutate}
+\alias{reexports}
+\alias{transmute}
+\alias{reexports}
+\alias{summarise}
+\alias{reexports}
 \alias{groupOTU}
 \alias{reexports}
 \alias{groupClade}
@@ -35,6 +49,8 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
+  \item{dplyr}{\code{\link[dplyr]{filter}}, \code{\link[dplyr]{arrange}}, \code{\link[dplyr]{select}}, \code{\link[dplyr]{rename}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{transmute}}, \code{\link[dplyr]{summarise}}}
+
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%<>\%}}}
 
   \item{tibble}{\code{\link[tibble]{as_data_frame}}}
