@@ -8,6 +8,8 @@ magrittr::`%<>%`
 
 ##' @importFrom tibble as_data_frame
 ##' @export
+##' @examples
+##' as_data_frame(treeio::rtree(4))
 tibble::as_data_frame
 
 ##' @importFrom tibble data_frame

@@ -51,6 +51,9 @@
 \alias{reexports}
 \alias{as.phylo}
 \title{Objects exported from other packages}
+\examples{
+as_data_frame(treeio::rtree(4))
+}
 \keyword{internal}
 \description{
 These objects are imported from other packages. Follow the links

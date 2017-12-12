@@ -1,7 +1,10 @@
 ##' @method groupClade tbl_tree
 ##' @export
 ##' @importFrom treeio groupClade
-groupClade.tbl_tree <- function(.data, .node, group_name = "group", overlap = "overwrite", ...) {
+groupClade.tbl_tree <- function(.data, .node,
+                                group_name = "group",
+                                overlap = "overwrite", ...) {
+
     overlap <- match.arg(overlap, c("origin", "overwrite", "abandon"))
 
     n <- nrow(.data)
