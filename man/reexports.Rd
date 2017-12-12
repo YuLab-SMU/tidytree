@@ -9,6 +9,10 @@
 \alias{reexports}
 \alias{as_data_frame}
 \alias{reexports}
+\alias{data_frame}
+\alias{reexports}
+\alias{tibble}
+\alias{reexports}
 \alias{filter}
 \alias{reexports}
 \alias{arrange}
@@ -22,6 +26,10 @@
 \alias{transmute}
 \alias{reexports}
 \alias{summarise}
+\alias{reexports}
+\alias{summarize}
+\alias{reexports}
+\alias{full_join}
 \alias{reexports}
 \alias{groupOTU}
 \alias{reexports}
@@ -49,11 +57,11 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{dplyr}{\code{\link[dplyr]{filter}}, \code{\link[dplyr]{arrange}}, \code{\link[dplyr]{select}}, \code{\link[dplyr]{rename}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{transmute}}, \code{\link[dplyr]{summarise}}}
+  \item{dplyr}{\code{\link[dplyr]{filter}}, \code{\link[dplyr]{arrange}}, \code{\link[dplyr]{select}}, \code{\link[dplyr]{rename}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{transmute}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{full_join}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%<>\%}}}
 
-  \item{tibble}{\code{\link[tibble]{as_data_frame}}}
+  \item{tibble}{\code{\link[tibble]{as_data_frame}}, \code{\link[tibble]{data_frame}}, \code{\link[tibble]{tibble}}}
 
   \item{treeio}{\code{\link[treeio]{groupOTU}}, \code{\link[treeio]{groupClade}}, \code{\link[treeio]{rootnode}}, \code{\link[treeio]{rootnode}}, \code{\link[treeio]{sibling}}, \code{\link[treeio]{offspring}}, \code{\link[treeio]{parent}}, \code{\link[treeio]{ancestor}}, \code{\link[treeio]{as.treedata}}, \code{\link[treeio]{as.phylo}}}
 }}

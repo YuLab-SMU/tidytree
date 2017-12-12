@@ -1,5 +1,6 @@
 CHANGES IN VERSION 0.0.3
 ------------------------
+ o update vignette with examples of groupOTU and groupClade <2017-12-12, Tue>
  o groupOTU & groupClade methods <2017-12-11, Mon>
 
 CHANGES IN VERSION 0.0.2

@@ -10,6 +10,15 @@ magrittr::`%<>%`
 ##' @export
 tibble::as_data_frame
 
+##' @importFrom tibble data_frame
+##' @export
+tibble::data_frame
+
+##' @importFrom tibble tibble
+##' @export
+tibble::tibble
+
+
 ##' @importFrom dplyr filter
 ##' @export
 dplyr::filter
@@ -37,6 +46,16 @@ dplyr::transmute
 ##' @importFrom dplyr summarise
 ##' @export
 dplyr::summarise
+
+##' @importFrom dplyr summarize
+##' @export
+dplyr::summarize
+
+
+##' @importFrom dplyr full_join
+##' @export
+dplyr::full_join
+
 
 ##' @importFrom treeio groupOTU
 ##' @export

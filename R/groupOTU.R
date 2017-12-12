@@ -2,21 +2,25 @@
 ##' @export
 ##' @importFrom treeio groupOTU
 ##' @importFrom methods is
-groupOTU.tbl_tree <- function(.data, .node, group_name = "group", ...) {
+groupOTU.tbl_tree <- function(.data, .node, group_name = "group", connect = FALSE, ...) {
     .data[[group_name]] <- NULL
     if ( is(.node, "list") ) {
         for (i in seq_along(.node)) {
-            .data <- groupOTU.tbl_tree_item(.data, .node[[i]], names(.node)[i], group_name, ...)
+            .data <- groupOTU.tbl_tree_item(.data, .node[[i]], names(.node)[i], group_name = group_name, connect = connect, ...)
         }
     } else {
-        .data <- groupOTU.tbl_tree_item(.data, .node, group_name = group_name, ...)
+        .data <- groupOTU.tbl_tree_item(.data, .node, group_name = group_name, connect = connect, ...)
     }
 
     .data[[group_name]] <- factor(.data[[group_name]])
     return(.data)
 }
 
-groupOTU.tbl_tree_item <- function(.data, .node, focus_label = NULL, group_name, overlap="overwrite") {
+##' @importFrom dplyr group_by_
+groupOTU.tbl_tree_item <- function(.data, .node, focus_label = NULL, group_name, overlap="overwrite", connect = FALSE) {
+    ## see https://groups.google.com/d/msgid/bioc-ggtree/d77fc1ab-8775-49cb-81e7-2db8dcb5941d%40googlegroups.com?utm_medium=email&utm_source=footer
+    ## for connect parameter
+
     overlap <- match.arg(overlap, c("origin", "overwrite", "abandon"))
 
     focus <- .node
@@ -38,8 +42,14 @@ groupOTU.tbl_tree_item <- function(.data, .node, focus_label = NULL, group_name,
     }
 
     anc <- lapply(focus, function(.node) sort(ancestor(.data, .node)$node))
+    ll <- min(sapply(anc, length))
     i <- 2L
     repeat {
+        if ( i >= ll) {
+            i <- i + 1L
+            break
+        }
+
         x <- unique(unlist(lapply(anc, "[", i)))
         if (length(x) != 1)
             break
@@ -48,6 +58,7 @@ groupOTU.tbl_tree_item <- function(.data, .node, focus_label = NULL, group_name,
     d <- -(1:(i - 1L))
     x <- unique(unlist(lapply(anc, function(x) x[d])))
     hit <- unique(c(anc[[1]][i-1L], x, focus))
+    hit <- hit[!is.na(hit)] ## if focus is direct child of root, anc[[1]][i-1L] will be NA and x will be integer(0)
 
     if (overlap == "origin") {
         sn <- hit[is.na(foc[hit]) | foc[hit] == 0]
@@ -59,7 +70,14 @@ groupOTU.tbl_tree_item <- function(.data, .node, focus_label = NULL, group_name,
         sn <- hit
     }
 
-    if (length(sn) > 0) {
+    if (length(sn) > 0 && connect) {
+        y <- filter_(.data, ~ node %in% sn) %>% group_by_(~parent)  %>% summarize(degree = n())
+        if ( sum(y$degree > 1) == 1 ) {
+            sn <- focus
+        }
+    }
+
+    if (length(sn)) {
         foc[sn] <- focus_label
     }
 
