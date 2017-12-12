@@ -58,8 +58,7 @@ groupOTU.tbl_tree_item <- function(.data, .node,
     ll <- min(sapply(anc, length))
     i <- 2L
     repeat {
-        if ( i >= ll) {
-            i <- i + 1L
+        if ( i > ll) {
             break
         }
 
@@ -71,9 +70,6 @@ groupOTU.tbl_tree_item <- function(.data, .node,
     d <- -(1:(i - 1L))
     x <- unique(unlist(lapply(anc, function(x) x[d])))
     hit <- unique(c(anc[[1]][i-1L], x, focus))
-    ## if focus is direct child of root,
-    ## anc[[1]][i-1L] will be NA and x will be integer(0)
-    hit <- hit[!is.na(hit)]
 
     if (overlap == "origin") {
         sn <- hit[is.na(foc[hit]) | foc[hit] == 0]

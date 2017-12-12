@@ -331,7 +331,7 @@ tree &lt;-<span class="st"> </span><span class="kw">read.tree</span>(nwk)
 ## 5      5     5            NA  &lt;NA&gt; FALSE          0
 ## 6      5     6   0.039322336  &lt;NA&gt; FALSE          1
 ## 7      6     7   0.434905600  &lt;NA&gt; FALSE          1</code></pre>
-<p>The <code>groupOTU</code> will trace back from input nodes to most recent common ancestor. In this example, <code>2 (t1) -&gt; 7 -&gt; 6</code> and <code>3 (t4) -&gt; 6</code>.</p>
+<p>The <code>groupOTU</code> will trace back from input nodes to most recent common ancestor. In this example, nodes 2, 3, 7 and 6 (<code>2 (t1) -&gt; 7 -&gt; 6</code> and <code>3 (t4) -&gt; 6</code>) are grouping together.</p>
 <p>Related OTUs are grouping together and they are not necessarily within a clade. They can be monophyletic (clade), polyphyletic or paraphyletic.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cls &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">c1=</span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>),
             <span class="dt">c2=</span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;H&quot;</span>),

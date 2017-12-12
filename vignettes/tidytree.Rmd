@@ -166,7 +166,8 @@ groupOTU(x, c('t1', 't4'), group_name = "fake_group")
 ```
 
 The `groupOTU` will trace back from input nodes to most recent common ancestor.
-In this example, `2 (t1) -> 7 -> 6` and `3 (t4) -> 6`.
+In this example, nodes 2, 3, 7 and 6 (`2 (t1) -> 7 -> 6` and `3 (t4) -> 6`) are
+grouping together.
 
 Related OTUs are grouping together and they are not necessarily within a clade.
 They can be monophyletic (clade), polyphyletic or paraphyletic.
