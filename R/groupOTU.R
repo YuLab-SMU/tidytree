@@ -4,7 +4,7 @@
 ##' @importFrom methods is
 groupOTU.tbl_tree <- function(.data, .node,
                               group_name = "group",
-                              connect = FALSE, ...) {
+                              ...) {
 
     .data[[group_name]] <- NULL
     if ( is(.node, "list") ) {
@@ -12,12 +12,12 @@ groupOTU.tbl_tree <- function(.data, .node,
             .data <- groupOTU.tbl_tree_item(.data, .node[[i]],
                                             names(.node)[i],
                                             group_name = group_name,
-                                            connect = connect, ...)
+                                            ...)
         }
     } else {
         .data <- groupOTU.tbl_tree_item(.data, .node,
                                         group_name = group_name,
-                                        connect = connect, ...)
+                                        ...)
     }
 
     .data[[group_name]] <- factor(.data[[group_name]])
