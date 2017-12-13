@@ -3,6 +3,7 @@
 ##' @method parent tbl_tree
 ##' @export
 parent.tbl_tree <- function(.data, .node, ...) {
+    valid.tbl_tree(.data)
     x <- filter_(.data, ~ (node == .node | label == .node) & node != parent)
     if (nrow(x) == 0) ## root node
         return(x)
@@ -57,5 +58,6 @@ mrca.tbl_tree <- function(.data, .node1, .node2, ...) {
 ##' @method rootnode tbl_tree
 ##' @export
 rootnode.tbl_tree <- function(.data, ...) {
+    valid.tbl_tree(.data)
     filter_(.data, ~ parent == node)
 }

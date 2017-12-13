@@ -1,3 +1,7 @@
+CHANGES IN VERSION 0.99.3
+------------------------
+ o valid.tbl_tree for checking tbl_tree object contains. <2017-12-13, Wed>
+
 CHANGES IN VERSION 0.99.1
 ------------------------
  o add tests for groupOTU and groupClade <2017-12-12, Tue>

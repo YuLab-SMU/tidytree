@@ -3,6 +3,7 @@
 ##' @importFrom dplyr filter_
 ##' @export
 child.tbl_tree <- function(.data, .node, ...) {
+    valid.tbl_tree(.data)
     filter_(.data, ~(parent == .node | label == .node) & node != parent)
 }
 

@@ -91,3 +91,10 @@ get_tree_data <- function(tree_object) {
     full_join(tree_anno, extraInfo, by = "node")
 }
 
+
+valid.tbl_tree <- function(object, cols = c("parent", "node", "label")) {
+    cc <- cols[!cols %in% colnames(object)]
+    if (length(cc) > 0) {
+        msg <- paste0("invalid tbl_tree object.\n  missing column:\n    ", paste(cc, collapse=","), ".")
+    }
+}

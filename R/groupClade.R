@@ -6,6 +6,7 @@ groupClade.tbl_tree <- function(.data, .node,
                                 overlap = "overwrite", ...) {
 
     overlap <- match.arg(overlap, c("origin", "overwrite", "abandon"))
+    valid.tbl_tree(.data)
 
     n <- nrow(.data)
     foc <- rep(0, n)

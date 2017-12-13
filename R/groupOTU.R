@@ -5,7 +5,7 @@
 groupOTU.tbl_tree <- function(.data, .node,
                               group_name = "group",
                               ...) {
-
+    valid.tbl_tree(.data)
     .data[[group_name]] <- NULL
     if ( is(.node, "list") ) {
         for (i in seq_along(.node)) {
