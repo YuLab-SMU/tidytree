@@ -1,9 +1,9 @@
 context("grouping")
 
-library(treeio)
 
-nwk <- system.file("extdata", "sample.nwk", package="treeio")
-tree <- read.tree(nwk)
+nwk <- '(((((((A:4,B:4):6,C:5):8,D:6):3,E:21):10,((F:4,G:12):14,H:8):13):13,((I:5,J:2):30,(K:11,L:11):2):17):4,M:56);'
+
+tree <- read.tree(text=nwk)
 
 d <- as_data_frame(tree)
 x <- groupClade(d, c(17, 21))

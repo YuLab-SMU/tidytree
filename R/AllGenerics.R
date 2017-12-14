@@ -60,11 +60,12 @@ groupClade <- function(.data, .node, ...) {
 ##' @title child
 ##' @rdname child
 ##' @param .data phylo or tbl_tree object
+##' @param .node node number
 ##' @param ... additional parameters
 ##' @return child data
 ##' @export
 ##' @author guangchuang yu
-child <- function(.data, ...) {
+child <- function(.data, .node, ...) {
     UseMethod("child")
 }
 
@@ -77,7 +78,7 @@ child <- function(.data, ...) {
 ##' @return offspring data
 ##' @export
 ##' @author guangchuang yu
-offspring <- function(.data, ...) {
+offspring <- function(.data, .node, ...) {
     UseMethod("offspring")
 }
 
@@ -91,7 +92,7 @@ offspring <- function(.data, ...) {
 ##' @return parent data
 ##' @export
 ##' @author guangchuang yu
-parent <- function(.data, ...) {
+parent <- function(.data, .node, ...) {
     UseMethod("parent")
 }
 
@@ -105,7 +106,7 @@ parent <- function(.data, ...) {
 ##' @return ancestor data
 ##' @export
 ##' @author guangchuang yu
-ancestor <- function(.data, ...) {
+ancestor <- function(.data, .node, ...) {
     UseMethod("ancestor")
 }
 
@@ -114,7 +115,8 @@ ancestor <- function(.data, ...) {
 ##'
 ##' @title MRCA
 ##' @rdname MRCA
-##' @inheritParams child
+##' @param .data phylo or tbl_tree object
+##' @param ... additional parameters
 ##' @return MRCA data
 ##' @export
 ##' @author guangchuang yu

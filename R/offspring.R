@@ -1,13 +1,26 @@
 ##' @method child tbl_tree
 ##' @importFrom dplyr filter_
 ##' @export
+##' @rdname child
+##' @examples
+##' library(ape)
+##' tree <- rtree(4)
+##' x <- as_data_frame(tree)
+##' child(x, 4)
 child.tbl_tree <- function(.data, .node, ...) {
     valid.tbl_tree(.data)
     filter_(.data, ~(parent == .node | label == .node) & node != parent)
 }
 
+
 ##' @method offspring tbl_tree
 ##' @export
+##' @rdname offspring
+##' @examples
+##' library(ape)
+##' tree <- rtree(4)
+##' x <- as_data_frame(tree)
+##' offspring(x, 4)
 offspring.tbl_tree <- function(.data, .node, ...) {
     x <- child(.data, .node)
     if (nrow(x) == 0)

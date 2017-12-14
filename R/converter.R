@@ -43,6 +43,15 @@ as.phylo.tbl_tree <- function(x, ...) {
 ##' @importFrom methods new
 ##' @method as.treedata tbl_tree
 ##' @export
+##' @rdname as.treedata
+##' @examples
+##' library(ape)
+##' set.seed(2017)
+##' tree <- rtree(4)
+##' d <- tibble(label = paste0('t', 1:4),
+##'            trait = rnorm(4))
+##' x <- as_data_frame(tree)
+##' full_join(x, d, by = 'label') %>% as.treedata
 as.treedata.tbl_tree <- function(tree, ...) {
     data <- tree
     cn <- colnames(data)

@@ -1,6 +1,6 @@
 Package: tidytree
 Title: A Tidy Tool for Phylogenetic Tree Data Manipulation
-Version: 0.99.5
+Version: 0.1.5
 Authors@R: c(
            person("Guangchuang", "Yu",   email = "guangchuangyu@gmail.com", role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-6485-8781")),
            person("Bradley", "Jones",    email = "brj1@sfu.ca",             role = "ctb"),

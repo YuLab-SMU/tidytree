@@ -1,6 +1,12 @@
 ##' @importFrom lazyeval interp
 ##' @method parent tbl_tree
 ##' @export
+##' @rdname parent
+##' @examples
+##' library(ape)
+##' tree <- rtree(4)
+##' x <- as_data_frame(tree)
+##' parent(x, 2)
 parent.tbl_tree <- function(.data, .node, ...) {
     valid.tbl_tree(.data)
     x <- filter_(.data, ~ (node == .node | label == .node) & node != parent)
@@ -12,6 +18,12 @@ parent.tbl_tree <- function(.data, .node, ...) {
 
 ##' @method ancestor tbl_tree
 ##' @export
+##' @rdname ancestor
+##' @examples
+##' library(ape)
+##' tree <- rtree(4)
+##' x <- as_data_frame(tree)
+##' ancestor(x, 3)
 ancestor.tbl_tree <- function(.data, .node, ...) {
     p <- parent(.data, .node)
     if (nrow(p) == 0)

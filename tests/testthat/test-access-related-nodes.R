@@ -1,7 +1,6 @@
 context("related_nodes")
 
 library(ape)
-library(treeio)
 
 
 set.seed(42)
