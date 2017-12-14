@@ -17,6 +17,17 @@ as.treedata <- function(tree, ...) {
 }
 
 
+##' @docType methods
+##' @name get.fields
+##' @rdname get.fields-methods
+##' @title get.fields method
+##' @param object \code{treedata} object
+##' @param ... additional parameter
+##' @return available annotation variables
+##' @export
+setGeneric("get.fields", function(object, ...) standardGeneric("get.fields"))
+
+
 ##' grouping OTUs
 ##'
 ##'

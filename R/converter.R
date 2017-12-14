@@ -1,3 +1,11 @@
+
+##' @method as.phylo treedata
+##' @export
+as.phylo.treedata <- function(x, ...) {
+    return(x@phylo)
+}
+
+
 ##' @importFrom dplyr mutate_
 ##' @importFrom ape as.phylo
 ##' @method as.phylo tbl_tree
@@ -31,12 +39,6 @@ as.phylo.tbl_tree <- function(x, ...) {
     return(phylo)
 }
 
-valid.tbl_tree <- function(object, cols = c("parent", "node", "label")) {
-    cc <- cols[!cols %in% colnames(object)]
-    if (length(cc) > 0) {
-        msg <- paste0("invalid tbl_tree object.\n  missing column:\n    ", paste(cc, collapse=","), ".")
-    }
-}
 
 ##' @importFrom methods new
 ##' @method as.treedata tbl_tree

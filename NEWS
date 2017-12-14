@@ -1,3 +1,7 @@
+CHANGES IN VERSION 0.99.5
+------------------------
+ o show and get.fields methods for treedata <2017-12-14, Thu>
+
 CHANGES IN VERSION 0.99.4
 ------------------------
  o for CRAN submission
