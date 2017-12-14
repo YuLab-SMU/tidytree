@@ -2,10 +2,10 @@ Package: tidytree
 Title: A Tidy Tool for Phylogenetic Tree Data Manipulation
 Version: 0.99.4
 Authors@R: c(
-	   person("Guangchuang", "Yu",   email = "guangchuangyu@gmail.com", role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-6485-8781")),
-     person("Bradley", "Jones",    email = "brj1@sfu.ca",             role = "ctb"),
-	   person("Zebulun", "Arendsee", email = "zbwrnz@gmail.com",        role = "ctb")
-     )
+           person("Guangchuang", "Yu",   email = "guangchuangyu@gmail.com", role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-6485-8781")),
+           person("Bradley", "Jones",    email = "brj1@sfu.ca",             role = "ctb"),
+           person("Zebulun", "Arendsee", email = "zbwrnz@gmail.com",        role = "ctb")
+           )
 Description: Phylogenetic tree generally contains multiple components including node, edge, branch and associated data. 'tidytree' provides an approach to convert tree object to tidy data frame as well as provides tidy interfaces to manipulate tree data.
 Depends:
     R (>= 3.4.0)
