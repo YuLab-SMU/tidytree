@@ -26,6 +26,6 @@ test_that("group by taxa", {
     expect_equal(filter(y, group == 'c2')$node,
                  filter(d, node %in% c(filter(d, node %in% 6:8)$parent, 6:8))$node)
     expect_equal(filter(y, group == 'c3')$node,
-                 sort(filter(d, node %in% c(filter(d, node %in% 9:12)$parent, 9:12, mrca(d, 9, 12)$node))$node))
+                 sort(filter(d, node %in% c(filter(d, node %in% 9:12)$parent, 9:12, MRCA(d, 9, 12)$node))$node))
      expect_equal(filter(y, group == 'c4')$node, 13:14)
 })

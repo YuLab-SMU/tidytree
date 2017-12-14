@@ -25,7 +25,7 @@ knitr::opts_chunk$set(tidy = FALSE,
 
 
 ```{r echo=FALSE, results="hide", message=FALSE}
-library("treeio")
+library("ape")
 library("tidytree")
 ```
 
@@ -50,12 +50,12 @@ and [ggtree](https://bioconductor.org/packages/ggtree/).
 
 The `phylo` class defined in [ape](https://cran.r-project.org/package=ape) is
 fundamental for phylogenetic analysis in R. Most of the R packages
-in [this field](https://cran.r-project.org/web/views/Phylogenetics.html) rely
+in [this field](https://CRAN.R-project.org/view=Phylogenetics) rely
 extensively on `phylo` object. The tidytree package provides `as_data_frame`
 method to convert the `phylo` object to tidy data frame, a `tbl_tree` object.
 
 ```{r}
-library(treeio)
+library(ape)
 set.seed(2017)
 tree <- rtree(4)
 tree
@@ -78,50 +78,43 @@ easier. For example, we can link evolutionary trait to phylogeny using the verbs
 d <- tibble(label = paste0('t', 1:4),
             trait = rnorm(4))
 
-full_join(x, d, by = 'label')
+y <- full_join(x, d, by = 'label')
 ```
 
 ## treedata object
 
-The [treeio](https://bioconductor.org/packages/treeio/) package supports parsing
-phylogenetic tree from various file formats (Newick, Nexus, NHX, jplace, phylip)
-and software outputs (BEAST, EPA, HYPHY, MrBayes, PAML, PHYLODOG, pplacer, r8s,
-RAxML and RevBayes). It defines `treedata` class to store phylogenetic tree with
-associated data.
 
-The tidytree package also provides `as_data_frame` method to convert `treedata`
-object to tidy data frame. For example, the follow code parses a BEAST output
-and convert it to a `tbl_tree` object. The phylogentic tree structure and the
-evolutionary inferences were stored in the `tbl_tree` object, making it
-consistent and easier for manipulating evolutionary statistics inferred by
-different software as well as linking external data to the same tree structure.
+The tidytree package defines a `treedata` class to store phylogenetic tree with
+associated data. After mapping external data to the tree structure, the
+`tbl_tree` object can be converted to a `treedata` object.
 
-
-```{r}
-file <- system.file("extdata/BEAST", "beast_mcc.tree", package="treeio")
-beast <- read.beast(file)
-beast
-y <- as_data_frame(beast)
-y
-```
-
-The `tbl_tree` object contains associated data, which can be parsed from
-software output using [treeio](https://bioconductor.org/packages/treeio/) or
-obtained from external sources (*e.g.* phenotypic, experimental and clinical
-data), can be converted back to a `treedata` object
 
 ```{r}
 as.treedata(y)
-full_join(x, d, by = 'label') %>% as.treedata
 ```
 
+The `treedata` class is also used
+in [treeio](https://bioconductor.org/packages/treeio/) package to store
+evolutionary evidences inferred by commonly used software (BEAST, EPA, HYPHY,
+MrBayes, PAML, PHYLODOG, pplacer, r8s, RAxML and RevBayes).
+
+The tidytree package also provides `as_data_frame` to convert `treedata` object
+to a tidy data frame. The phylogentic tree structure and the evolutionary
+inferences were stored in the tbl_tree object, making it consistent and easier
+for manipulating evolutionary statistics inferred by different software as well
+as linking external data to the same tree structure.
+
+
+```{r}
+y %>% as.treedata %>% as_data_frame
+```
 
 
 # Access related nodes
 
 [dplyr](https://cran.r-project.org/package=dplyr) verbs can be applied to `tbl_tree` directly to manipulate tree data. In
 addition, tidytree provides several verbs to filter related nodes, including
-`child`, `parent`, `offspring`, `ancestor`, `sibling` and `mrca`.
+`child`, `parent`, `offspring`, `ancestor`, `sibling` and `MRCA`.
 
 These verbs accept a `tbl_tree` and a selected node which can be node number or label.
 
@@ -132,7 +125,7 @@ parent(y, 23)
 offspring(y, 23)
 ancestor(y, 23)
 sibling(y, 23)
-mrca(y, 20, 23)
+MRCA(y, 20, 23)
 ```
 
 # Grouping taxa
@@ -150,8 +143,8 @@ to add grouping information of clade/clades.
 
 
 ```{r}
-nwk <- system.file("extdata", "sample.nwk", package="treeio")
-tree <- read.tree(nwk)
+nwk <- '(((((((A:4,B:4):6,C:5):8,D:6):3,E:21):10,((F:4,G:12):14,H:8):13):13,((I:5,J:2):30,(K:11,L:11):2):17):4,M:56);'
+tree <- read.tree(text=nwk)
 
 groupClade(as_data_frame(tree), c(17, 21))
 ```

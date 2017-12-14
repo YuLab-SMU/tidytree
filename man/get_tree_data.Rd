@@ -15,12 +15,6 @@ tbl_df
 \description{
 get associated data stored in treedata object
 }
-\examples{
-library(treeio)
-file <- system.file("extdata/BEAST", "beast_mcc.tree", package="treeio")
-beast <- read.beast(file)
-get_tree_data(beast)
-}
 \author{
 guangchuang yu
 }

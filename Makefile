@@ -5,7 +5,7 @@ PKGSRC  := $(shell basename `pwd`)
 all: rd  check clean
 
 rd:
-	Rscript -e 'roxygen2::roxygenise(".")'
+	Rscript -e 'library(methods); devtools::document()'
 
 build:
 	cd ..;\
@@ -21,7 +21,7 @@ install:
 
 check: build
 	cd ..;\
-	Rscript -e 'rcmdcheck::rcmdcheck("$(PKGNAME)_$(PKGVERS).tar.gz")'
+	Rscript -e 'rcmdcheck::rcmdcheck("$(PKGNAME)_$(PKGVERS).tar.gz", args="--as-cran")'
 
 check2: build
 	cd ..;\
@@ -34,7 +34,3 @@ bioccheck:
 clean:
 	cd ..;\
 	$(RM) -r $(PKGNAME).Rcheck/
-
-vignette:
-	Rscript -e 'rmarkdown::render("vignettes/tidytree.Rmd")';\
-	mv vignettes/tidytree.html docs/index.html

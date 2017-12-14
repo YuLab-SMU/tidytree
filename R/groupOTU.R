@@ -1,6 +1,5 @@
 ##' @method groupOTU tbl_tree
 ##' @export
-##' @importFrom treeio groupOTU
 ##' @importFrom methods is
 groupOTU.tbl_tree <- function(.data, .node,
                               group_name = "group",

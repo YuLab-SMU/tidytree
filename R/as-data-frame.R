@@ -73,11 +73,6 @@ as_data_frame.treedata <- function(x, ...) {
 ##' @return tbl_df
 ##' @export
 ##' @author guangchuang yu
-##' @examples
-##' library(treeio)
-##' file <- system.file("extdata/BEAST", "beast_mcc.tree", package="treeio")
-##' beast <- read.beast(file)
-##' get_tree_data(beast)
 get_tree_data <- function(tree_object) {
     tree_anno <- tree_object@data
     extraInfo <- tree_object@extraInfo

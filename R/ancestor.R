@@ -1,4 +1,3 @@
-##' @importFrom treeio parent
 ##' @importFrom lazyeval interp
 ##' @method parent tbl_tree
 ##' @export
@@ -11,7 +10,6 @@ parent.tbl_tree <- function(.data, .node, ...) {
     filter_(.data, interp(~node == p, p = x$parent))
 }
 
-##' @importFrom treeio ancestor
 ##' @method ancestor tbl_tree
 ##' @export
 ancestor.tbl_tree <- function(.data, .node, ...) {
@@ -30,10 +28,9 @@ ancestor.tbl_tree <- function(.data, .node, ...) {
     filter_(.data, ~ node %in% id)
 }
 
-##' @importFrom treeio mrca
-##' @method mrca tbl_tree
+##' @method MRCA tbl_tree
 ##' @export
-mrca.tbl_tree <- function(.data, .node1, .node2, ...) {
+MRCA.tbl_tree <- function(.data, .node1, .node2, ...) {
     anc1 <- ancestor(.data, .node1)
     if (nrow(anc1) == 0) {
         ## .node1 is root
@@ -54,7 +51,6 @@ mrca.tbl_tree <- function(.data, .node1, .node2, ...) {
     return(p)
 }
 
-##' @importFrom treeio rootnode
 ##' @method rootnode tbl_tree
 ##' @export
 rootnode.tbl_tree <- function(.data, ...) {

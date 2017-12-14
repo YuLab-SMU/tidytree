@@ -1,3 +1,12 @@
+CHANGES IN VERSION 0.99.4
+------------------------
+ o for CRAN submission
+   + Bioconductor team has complex of using S4 and force contributor to using it.
+   + https://github.com/Bioconductor/Contributions/issues/578
+ o move treedata class definition and some generic method from treeio to tidytree,
+   since dependency of BioC devel pkg for a CRAN pkg seems not possible.
+   Those code will remove from treeio and import from tidytree when it is accepted.
+
 CHANGES IN VERSION 0.99.3
 ------------------------
  o valid.tbl_tree for checking tbl_tree object contains. <2017-12-13, Wed>
