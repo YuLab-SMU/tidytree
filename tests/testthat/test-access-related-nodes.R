@@ -20,8 +20,7 @@ empty_tbl <- tibble::data_frame(
   parent=integer(0),
   node=integer(0),
   branch.length=numeric(0),
-  label=character(0),
-  isTip=logical(0)
+  label=character(0)
 )
 
 test_that("conversion to table is reversible", {

@@ -20,10 +20,10 @@ as_data_frame.phylo <- function(x, ...) {
     if ( !is.null(phylo$node.label) ) {
         label[(ntip+1):N] <- phylo$node.label
     }
-    isTip <- rep(FALSE, N)
-    isTip[1:ntip] <- TRUE
+    ## isTip <- rep(FALSE, N)
+    ## isTip[1:ntip] <- TRUE
 
-    label.df <- data_frame(node=1:N, label=label, isTip = isTip)
+    label.df <- data_frame(node=1:N, label=label) #, isTip = isTip)
     res <- full_join(res, label.df, by='node')
 
     idx <- is.na(res$parent)

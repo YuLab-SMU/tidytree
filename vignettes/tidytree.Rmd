@@ -120,12 +120,12 @@ These verbs accept a `tbl_tree` and a selected node which can be node number or 
 
 
 ```{r}
-child(y, 23)
-parent(y, 23)
-offspring(y, 23)
-ancestor(y, 23)
-sibling(y, 23)
-MRCA(y, 20, 23)
+child(y, 5)
+parent(y, 2)
+offspring(y, 5)
+ancestor(y, 2)
+sibling(y, 2)
+MRCA(y, 2, 3)
 ```
 
 # Grouping taxa
