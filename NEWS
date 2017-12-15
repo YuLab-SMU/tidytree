@@ -1,5 +1,7 @@
 CHANGES IN VERSION 0.1.6
 ------------------------
+ o optimize accessor of related nodes <2017-12-15, Fri>
+   + https://github.com/GuangchuangYu/tidytree/issues/4
  o remove isTip column which can be computed easily and fixed typo in vignette <2017-12-15, Fri>
 
 CHANGES IN VERSION 0.1.5
