@@ -18,11 +18,9 @@ html_preview: false
 [![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/GuangchuangYu/Bioinformatics)
 
 
-
-Phylogenetic tree generally contains multiple components including node, edge,
-branch and associated data. 'tidytree' provides an approach to convert tree
-object to tidy data frame as well as provides tidy interfaces to manipulate tree
-data.
+```{r comment="", echo=FALSE, results='asis'}
+cat(packageDescription('tidytree')$Description)
+```
 
 
 ## Authors
