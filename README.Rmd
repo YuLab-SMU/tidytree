@@ -10,8 +10,12 @@ html_preview: false
 
 # tidytree: A Tidy Tool for Phylogenetic Tree Data Manipulation
 
+```{r echo=FALSE, results="hide", message=FALSE}
+library("badger")
+```
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tidytree?color=green)](https://cran.r-project.org/package=tidytree)
+`r badge_devel("guangchuangyu/tidytree", "green")`
 ![](http://cranlogs.r-pkg.org/badges/grand-total/tidytree?color=green)
 ![](http://cranlogs.r-pkg.org/badges/tidytree?color=green)
 ![](http://cranlogs.r-pkg.org/badges/last-week/tidytree?color=green)
