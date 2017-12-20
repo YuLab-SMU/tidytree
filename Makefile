@@ -7,6 +7,10 @@ all: rd  check clean
 rd:
 	Rscript -e 'library(methods); devtools::document()'
 
+readme:
+	Rscript -e 'rmarkdown::render("README.Rmd")'
+
+
 build:
 	cd ..;\
 	R CMD build $(PKGSRC)
