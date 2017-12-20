@@ -83,6 +83,9 @@ get_tree_data <- function(tree_object) {
     if (nrow(extraInfo) == 0) {
         return(tree_anno)
     }
+
+    tree_anno$node <- as.integer(tree_anno$node)
+    extraInfo$node <- as.integer(extraInfo$node)
     full_join(tree_anno, extraInfo, by = "node")
 }
 

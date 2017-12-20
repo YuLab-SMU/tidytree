@@ -22,10 +22,13 @@ setMethod("show", signature(object = "treedata"),
 ##' @export
 print.treedata <- function(x, ...) {
     msg <- "'treedata' S4 object"
-    if (length(x@file)) {
+    files <- x@file
+    files <- files[files != ""]
+    if (length(files)) {
+        ff <- paste(files, collapse="',\n\t'")
         msg <- paste0(msg,
                       " that stored information of\n\t",
-                      "'", x@file)
+                      "'", ff)
     }
 
     msg <- paste0(msg, "'.\n\n")

@@ -50,3 +50,15 @@ setClass("treedata",
          )
          )
 
+##' treedata object contructor
+##'
+##'
+##' @title treedata
+##' @param ... parameters
+##' @return treedata object
+##' @importFrom methods new
+##' @export
+##' @author guangchuang yu
+treedata <- function(...) {
+    new("treedata", ...)
+}
