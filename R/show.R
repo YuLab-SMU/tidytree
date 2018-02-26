@@ -34,7 +34,7 @@ print.treedata <- function(x, ...) {
     msg <- paste0(msg, "'.\n\n")
     cat(msg)
 
-    cat("...@ tree: ")
+    cat("...@ phylo: ")
     print.phylo(as.phylo(x))
     print_fields(x)
 }

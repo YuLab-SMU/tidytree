@@ -27,6 +27,16 @@ as.treedata <- function(tree, ...) {
 ##' @export
 setGeneric("get.fields", function(object, ...) standardGeneric("get.fields"))
 
+##' @docType methods
+##' @name get.data
+##' @rdname get.data-methods
+##' @title get.data method
+##' @param object \code{treedata} object
+##' @param ... additional parameter
+##' @return associated data of phylogeny
+##' @export
+setGeneric("get.data", function(object, ...) standardGeneric("get.data"))
+
 
 ##' grouping OTUs
 ##'
