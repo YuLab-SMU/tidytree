@@ -42,6 +42,15 @@ tree_subset <- function(tree, node, levels_back = 5){
     if (is.na(levels_back)) stop("'levels_back' must be of class numeric")
   }
 
+  # error catching to ensure that treeio is installed
+  if (!requireNamespace("treeio", quietly = TRUE)) {
+    stop("`treeio` is required to use tree_subset. It is not currently installed. ",
+         "You can install it by running either `install.packages('treeio')` for ",
+         "the current CRAN release or `devtools::install_github('GuangchuangYu/treeio')` ",
+         "for the development version.",
+         call. = FALSE)
+  }
+
   # This pipeline returns the tip labels of all nodes related to
   # the specified node
   #
@@ -63,9 +72,10 @@ tree_subset <- function(tree, node, levels_back = 5){
   # This finds the nodes associated with the labels pulled
   group_nodes <- which(tree$tip.label %in% group_labels)
 
+
   # This drops all of the tips that are not included in group_nodes
   subtree <- treeio:::gfocus(tree, group_labels, "focus") %>%
-    ggtree:::drop.tip(., .$tip.label[-group_nodes], rooted = TRUE) %>%
+    treeio:::drop.tip(., .$tip.label[-group_nodes], rooted = TRUE) %>%
     treeio:::groupOTU.phylo(.node = node)
 
   return(subtree)
