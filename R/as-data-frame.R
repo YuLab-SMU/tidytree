@@ -29,6 +29,9 @@ as_data_frame.phylo <- function(x, ...) {
     idx <- is.na(res$parent)
     res$parent[idx] <- res$node[idx]
 
+    if (!is.null(phylo$edge.length) && !is.null(phylo$root.edge))
+        res$branch.length[res$parent == res$node] = phylo$root.edge
+
     res <- res[order(res$node),]
     aa <- names(attributes(phylo))
     group <- aa[ ! aa %in% c("names", "class", "order", "reroot", "node_map")]
@@ -78,14 +81,17 @@ get_tree_data <- function(tree_object) {
     extraInfo <- tree_object@extraInfo
 
     if (nrow(tree_anno) == 0) {
+        extraInfo$node <- as.integer(extraInfo$node)
         return(extraInfo)
     }
     if (nrow(extraInfo) == 0) {
+        tree_anno$node <- as.integer(tree_anno$node)
         return(tree_anno)
     }
 
     tree_anno$node <- as.integer(tree_anno$node)
     extraInfo$node <- as.integer(extraInfo$node)
+
     full_join(tree_anno, extraInfo, by = "node")
 }
 

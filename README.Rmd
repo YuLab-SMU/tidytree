@@ -19,7 +19,6 @@ library("badger")
 ![](http://cranlogs.r-pkg.org/badges/grand-total/tidytree?color=green)
 ![](http://cranlogs.r-pkg.org/badges/tidytree?color=green)
 ![](http://cranlogs.r-pkg.org/badges/last-week/tidytree?color=green)
-[![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/GuangchuangYu/Bioinformatics)
 
 
 ```{r comment="", echo=FALSE, results='asis'}
@@ -32,6 +31,12 @@ cat(packageDescription('tidytree')$Description)
 Guangchuang YU <https://guangchuangyu.github.io>
 
 School of Public Health, The University of Hong Kong
+
+
+[![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/GuangchuangYu)
+`r badger::badge_custom("follow me on", "微信", "green", "https://guangchuangyu.github.io/blog_images/biobabble.jpg")`
+`r badger::badge_custom("打赏", "支付宝/微信", "green", "https://guangchuangyu.github.io/blog_images/pay_qrcode.png")`
+
 
 ## Installation
 
