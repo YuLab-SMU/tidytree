@@ -5,7 +5,7 @@ nwk <- '(((((((A:4,B:4):6,C:5):8,D:6):3,E:21):10,((F:4,G:12):14,H:8):13):13,((I:
 
 tree <- read.tree(text=nwk)
 
-d <- as_data_frame(tree)
+d <- as_tibble(tree)
 x <- groupClade(d, c(17, 21))
 
 test_that("group by clade", {

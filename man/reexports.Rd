@@ -4,33 +4,19 @@
 \name{reexports}
 \alias{reexports}
 \alias{as.phylo}
-\alias{reexports}
 \alias{\%>\%}
-\alias{reexports}
 \alias{\%<>\%}
-\alias{reexports}
-\alias{as_data_frame}
-\alias{reexports}
+\alias{as_tibble}
 \alias{data_frame}
-\alias{reexports}
 \alias{tibble}
-\alias{reexports}
 \alias{filter}
-\alias{reexports}
 \alias{arrange}
-\alias{reexports}
 \alias{select}
-\alias{reexports}
 \alias{rename}
-\alias{reexports}
 \alias{mutate}
-\alias{reexports}
 \alias{transmute}
-\alias{reexports}
 \alias{summarise}
-\alias{reexports}
 \alias{summarize}
-\alias{reexports}
 \alias{full_join}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -45,6 +31,6 @@ below to see their documentation.
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%<>\%}}}
 
-  \item{tibble}{\code{\link[tibble]{as_data_frame}}, \code{\link[tibble]{data_frame}}, \code{\link[tibble]{tibble}}}
+  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{data_frame}}, \code{\link[tibble]{tibble}}}
 }}
 

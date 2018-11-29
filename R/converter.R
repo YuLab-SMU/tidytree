@@ -50,7 +50,7 @@ as.phylo.tbl_tree <- function(x, ...) {
 ##' tree <- rtree(4)
 ##' d <- tibble(label = paste0('t', 1:4),
 ##'            trait = rnorm(4))
-##' x <- as_data_frame(tree)
+##' x <- as_tibble(tree)
 ##' full_join(x, d, by = 'label') %>% as.treedata
 as.treedata.tbl_tree <- function(tree, ...) {
     data <- tree
@@ -59,6 +59,6 @@ as.treedata.tbl_tree <- function(tree, ...) {
     res <- new("treedata",
                phylo = as.phylo.tbl_tree(data))
     if (length(idx))
-        res@data <- as_data_frame(data[, idx])
+        res@data <- as_tibble(data[, idx])
     return(res)
 }

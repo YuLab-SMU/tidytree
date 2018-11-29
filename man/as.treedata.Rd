@@ -26,6 +26,6 @@ set.seed(2017)
 tree <- rtree(4)
 d <- tibble(label = paste0('t', 1:4),
            trait = rnorm(4))
-x <- as_data_frame(tree)
+x <- as_tibble(tree)
 full_join(x, d, by = 'label') \%>\% as.treedata
 }

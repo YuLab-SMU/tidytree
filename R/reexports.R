@@ -6,9 +6,9 @@ magrittr::`%>%`
 ##' @export
 magrittr::`%<>%`
 
-##' @importFrom tibble as_data_frame
+##' @importFrom tibble as_tibble
 ##' @export
-tibble::as_data_frame
+tibble::as_tibble
 
 ##' @importFrom tibble data_frame
 ##' @export

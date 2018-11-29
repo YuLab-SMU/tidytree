@@ -20,4 +20,6 @@ associated data of phylogeny
 }
 \description{
 get.data method
+
+get.data method
 }

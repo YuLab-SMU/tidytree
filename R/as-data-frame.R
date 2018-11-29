@@ -1,17 +1,18 @@
-##' @method as_data_frame phylo
+##' @method as_tibble phylo
 ##' @export
 ##' @importFrom tibble data_frame
 ##' @importFrom dplyr full_join
 ##' @importFrom ape Ntip
 ##' @importFrom ape Nnode
-as_data_frame.phylo <- function(x, ...) {
+as_tibble.phylo <- function(x, ...) {
     phylo <- x
     ntip <- Ntip(phylo)
     N <- Nnode(phylo, internal.only=FALSE)
 
     tip.label <- phylo[["tip.label"]]
-    res <- as_data_frame(phylo[["edge"]])
-    colnames(res) <- c("parent", "node")
+    edge <- phylo[["edge"]]
+    colnames(edge) <- c("parent", "node")
+    res <- as_tibble(edge)
     if (!is.null(phylo$edge.length))
         res$branch.length <- phylo$edge.length
 
@@ -49,12 +50,12 @@ as_data_frame.phylo <- function(x, ...) {
 }
 
 
-##' @method as_data_frame treedata
-##' @importFrom tibble as_data_frame
+##' @method as_tibble treedata
+##' @importFrom tibble as_tibble
 ##' @export
-as_data_frame.treedata <- function(x, ...) {
-    res <- as_data_frame(x@phylo)
-    tree_anno <- as_data_frame(get_tree_data(x))
+as_tibble.treedata <- function(x, ...) {
+    res <- as_tibble(x@phylo)
+    tree_anno <- as_tibble(get_tree_data(x))
     if (nrow(tree_anno) > 0) {
         by <- "node"
         tree_anno$node <- as.integer(tree_anno$node)

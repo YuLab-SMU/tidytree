@@ -5,7 +5,7 @@
 ##' @examples
 ##' library(ape)
 ##' tree <- rtree(4)
-##' x <- as_data_frame(tree)
+##' x <- as_tibble(tree)
 ##' parent(x, 2)
 parent.tbl_tree <- function(.data, .node, ...) {
     valid.tbl_tree(.data)
@@ -30,7 +30,7 @@ parent.tbl_tree <- function(.data, .node, ...) {
 ##' @examples
 ##' library(ape)
 ##' tree <- rtree(4)
-##' x <- as_data_frame(tree)
+##' x <- as_tibble(tree)
 ##' ancestor(x, 3)
 ancestor.tbl_tree <- function(.data, .node, ...) {
     ## prevent using filter

@@ -20,4 +20,6 @@ available annotation variables
 }
 \description{
 get.fields method
+
+get.fields method
 }
