@@ -178,6 +178,7 @@ If there are conflicts when tracing back to mrca, user can set `overlap`
 parameter to "origin" (the first one counts), "overwrite" (default, the last one
 counts) or "abandon" (un-selected for grouping), see
 also
-[discussion here](https://groups.google.com/d/msgid/bioc-ggtree/04ca31bc-5cae-4b0b-8eed-9dd450470964%40googlegroups.com?utm_medium=email&utm_source=footer).
+[discussion here](https://groups.google.com/forum/#!msg/bioc-ggtree/Q4LnwoTf1DM/uqYdYB_VBAAJ).
+
 
 

@@ -1,3 +1,10 @@
+# tidytree 0.2.1
+
++ `mutate.tbl_tree` method (2018-12-19, Wed)
+  - <https://github.com/GuangchuangYu/tidytree/issues/7>
++ bug fixed in `child` 
+  - <https://github.com/GuangchuangYu/tidytree/pull/8>
+
 # tidytree 0.2.0
 
 + compatible with `tibble` v = 2.0.0 (2018-11-29, Thu)
