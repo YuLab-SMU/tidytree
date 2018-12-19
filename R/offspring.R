@@ -9,7 +9,7 @@
 ##' child(x, 4)
 child.tbl_tree <- function(.data, .node, ...) {
     valid.tbl_tree(.data)
-    subset(.data, .data$parent == .node & .data$parent != .data$node)
+    .data[.data$parent == .node & .data$parent != .data$node,]
 }
 
 ##' @method offspring tbl_tree
