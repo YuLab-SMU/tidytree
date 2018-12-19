@@ -9,11 +9,15 @@
 ##' child(x, 4)
 child.tbl_tree <- function(.data, .node, ...) {
     valid.tbl_tree(.data)
+
     if(any(.data$node == .node)) {
         .node <- .data$node[.data$node == .node]
-    } else {
+    } else if (is.character(.node)) {
         .node <- .data$node[.data$label == .node]
+    } else {
+        stop("invalid node")
     }
+
     .data[.data$parent == .node & .data$parent != .data$node,]
 }
 
