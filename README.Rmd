@@ -14,11 +14,11 @@ html_preview: false
 library("badger")
 ```
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tidytree?color=green)](https://cran.r-project.org/package=tidytree)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/tidytree?color=green)](https://cran.r-project.org/package=tidytree)
 `r badge_devel("guangchuangyu/tidytree", "green")`
-![](http://cranlogs.r-pkg.org/badges/grand-total/tidytree?color=green)
-![](http://cranlogs.r-pkg.org/badges/tidytree?color=green)
-![](http://cranlogs.r-pkg.org/badges/last-week/tidytree?color=green)
+![](https://cranlogs.r-pkg.org/badges/grand-total/tidytree?color=green)
+![](https://cranlogs.r-pkg.org/badges/tidytree?color=green)
+![](https://cranlogs.r-pkg.org/badges/last-week/tidytree?color=green)
 
 
 ```{r comment="", echo=FALSE, results='asis'}
@@ -28,10 +28,11 @@ cat(packageDescription('tidytree')$Description)
 
 ## Authors
 
-Guangchuang YU <https://guangchuangyu.github.io>
+Guangchuang YU
 
-School of Public Health, The University of Hong Kong
+School of Basic Medical Sciences, Southern Medical University
 
+<https://guangchuangyu.github.io>
 
 [![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/GuangchuangYu)
 `r badger::badge_custom("follow me on", "微信", "green", "https://guangchuangyu.github.io/blog_images/biobabble.jpg")`
