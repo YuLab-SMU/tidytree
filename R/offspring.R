@@ -9,17 +9,7 @@
 ##' child(x, 4)
 child.tbl_tree <- function(.data, .node, ...) {
     valid.tbl_tree(.data)
-    ## filter_(.data, ~(parent == .node | label == .node) & node != parent)
-
-    ndata <- .data[which(.data$node == .node | .data$label == .node), ]
-    .node <- ndata$node
-
-    i <- which(.data$parent == .node & .data$parent != .data$node)
-    if (length(i) == 0) {
-        ## tip
-        return(.data[0,])
-    }
-    .data[i,]
+    .data[.data$parent == .node & .data$parent != .data$node,]
 }
 
 ##' @method offspring tbl_tree
