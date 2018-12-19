@@ -4,16 +4,16 @@
 
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/tidytree?color=green)](https://cran.r-project.org/package=tidytree)
 [![develVersion](https://img.shields.io/badge/devel%20version-0.2.1-green.svg?style=flat)](https://github.com/guangchuangyu/tidytree)
-![](https://cranlogs.r-pkg.org/badges/grand-total/tidytree?color=green)
-![](https://cranlogs.r-pkg.org/badges/tidytree?color=green)
-![](https://cranlogs.r-pkg.org/badges/last-week/tidytree?color=green)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/tidytree?color=green)](https://cran.r-project.org/package=tidytree)
+[![](https://cranlogs.r-pkg.org/badges/tidytree?color=green)](https://cranlogs.r-pkg.org/downloads/total/last-month/tidytree)
+[![](https://cranlogs.r-pkg.org/badges/last-week/tidytree?color=green)](https://cranlogs.r-pkg.org/downloads/total/last-week/tidytree)
 
 Phylogenetic tree generally contains multiple components including node,
 edge, branch and associated data. ‘tidytree’ provides an approach to
 convert tree object to tidy data frame as well as provides tidy
 interfaces to manipulate tree data.
 
-## Authors
+## Author
 
 Guangchuang YU
 
