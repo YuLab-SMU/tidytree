@@ -3,7 +3,7 @@
 # tidytree: A Tidy Tool for Phylogenetic Tree Data Manipulation
 
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/tidytree?color=green)](https://cran.r-project.org/package=tidytree)
-[![develVersion](https://img.shields.io/badge/devel%20version-0.2.1-green.svg?style=flat)](https://github.com/guangchuangyu/tidytree)
+[![](https://img.shields.io/badge/devel%20version-0.2.1-green.svg)](https://github.com/guangchuangyu/tidytree)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/tidytree?color=green)](https://cran.r-project.org/package=tidytree)
 [![](https://cranlogs.r-pkg.org/badges/tidytree?color=green)](https://cranlogs.r-pkg.org/downloads/total/last-month/tidytree)
 [![](https://cranlogs.r-pkg.org/badges/last-week/tidytree?color=green)](https://cranlogs.r-pkg.org/downloads/total/last-week/tidytree)
@@ -23,8 +23,8 @@ University
 <https://guangchuangyu.github.io>
 
 [![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/GuangchuangYu)
-[![](https://img.shields.io/badge/follow%20me%20on-微信-green.svg?style=flat)](https://guangchuangyu.github.io/blog_images/biobabble.jpg)
-[![](https://img.shields.io/badge/打赏-支付宝/微信-green.svg?style=flat)](https://guangchuangyu.github.io/blog_images/pay_qrcode.png)
+[![](https://img.shields.io/badge/follow%20me%20on-微信-green.svg)](https://guangchuangyu.github.io/blog_images/biobabble.jpg)
+[![](https://img.shields.io/badge/打赏-支付宝/微信-green.svg)](https://guangchuangyu.github.io/blog_images/pay_qrcode.png)
 
 ## Installation
 

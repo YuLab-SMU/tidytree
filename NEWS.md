@@ -1,3 +1,6 @@
+# tidytree 0.2.2
+
++ mv vignette to [treedata-book](https://yulab-smu.github.io/treedata-book/) (2019-01-10, Thu)
 # tidytree 0.2.1
 
 + `mutate.tbl_tree` method (2018-12-19, Wed)
