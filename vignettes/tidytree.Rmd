@@ -2,9 +2,8 @@
 title: "tidytree: A Tidy Tool for Phylogenetic Tree Data Manipulation"
 author: "Guangchuang Yu\\
 
-        School of Public Health, The University of Hong Kong"
+        School of Basic Medical Sciences, Southern Medical University"
 date: "`r Sys.Date()`"
-csl: nature.csl
 output:
   prettydoc::html_pretty:
     toc: true
@@ -13,7 +12,7 @@ output:
   pdf_document:
     toc: true
 vignette: >
-  %\VignetteIndexEntry{tidytree introduction}
+  %\VignetteIndexEntry{tidytree}
   %\VignetteEngine{knitr::rmarkdown}
   %\usepackage[utf8]{inputenc}
 ---
