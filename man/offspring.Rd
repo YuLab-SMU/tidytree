@@ -5,9 +5,10 @@
 \alias{offspring.tbl_tree}
 \title{offspring}
 \usage{
-offspring(.data, .node, tiponly, ...)
+offspring(.data, .node, tiponly, self_include, ...)
 
-\method{offspring}{tbl_tree}(.data, .node, tiponly = FALSE, ...)
+\method{offspring}{tbl_tree}(.data, .node, tiponly = FALSE,
+  self_include = FALSE, ...)
 }
 \arguments{
 \item{.data}{phylo or tbl_tree object}
@@ -15,6 +16,9 @@ offspring(.data, .node, tiponly, ...)
 \item{.node}{node number}
 
 \item{tiponly}{whether only return tip nodes}
+
+\item{self_include}{whether include the input node,
+only applicable for tiponly = FALSE}
 
 \item{...}{additional parameters}
 }

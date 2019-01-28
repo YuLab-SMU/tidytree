@@ -22,5 +22,5 @@ knitr::opts_chunk$set(tidy = FALSE,
 		   message = FALSE)
 ```
 
-Please go to <https://yulab-smu.github.io/treedata-book/manipulating-tree-with-data.html> for the full vignette.
+Please go to <https://yulab-smu.github.io/treedata-book/chapter2.html> for the full vignette.
 
