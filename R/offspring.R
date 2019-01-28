@@ -25,8 +25,13 @@ child.tbl_tree <- function(.data, .node, ...) {
 ##' tree <- rtree(4)
 ##' x <- as_tibble(tree)
 ##' offspring(x, 4)
-offspring.tbl_tree <- function(.data, .node, ...) {
-    x <- child(.data, .node)
+offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FALSE, ...) {
+    if (self_include) {
+        x <- .node
+    } else {
+        x <- child(.data, .node)
+    }
+
     if (nrow(x) == 0)
         return(x)
 
@@ -53,7 +58,10 @@ offspring.tbl_tree <- function(.data, .node, ...) {
         id <- c(id, kids[[id[i]]])
         i <- i + 1
     }
-
-    .data[children %in% id,]
+    sp <- .data[children %in% id,]
+    if (tiponly) {
+        return(sp[sp$node < rootnode(.data),])
+    }
+    return(sp)
 }
 

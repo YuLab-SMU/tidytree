@@ -85,10 +85,13 @@ child <- function(.data, .node, ...) {
 ##' @title offspring
 ##' @rdname offspring
 ##' @inheritParams child
+##' @param tiponly whether only return tip nodes
+##' @param self_include whether include the input node,
+##' only applicable for tiponly = FALSE
 ##' @return offspring data
 ##' @export
 ##' @author guangchuang yu
-offspring <- function(.data, .node, ...) {
+offspring <- function(.data, .node, tiponly, self_include, ...) {
     UseMethod("offspring")
 }
 
