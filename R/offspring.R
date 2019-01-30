@@ -27,7 +27,7 @@ child.tbl_tree <- function(.data, .node, ...) {
 ##' offspring(x, 4)
 offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FALSE, ...) {
     if (self_include) {
-        x <- .node
+        x <- .data[.data$node == .node, ]
     } else {
         x <- child(.data, .node)
     }
