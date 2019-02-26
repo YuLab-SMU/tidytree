@@ -29,7 +29,7 @@ offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FAL
     if (self_include) {
         x <- .data[.data$node == .node, ]
     } else {
-        x <- child(.data, .node)
+        x <- child.tbl_tree(.data, .node)
     }
 
     if (nrow(x) == 0)
