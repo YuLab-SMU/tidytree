@@ -2,7 +2,7 @@
 
 + call `child.tbl_tree` instead of `child` in `offspring`, (2019-02-26, Tue)
   so that it works more robust for `data.frame`.
-  
+
 # tidytree 0.2.3
 
 + more parameter for `offspring` (2019-01-28, Mon)
