@@ -1,4 +1,4 @@
-##' show method for \code{treedata} instance
+##' show method for `treedata` instance
 ##'
 ##'
 ##' @name show
@@ -6,12 +6,12 @@
 ##' @rdname show-methods
 ##'
 ##' @title show method
-##' @param object \code{treedata} object
+##' @param object `treedata` object
 ##' @return print info
 ##' @importFrom methods show
 ##' @exportMethod show
 ##' @usage show(object)
-##' @author Guangchuang Yu \url{https://guangchuangyu.github.io}
+##' @author Guangchuang Yu <https://guangchuangyu.github.io>
 setMethod("show", signature(object = "treedata"),
           function(object) {
               print.treedata(object)

@@ -74,7 +74,7 @@ as_tibble.treedata <- function(x, ...) {
 ##'
 ##'
 ##' @title get_tree_data
-##' @param tree_object a \code{treedata} object
+##' @param tree_object a `treedata` object
 ##' @return tbl_df
 ##' @export
 ##' @author guangchuang yu

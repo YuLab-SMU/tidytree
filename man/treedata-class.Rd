@@ -37,6 +37,6 @@ This class stores phylogenetic tree with associated data
 }}
 
 \author{
-guangchuang yu \url{https://guangchuangyu.github.io}
+Guangchuang Yu \url{https://guangchuangyu.github.io}
 }
 \keyword{classes}

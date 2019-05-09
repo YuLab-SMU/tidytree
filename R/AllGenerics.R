@@ -21,7 +21,7 @@ as.treedata <- function(tree, ...) {
 ##' @name get.fields
 ##' @rdname get.fields-methods
 ##' @title get.fields method
-##' @param object \code{treedata} object
+##' @param object `treedata` object
 ##' @param ... additional parameter
 ##' @return available annotation variables
 ##' @export
@@ -31,7 +31,7 @@ setGeneric("get.fields", function(object, ...) standardGeneric("get.fields"))
 ##' @name get.data
 ##' @rdname get.data-methods
 ##' @title get.data method
-##' @param object \code{treedata} object
+##' @param object `treedata` object
 ##' @param ... additional parameter
 ##' @return associated data of phylogeny
 ##' @export

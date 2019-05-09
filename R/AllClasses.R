@@ -26,7 +26,7 @@ setOldClass("DNAbin")
 ##' @importFrom methods representation
 ##' @importFrom ape as.DNAbin
 ##' @exportClass treedata
-##' @author guangchuang yu \url{https://guangchuangyu.github.io}
+##' @author Guangchuang Yu <https://guangchuangyu.github.io>
 ##' @keywords classes
 setClass("treedata",
          representation = representation(

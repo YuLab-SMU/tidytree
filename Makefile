@@ -12,20 +12,23 @@ readme:
 
 
 build:
-	cd ..;\
-	R CMD build $(PKGSRC)
+	Rscript -e 'devtools::build()'
+	# cd ..;\
+	# R CMD build $(PKGSRC)
 
 build2:
-	cd ..;\
-	R CMD build --no-build-vignettes $(PKGSRC)
+	Rscript -e 'devtools::build(vignettes = FALSE)'
+	# cd ..;\
+	# R CMD build --no-build-vignettes $(PKGSRC)
 
 install:
 	cd ..;\
 	R CMD INSTALL $(PKGNAME)_$(PKGVERS).tar.gz
 
-check: build
-	cd ..;\
-	Rscript -e 'rcmdcheck::rcmdcheck("$(PKGNAME)_$(PKGVERS).tar.gz", args="--as-cran")'
+check:
+	Rscript -e 'devtools::check()'
+	# cd ..;\
+	# Rscript -e 'rcmdcheck::rcmdcheck("$(PKGNAME)_$(PKGVERS).tar.gz", args="--as-cran")'
 
 check2: build
 	cd ..;\
