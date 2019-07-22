@@ -26,11 +26,11 @@ child.tbl_tree <- function(.data, .node, ...) {
 ##' x <- as_tibble(tree)
 ##' offspring(x, 4)
 offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FALSE, ...) {
-    if (self_include) {
-        x <- .data[.data$node == .node, ]
-    } else {
-        x <- child.tbl_tree(.data, .node)
-    }
+    x <- child.tbl_tree(.data, .node)
+
+    ## https://github.com/GuangchuangYu/ggtree/issues/239
+    rn <- rootnode.tbl_tree(.data)$node
+    x <- x[x$node != rn, ]
 
     if (nrow(x) == 0)
         return(x)
@@ -58,9 +58,14 @@ offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FAL
         id <- c(id, kids[[id[i]]])
         i <- i + 1
     }
+
+    if (self_include) {
+        id <- c(.node, id)
+    }
+
     sp <- .data[children %in% id,]
     if (tiponly) {
-        return(sp[sp$node < rootnode(.data),])
+        return(sp[sp$node < rn,])
     }
     return(sp)
 }
