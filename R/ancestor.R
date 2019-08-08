@@ -89,6 +89,22 @@ ancestor.tbl_tree <- function(.data, .node, ...) {
 ##' @method MRCA tbl_tree
 ##' @export
 MRCA.tbl_tree <- function(.data, .node1, .node2, ...) {
+    if (length(.node1) == 1 && length(.node2) == 1) {
+        return(MRCA.tbl_tree_internal(.data, .node1, .node2, ...))
+    } else if (missing(.node2) && length(.node1) > 1) {
+        node <- MRCA.tbl_tree_internal(.data, .node1[1], .node1[2])
+        if (length(.node1) > 2) {
+            for (i in 3:length(.node1)) {
+                node <- MRCA.tbl_tree_internal(.data, .node1[i], node$node)
+            }
+        }
+        return(node)
+    } else {
+        stop("invalid input of '.node1' and '.node2'...")
+    }
+}
+
+MRCA.tbl_tree_internal <- function(.data, .node1, .node2, ...) {
     anc1 <- ancestor(.data, .node1)
     if (nrow(anc1) == 0) {
         ## .node1 is root
@@ -96,7 +112,7 @@ MRCA.tbl_tree <- function(.data, .node1, .node2, ...) {
     }
     if (.node2 %in% anc1$node) {
         ## .node2 is the ancestor of .node1
-        return(filter_(anc1, ~ node == .node2))
+        return(filter(anc1, .data$node == .node2))
     }
     p <- parent(.data, .node2)
     if (nrow(p) == 0) {

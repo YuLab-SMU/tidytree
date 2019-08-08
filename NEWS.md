@@ -1,5 +1,6 @@
 # tidytree 0.2.5
 
++ allow determine MRCA of a vector of tips (2019-08-08, Thu) 
 + convert elements of roxygen documentation to markdown (2019-05-05, Thu)
 
 # tidytree 0.2.4
