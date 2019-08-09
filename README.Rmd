@@ -28,7 +28,7 @@ cat(packageDescription('tidytree')$Description)
 Visit <https://yulab-smu.github.io/treedata-book/> for details.
 
 
-## :writing_hand; Author
+## :writing_hand: Author
 
 Guangchuang YU
 
@@ -41,7 +41,7 @@ School of Basic Medical Sciences, Southern Medical University
 
 
 
-## Installation
+## :arrow_double_down: Installation
 
 Get the released version from CRAN:
 
