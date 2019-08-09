@@ -18,5 +18,5 @@ sibling
 access sibling data
 }
 \author{
-guangchuang yu
+Guangchuang Yu
 }

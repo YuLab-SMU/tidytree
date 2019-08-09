@@ -20,5 +20,5 @@ updated tree with group information or group index
 grouping OTUs
 }
 \author{
-guangchuang yu
+Guangchuang Yu
 }

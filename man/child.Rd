@@ -29,5 +29,5 @@ x <- as_tibble(tree)
 child(x, 4)
 }
 \author{
-guangchuang yu
+Guangchuang Yu
 }

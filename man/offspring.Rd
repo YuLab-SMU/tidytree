@@ -35,5 +35,5 @@ x <- as_tibble(tree)
 offspring(x, 4)
 }
 \author{
-guangchuang yu
+Guangchuang Yu
 }

@@ -18,5 +18,5 @@ MRCA data
 access most recent common ancestor data
 }
 \author{
-guangchuang yu
+Guangchuang Yu
 }

@@ -18,5 +18,5 @@ root node data
 access root node data
 }
 \author{
-guangchuang yu
+Guangchuang Yu
 }

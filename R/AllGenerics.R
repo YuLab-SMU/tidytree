@@ -46,7 +46,7 @@ setGeneric("get.data", function(object, ...) standardGeneric("get.data"))
 ##' @param .node selected nodes
 ##' @param ... additional parameter
 ##' @return updated tree with group information or group index
-##' @author guangchuang yu
+##' @author Guangchuang Yu
 ##' @export
 groupOTU <- function(.data, .node, ...) {
     UseMethod("groupOTU")
@@ -74,7 +74,7 @@ groupClade <- function(.data, .node, ...) {
 ##' @param ... additional parameters
 ##' @return child data
 ##' @export
-##' @author guangchuang yu
+##' @author Guangchuang Yu
 child <- function(.data, .node, ...) {
     UseMethod("child")
 }
@@ -90,7 +90,7 @@ child <- function(.data, .node, ...) {
 ##' only applicable for tiponly = FALSE
 ##' @return offspring data
 ##' @export
-##' @author guangchuang yu
+##' @author Guangchuang Yu
 offspring <- function(.data, .node, tiponly, self_include, ...) {
     UseMethod("offspring")
 }
@@ -104,7 +104,7 @@ offspring <- function(.data, .node, tiponly, self_include, ...) {
 ##' @inheritParams child
 ##' @return parent data
 ##' @export
-##' @author guangchuang yu
+##' @author Guangchuang Yu
 parent <- function(.data, .node, ...) {
     UseMethod("parent")
 }
@@ -118,7 +118,7 @@ parent <- function(.data, .node, ...) {
 ##' @inheritParams child
 ##' @return ancestor data
 ##' @export
-##' @author guangchuang yu
+##' @author Guangchuang Yu
 ancestor <- function(.data, .node, ...) {
     UseMethod("ancestor")
 }
@@ -132,7 +132,7 @@ ancestor <- function(.data, .node, ...) {
 ##' @param ... additional parameters
 ##' @return MRCA data
 ##' @export
-##' @author guangchuang yu
+##' @author Guangchuang Yu
 MRCA <- function(.data, ...) {
     UseMethod("MRCA")
 }
@@ -146,7 +146,7 @@ MRCA <- function(.data, ...) {
 ##' @inheritParams child
 ##' @return root node data
 ##' @export
-##' @author guangchuang yu
+##' @author Guangchuang Yu
 rootnode <- function(.data, ...) {
     UseMethod("rootnode")
 }
@@ -159,8 +159,35 @@ rootnode <- function(.data, ...) {
 ##' @inheritParams child
 ##' @return sibling
 ##' @export
-##' @author guangchuang yu
+##' @author Guangchuang Yu
 sibling <- function(.data, ...) {
     UseMethod("sibling")
 }
 
+##' convert tree label to internal node number
+##'
+##'
+##' @title nodeid
+##' @rdname nodeid
+##' @param tree tree object
+##' @param label tip/node label(s)
+##' @return node number
+##' @export
+##' @author Guangchuang Yu
+nodeid <- function(tree, label) {
+    UseMethod("nodeid")
+}
+
+##' convert internal node number tip/node label
+##'
+##'
+##' @title nodelab
+##' @rdname nodelab
+##' @param tree tree object
+##' @param id node number
+##' @return tip/node label(s)
+##' @export
+##' @author Guangchuang Yu
+nodelab <- function(tree, id) {
+    UseMethod("nodelab")
+}
