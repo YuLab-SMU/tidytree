@@ -25,8 +25,10 @@ library("badger")
 cat(packageDescription('tidytree')$Description)
 ```
 
+Visit <https://yulab-smu.github.io/treedata-book/> for details.
 
-## Author
+
+## :writing_hand; Author
 
 Guangchuang YU
 
@@ -35,8 +37,8 @@ School of Basic Medical Sciences, Southern Medical University
 <https://guangchuangyu.github.io>
 
 [![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/GuangchuangYu)
-`r badger::badge_custom("follow me on", "微信", "green", "https://guangchuangyu.github.io/blog_images/biobabble.jpg")`
-`r badger::badge_custom("打赏", "支付宝/微信", "green", "https://guangchuangyu.github.io/blog_images/pay_qrcode.png")`
+`r badger::badge_custom("follow me on", "WeChat", "green", "https://guangchuangyu.github.io/blog_images/biobabble.jpg")`
+
 
 
 ## Installation
@@ -50,7 +52,11 @@ install.packages("tidytree")
 Or the development version from github:
 
 ```r
-## install.packages("devtools")
-devtools::install_github("GuangchuangYu/tidytree")
+remotes::install_github("GuangchuangYu/tidytree")
 ```
+
+## :sparkling_heart: Contributing
+
+We welcome any contributions! By participating in this project you agree to
+abide by the terms outlined in the [Contributor Code of Conduct](CONDUCT.md).
 
