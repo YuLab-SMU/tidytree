@@ -30,7 +30,7 @@ groupOTU.tbl_tree_item <- function(.data, .node,
                                    overlap="overwrite",
                                    connect = FALSE) {
 
-    ## see https://groups.google.com/forum/#!msg/bioc-ggtree/Q4LnwoTf1DM/yEe95OFfCwAJ
+    ## see https://groups.google.com/d/msg/bioc-ggtree/Q4LnwoTf1DM/yEe95OFfCwAJ
     ## for connect parameter
 
     overlap <- match.arg(overlap, c("origin", "overwrite", "abandon"))

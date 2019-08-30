@@ -15,13 +15,17 @@ parent.tbl_tree <- function(.data, .node, ...) {
     ## ## https://stackoverflow.com/questions/34219912/how-to-use-a-variable-in-dplyrfilter
     ## filter_(.data, interp(~node == p, p = x$parent))
 
-    ndata <- .data[which(.data$node == .node | .data$label == .node), ]
+    ndata <- itself(.data, .node)
     .node <- ndata$node
     pnode <- ndata$parent
 
     if (pnode == .node)
         return(.data[0,]) ## empty tibble
     .data[.data$node == pnode, ]
+}
+
+itself <- function(.data, .node) {
+    .data[which(.data$node == .node | .data$label == .node), ]
 }
 
 ##' @method ancestor tbl_tree
@@ -36,7 +40,7 @@ ancestor.tbl_tree <- function(.data, .node, ...) {
     ## prevent using filter
     ## see https://github.com/GuangchuangYu/tidytree/issues/4
 
-    ndata <- .data[which(.data$node == .node | .data$label == .node), ]
+    ndata <- itself(.data, .node)
     ## ndata <- filter_(.data, ~ (node == .node | label == .node))
     .node <- ndata$node
     pnode <- ndata$parent
@@ -88,10 +92,12 @@ ancestor.tbl_tree <- function(.data, .node, ...) {
 
 ##' @method MRCA tbl_tree
 ##' @export
-MRCA.tbl_tree <- function(.data, .node1, .node2, ...) {
+MRCA.tbl_tree <- function(.data, .node1, .node2 = NULL, ...) {
     if (length(.node1) == 1 && length(.node2) == 1) {
         return(MRCA.tbl_tree_internal(.data, .node1, .node2, ...))
-    } else if (missing(.node2) && length(.node1) > 1) {
+    } else if (is.null(.node2) && length(.node1) >= 1) {
+        if (length(.node1) == 1) return(itself(.data, .node1))
+        ## else length(.node1) > 1
         node <- MRCA.tbl_tree_internal(.data, .node1[1], .node1[2])
         if (length(.node1) > 2) {
             for (i in 3:length(.node1)) {

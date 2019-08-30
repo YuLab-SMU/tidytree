@@ -1,3 +1,7 @@
+# tidytree 0.2.7
+
++ allow calling `MRCA` with only one node and will return the node itself (2019-08-30, Fri)
+
 # tidytree 0.2.6
 
 + `nodeid` and `nodelab` methods for converting from label to node number and vice versa (2019-08-09, Fri)
