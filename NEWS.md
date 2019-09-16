@@ -1,3 +1,7 @@
+# tidytree 0.2.8
+
++ update `offspring` to compatible with missing nodes, e.g. for tree after `ggtree::collapse` (2019-09-16, Mon)
+
 # tidytree 0.2.7
 
 + allow calling `MRCA` with only one node and will return the node itself (2019-08-30, Fri)

@@ -3,7 +3,7 @@
 # tidytree: A Tidy Tool for Phylogenetic Tree Data Manipulation
 
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/tidytree?color=green)](https://cran.r-project.org/package=tidytree)
-[![](https://img.shields.io/badge/devel%20version-0.2.6-green.svg)](https://github.com/guangchuangyu/tidytree)
+[![](https://img.shields.io/badge/devel%20version-0.2.7-green.svg)](https://github.com/guangchuangyu/tidytree)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/tidytree?color=green)](https://cran.r-project.org/package=tidytree)
 [![](https://cranlogs.r-pkg.org/badges/tidytree?color=green)](https://cranlogs.r-pkg.org/downloads/total/last-month/tidytree)
 [![](https://cranlogs.r-pkg.org/badges/last-week/tidytree?color=green)](https://cranlogs.r-pkg.org/downloads/total/last-week/tidytree)

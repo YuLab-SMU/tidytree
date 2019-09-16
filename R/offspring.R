@@ -45,10 +45,11 @@ offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FAL
 
     parent <- .data$parent
     children <- .data$node
-    n <- length(parent)
+    ## n <- length(parent)
+    n <- max(parent)
 
     kids <- vector("list", n)
-    for (i in 1:n) {
+    for (i in seq_along(parent)) {
         kids[[parent[i]]] <-c(kids[[parent[i]]], children[i])
     }
 
