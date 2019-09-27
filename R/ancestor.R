@@ -25,7 +25,14 @@ parent.tbl_tree <- function(.data, .node, ...) {
 }
 
 itself <- function(.data, .node) {
-    .data[which(.data$node == .node | .data$label == .node), ]
+    if (is.numeric(.node)) {
+        i <- which(.data$node == .node)
+    } else {
+        i <- which(.data$label == .node)
+    }
+        
+    ## .data[which(.data$node == .node | .data$label == .node), ]
+    return(.data[i, ])
 }
 
 ##' @method ancestor tbl_tree
