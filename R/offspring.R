@@ -32,8 +32,13 @@ offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FAL
     rn <- rootnode.tbl_tree(.data)$node
     x <- x[x$node != rn, ]
 
-    if (nrow(x) == 0)
+    if (nrow(x) == 0) {
+        if (self_include) {
+            x <- .data[.data$node == .node, ]
+        } 
+
         return(x)
+    }
 
     ## id <- x$node
     ## i <- 1

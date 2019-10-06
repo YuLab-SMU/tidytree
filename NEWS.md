@@ -1,3 +1,7 @@
+# tidytree 0.2.9
+
++ `offsprint(tip, self_include=TRUE)` will return the input tip (2019-10-06, Sun)
+
 # tidytree 0.2.8
 
 + update `offspring` to compatible with missing nodes, e.g. for tree after `ggtree::collapse` (2019-09-16, Mon)
