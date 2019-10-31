@@ -1,3 +1,7 @@
+# tidytree 0.3.0
+
++ `filter` and `select` methods for `ggtree` object (2019-10-31, Thu)
+
 # tidytree 0.2.9
 
 + `offsprint(tip, self_include=TRUE)` will return the input tip (2019-10-06, Sun)

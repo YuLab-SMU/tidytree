@@ -10,4 +10,3 @@ mutate.tbl_tree <- function(.data, ...) {
     class(res) <- c("tbl_tree", class(res))
     res
 }
-
