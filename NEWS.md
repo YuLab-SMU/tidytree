@@ -1,5 +1,7 @@
 # tidytree 0.3.0
 
++ `offspring` supports a vector of node ids (2019-11-21, Thu)
++ bug fixed of `nodelab` 
 + `filter` and `select` methods for `ggtree` object (2019-10-31, Thu)
 
 # tidytree 0.2.9

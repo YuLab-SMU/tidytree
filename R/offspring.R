@@ -26,6 +26,24 @@ child.tbl_tree <- function(.data, .node, ...) {
 ##' x <- as_tibble(tree)
 ##' offspring(x, 4)
 offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FALSE, ...) {
+    if (missing(.node) || is.null(.node)) {
+        stop(".node is required")
+    }
+    if (length(.node) == 1) {
+        res <- offspring.tbl_tree_item(.data = .data, .node = .node,
+                                       tiponly = tiponly, self_include = self_include, ...)
+    } else {
+        res <- lapply(.node, function(node) {
+            offspring.tbl_tree_item(.data = .data, .node = node,
+                                    tiponly = tiponly, self_include = self_include, ...)
+        })
+        names(res) <- .node
+    }
+    return(res)
+}
+
+
+offspring.tbl_tree_item <- function(.data, .node, tiponly = FALSE, self_include = FALSE, ...) {
     x <- child.tbl_tree(.data, .node)
 
     ## https://github.com/GuangchuangYu/ggtree/issues/239

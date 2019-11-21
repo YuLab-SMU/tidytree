@@ -7,6 +7,6 @@ nodeid.tbl_tree <- function(tree, label) {
 ##' @method nodelab tbl_tree
 ##' @export
 nodelab.tbl_tree <- function(tree, id) {
-    tree$label[match(id, tree$id)]
+    tree$label[match(id, tree$node)]
 }
 
