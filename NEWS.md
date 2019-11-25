@@ -1,3 +1,7 @@
+# tidytree 0.3.1
+
++ `groupOTU`: set group from 0 to NA if only root node is in group of 0 (2019-11-25, Mon)
+
 # tidytree 0.3.0
 
 + `offspring` supports a vector of node ids (2019-11-21, Thu)

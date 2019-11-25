@@ -19,6 +19,11 @@ groupOTU.tbl_tree <- function(.data, .node,
                                         ...)
     }
 
+    rn <- rootnode(.data)$node
+    if (sum(.data[[group_name]] == .data[[group_name]][rn]) == 1) {
+        ## only root node is not classify as a group
+        .data[[group_name]][rn] <- NA
+    }
     .data[[group_name]] <- factor(.data[[group_name]])
     return(.data)
 }
