@@ -61,7 +61,8 @@ test_that("conversion to table is reversible", {
 
 test_that("child works for bifurcating trees", {
   # a leaf has no children
-  expect_equal(child(as_tibble(bi_tree), 1), empty_tbl)
+    ## expect_equal(child(as_tibble(bi_tree), 1), empty_tbl)
+    expect_equal(nrow(child(as_tibble(bi_tree), 1)), 0)
   # can find node children
   expect_equal(child(as_tibble(bi_tree), 19)$node, 7:8)
   # can find root children
@@ -70,7 +71,8 @@ test_that("child works for bifurcating trees", {
 
 test_that("child works for non-bifurcating trees", {
   # a leaf has no children
-  expect_equal(child(as_tibble(multi_tree), 1), empty_tbl)
+    ## expect_equal(child(as_tibble(multi_tree), 1), empty_tbl)
+    expect_equal(nrow(child(as_tibble(multi_tree), 1)), 0)
   # can find node children
   expect_equal(child(as_tibble(multi_tree), 12)$node, c(3,9,13,14))
   # can find root children
@@ -78,37 +80,43 @@ test_that("child works for non-bifurcating trees", {
 })
 
 test_that("offspring works on bifurcating trees", {
-  expect_equal(offspring(as_tibble(bi_tree), 1), empty_tbl)
+    ## expect_equal(offspring(as_tibble(bi_tree), 1), empty_tbl)
+    expect_equal(nrow(offspring(as_tibble(bi_tree), 1)), 0)
   expect_equal(offspring(as_tibble(bi_tree), 11)$node, (1:19)[-11])
   expect_equal(offspring(as_tibble(bi_tree), 17)$node, c(4:6, 18))
 })
 
 test_that("offspring works on non-bifurcating trees", {
-  expect_equal(offspring(as_tibble(multi_tree), 1), empty_tbl)
+    ## expect_equal(offspring(as_tibble(multi_tree), 1), empty_tbl)
+    expect_equal(nrow(offspring(as_tibble(multi_tree), 1)), 0)
   expect_equal(offspring(as_tibble(multi_tree), 11)$node, (1:16)[-11])
   expect_equal(offspring(as_tibble(multi_tree), 14)$node, c(4:8, 15:16))
 })
 
 test_that("parent works for bifurcating trees", {
-  expect_equal(parent(as_tibble(bi_tree), 11), empty_tbl)
+    ## expect_equal(parent(as_tibble(bi_tree), 11), empty_tbl)
+    expect_equal(nrow(parent(as_tibble(bi_tree), 11)), 0)
   expect_equal(parent(as_tibble(bi_tree), 1)$node, 15)
   expect_equal(parent(as_tibble(bi_tree), 17)$node, 16)
 })
 
 test_that("parent works for non-bifurcating trees", {
-  expect_equal(parent(as_tibble(multi_tree), 11), empty_tbl)
+    ## expect_equal(parent(as_tibble(multi_tree), 11), empty_tbl)
+    expect_equal(nrow(parent(as_tibble(multi_tree), 11)), 0)
   expect_equal(parent(as_tibble(multi_tree), 8)$node, 16)
   expect_equal(parent(as_tibble(multi_tree), 14)$node, 12)
 })
 
 test_that("ancestor works for bifurcating trees", {
-  expect_equal(ancestor(as_tibble(bi_tree), 11), empty_tbl)
+    ## expect_equal(ancestor(as_tibble(bi_tree), 11), empty_tbl)
+    expect_equal(nrow(ancestor(as_tibble(bi_tree), 11)), 0)
   expect_equal(ancestor(as_tibble(bi_tree), 1)$node, 11:15)
   expect_equal(ancestor(as_tibble(bi_tree), 17)$node, c(11:13, 16))
 })
 
 test_that("ancestor works for non-bifurcating trees", {
-  expect_equal(ancestor(as_tibble(multi_tree), 11), empty_tbl)
+    ## expect_equal(ancestor(as_tibble(multi_tree), 11), empty_tbl)
+    expect_equal(nrow(ancestor(as_tibble(multi_tree), 11)), 0)
   expect_equal(ancestor(as_tibble(multi_tree), 8)$node, c(11,12,14,16))
   expect_equal(ancestor(as_tibble(multi_tree), 14)$node, 11:12)
 })
@@ -116,27 +124,31 @@ test_that("ancestor works for non-bifurcating trees", {
 
 test_that("MRCA works for bifurcating trees", {
     ## 11 is the root node
-    expect_equal(MRCA(as_tibble(multi_tree), 11, 5), empty_tbl)
+    ## expect_equal(MRCA(as_tibble(multi_tree), 11, 5), empty_tbl)
+    expect_equal(nrow(MRCA(as_tibble(multi_tree), 11, 5)), 0)
     expect_equal(MRCA(as_tibble(bi_tree), 5, 7)$node, 16)
     ## 16 is ancestor of 5
     expect_equal(MRCA(as_tibble(bi_tree), 5, 16)$node, 16)
 })
 
 test_that("MRCA works for non-bifurcating trees", {
-  expect_equal(MRCA(as_tibble(multi_tree), 11, 5), empty_tbl)
+    ## expect_equal(MRCA(as_tibble(multi_tree), 11, 5), empty_tbl)
+    expect_equal(nrow(MRCA(as_tibble(multi_tree), 11, 5)), 0)
   expect_equal(MRCA(as_tibble(multi_tree), 5, 7)$node, 14)
   expect_equal(MRCA(as_tibble(multi_tree), 5, 14)$node, 14)
 })
 
 
 test_that("sibling works for bifurcating trees", {
-  expect_equal(sibling(as_tibble(bi_tree), 11), empty_tbl)
-  expect_equal(sibling(as_tibble(bi_tree), 1)$node, 2)
+    ## expect_equal(sibling(as_tibble(bi_tree), 11), empty_tbl)
+    expect_equal(nrow(sibling(as_tibble(bi_tree), 11)), 0)
+    expect_equal(sibling(as_tibble(bi_tree), 1)$node, 2)
   expect_equal(sibling(as_tibble(bi_tree), 17)$node, 19)
 })
 
 test_that("sibling works for non-bifurcating trees", {
-  expect_equal(sibling(as_tibble(multi_tree), 11), empty_tbl)
+    ## expect_equal(sibling(as_tibble(multi_tree), 11), empty_tbl)
+    expect_equal(nrow(sibling(as_tibble(multi_tree), 11)), 0)
   expect_equal(sibling(as_tibble(multi_tree), 12)$node, 10)
   expect_equal(sibling(as_tibble(multi_tree), 3)$node, c(9,13,14))
   expect_equal(sibling(as_tibble(multi_tree), 4)$node, 5)

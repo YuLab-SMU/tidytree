@@ -1,3 +1,9 @@
+# tidytree 0.3.2
+
++ compatible with dplyr v=1.0.0 (2020-03-12, Thu)
+  - <https://github.com/YuLab-SMU/tidytree/pull/12>
+  - <https://github.com/YuLab-SMU/tidytree/issues/13>
+
 # tidytree 0.3.1
 
 + `groupOTU`: set group from 0 to NA if only root node is in group of 0 (2019-11-25, Mon)

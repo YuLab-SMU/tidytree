@@ -7,8 +7,7 @@
 \usage{
 offspring(.data, .node, tiponly, self_include, ...)
 
-\method{offspring}{tbl_tree}(.data, .node, tiponly = FALSE,
-  self_include = FALSE, ...)
+\method{offspring}{tbl_tree}(.data, .node, tiponly = FALSE, self_include = FALSE, ...)
 }
 \arguments{
 \item{.data}{phylo or tbl_tree object}
