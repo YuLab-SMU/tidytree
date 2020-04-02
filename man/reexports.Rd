@@ -7,7 +7,6 @@
 \alias{\%>\%}
 \alias{\%<>\%}
 \alias{as_tibble}
-\alias{data_frame}
 \alias{tibble}
 \alias{filter}
 \alias{arrange}
@@ -31,6 +30,6 @@ below to see their documentation.
 
   \item{magrittr}{\code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%>\%}}}
 
-  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{data_frame}}, \code{\link[tibble]{tibble}}}
+  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{tibble}}}
 }}
 

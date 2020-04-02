@@ -43,8 +43,8 @@ setClass("treedata",
              info        = "list"
          ),
          prototype = prototype(
-             data      = data_frame(),
-             extraInfo = data_frame(),
+             data      = tibble(),
+             extraInfo = tibble(),
              anc_seq = ape::as.DNAbin(character(0)),
              tip_seq = ape::as.DNAbin(character(0))
          )

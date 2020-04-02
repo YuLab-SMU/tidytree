@@ -1,7 +1,6 @@
 
 ##' @method as_tibble phylo
 ##' @export
-##' @importFrom tibble data_frame
 ##' @importFrom dplyr full_join
 ##' @importFrom ape Ntip
 ##' @importFrom ape Nnode
@@ -25,7 +24,7 @@ as_tibble.phylo <- function(x, ...) {
     ## isTip <- rep(FALSE, N)
     ## isTip[1:ntip] <- TRUE
 
-    label.df <- data_frame(node=1:N, label=label) #, isTip = isTip)
+    label.df <- tibble(node=1:N, label=label) #, isTip = isTip)
     res <- full_join(res, label.df, by='node')
 
     idx <- is.na(res$parent)

@@ -10,10 +10,6 @@ magrittr::`%<>%`
 ##' @export
 tibble::as_tibble
 
-##' @importFrom tibble data_frame
-##' @export
-tibble::data_frame
-
 ##' @importFrom tibble tibble
 ##' @export
 tibble::tibble

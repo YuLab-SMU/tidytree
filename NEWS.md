@@ -1,5 +1,9 @@
 # tidytree 0.3.2
 
++ use `tibble` instead of `data_frame` as it was deprecated in tibble (v=3.0.0) (2020-04-02, Thu)
+
+# tidytree 0.3.2
+
 + compatible with dplyr v=1.0.0 (2020-03-12, Thu)
   - <https://github.com/YuLab-SMU/tidytree/pull/12>
   - <https://github.com/YuLab-SMU/tidytree/issues/13>
