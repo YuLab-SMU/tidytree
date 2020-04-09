@@ -4,11 +4,11 @@
 
 # tidytree 0.3.3.991
 
-+ remove mutate_, filter_ and group_by_ (2020-04-09, Thu)
++ remove mutate_, filter_ and group_by_ according to the change of dplyr (v=1.0.0) (2020-04-09, Thu)
 
 # tidytree 0.3.3
 
-+ remove `data_frame`
++ remove `data_frame` according to the change of tibble (v=3.0.0)
 
 # tidytree 0.3.2
 
