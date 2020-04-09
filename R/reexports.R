@@ -51,3 +51,7 @@ dplyr::summarize
 ##' @importFrom dplyr full_join
 ##' @export
 dplyr::full_join
+
+##' @importFrom rlang .data
+##' @export
+rlang::.data

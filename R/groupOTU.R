@@ -28,7 +28,7 @@ groupOTU.tbl_tree <- function(.data, .node,
     return(.data)
 }
 
-##' @importFrom dplyr group_by_
+##' @importFrom dplyr group_by
 groupOTU.tbl_tree_item <- function(.data, .node,
                                    focus_label = NULL,
                                    group_name,
@@ -42,7 +42,7 @@ groupOTU.tbl_tree_item <- function(.data, .node,
 
     focus <- .node
     if (is.character(focus)) {
-        focus <- filter_(.data, ~(label %in% .node))$node
+        focus <- filter(.data, .data$label %in% .node)$node
     }
 
     n <- nrow(.data)
@@ -86,7 +86,7 @@ groupOTU.tbl_tree_item <- function(.data, .node,
     }
 
     if (length(sn) > 0 && connect) {
-        y <- filter_(.data, ~ node %in% sn) %>% group_by_(~parent)  %>% summarize(degree = n())
+        y <- filter(.data, .data$node %in% sn) %>% group_by(.data$parent)  %>% summarize(degree = n())
         if ( sum(y$degree > 1) == 1 ) {
             sn <- focus
         }

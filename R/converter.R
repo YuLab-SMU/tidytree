@@ -6,7 +6,7 @@ as.phylo.treedata <- function(x, ...) {
 }
 
 
-##' @importFrom dplyr mutate_
+##' @importFrom dplyr mutate
 ##' @importFrom ape as.phylo
 ##' @method as.phylo tbl_tree
 ##' @export
@@ -23,7 +23,7 @@ as.phylo.tbl_tree <- function(x, ...) {
         edge.length <- x$branch.length[i]
     }
 
-    x %<>% mutate_(isTip = ~(! node %in% parent))
+    x %<>% mutate(isTip = ! .data$node %in% .data$parent)
     tip.label <- as.character(x$label[x$isTip])
 
     phylo <- list(edge = as.matrix(edge),
