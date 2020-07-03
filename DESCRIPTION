@@ -16,8 +16,7 @@ Imports:
     magrittr,
     methods,
     rlang,
-    tibble,
-    utils
+    tibble
 Suggests:
     ggtree,
     knitr,
