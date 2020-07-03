@@ -1,9 +1,7 @@
-# tidytree 0.3.2
+# tidytree 0.3.4
 
-+ use `tibble` instead of `data_frame` as it was deprecated in tibble (v=3.0.0) (2020-04-02, Thu)
-
-# tidytree 0.3.3.991
-
++ implement `merge` method for `tbl_tree` object (2020-07-03, Fri)
+  - <https://github.com/YuLab-SMU/treeio/issues/36>
 + remove mutate_, filter_ and group_by_ according to the change of dplyr (v=1.0.0) (2020-04-09, Thu)
 
 # tidytree 0.3.3
@@ -12,6 +10,7 @@
 
 # tidytree 0.3.2
 
++ use `tibble` instead of `data_frame` as it was deprecated in tibble (v=3.0.0) (2020-04-02, Thu)
 + compatible with dplyr v=1.0.0 (2020-03-12, Thu)
   - <https://github.com/YuLab-SMU/tidytree/pull/12>
   - <https://github.com/YuLab-SMU/tidytree/issues/13>

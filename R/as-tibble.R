@@ -1,4 +1,3 @@
-
 ##' @method as_tibble phylo
 ##' @export
 ##' @importFrom dplyr full_join
