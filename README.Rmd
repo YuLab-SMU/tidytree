@@ -25,7 +25,7 @@ library("badger")
 cat(packageDescription('tidytree')$Description)
 ```
 
-Visit <https://yulab-smu.github.io/treedata-book/> for details.
+Visit <https://yulab-smu.top/treedata-book/> for details.
 
 
 ## :writing_hand: Author
