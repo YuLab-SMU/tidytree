@@ -1,5 +1,4 @@
 ##' @method child tbl_tree
-##' @importFrom dplyr filter_
 ##' @export
 ##' @rdname child
 ##' @examples
