@@ -20,6 +20,7 @@ Imports:
 Suggests:
     ggtree,
     knitr,
+    rmarkdown,
     prettydoc,
     testthat,
     treeio
