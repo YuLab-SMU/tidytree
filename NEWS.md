@@ -57,14 +57,14 @@
 
 # tidytree 0.2.2
 
-+ mv vignette to [treedata-book](https://yulab-smu.github.io/treedata-book/) (2019-01-10, Thu)
++ mv vignette to [treedata-book](https://yulab-smu.top/treedata-book/) (2019-01-10, Thu)
 
 # tidytree 0.2.1
 
 + `mutate.tbl_tree` method (2018-12-19, Wed)
-  - <https://github.com/GuangchuangYu/tidytree/issues/7>
+  - <https://github.com/YuLab-SMU/tidytree/issues/7>
 + bug fixed in `child` 
-  - <https://github.com/GuangchuangYu/tidytree/pull/8>
+  - <https://github.com/YuLab-SMU/tidytree/pull/8>
 
 # tidytree 0.2.0
 
