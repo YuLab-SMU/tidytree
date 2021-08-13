@@ -80,6 +80,10 @@ get_tree_data <- function(tree_object) {
     tree_anno <- tree_object@data
     extraInfo <- tree_object@extraInfo
 
+    if (nrow(tree_anno)==0 && nrow(extraInfo)==0){
+        return(NULL)
+    }
+
     if (nrow(tree_anno) == 0) {
         extraInfo$node <- as.integer(extraInfo$node)
         return(extraInfo)
