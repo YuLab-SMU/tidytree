@@ -1,3 +1,8 @@
+# tidytree 0.3.4.991
+
++ update `print` and `show` methods for `treedata`
+  - with `options(show_data_for_treedata=TRUE)` to control whether show associated data (2021-08-20, Fri; @xiangpin, #18)
+  
 # tidytree 0.3.4
 
 + implement `merge` method for `tbl_tree` object (2020-07-03, Fri)
