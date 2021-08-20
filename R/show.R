@@ -60,17 +60,10 @@ print.treedata <- function(x, ..., n = NULL, width = NULL, n_extra = NULL){
 
 print1.treedata <- function(x, ..., n = NULL, width = NULL, n_extra = NULL){
     if (nrow(x@data) == 0 && nrow(x@extraInfo) == 0){
-        print2.treedata(x)
-        return()
+        n = 10
     }
 
-    trdf <- x@phylo %>% 
-            as_tibble() %>% 
-            .internal_add_isTip()
-
-    annotda <- trdf %>% 
-               dplyr::left_join(get_tree_data(x), by="node")
-    annotda <- annotda[, !colnames(annotda) %in% c("parent", "branch.length")]
+    annotda <- .extract_annotda.treedata(x)
 
     formatstr <- annotda %>% format(..., n = n, width = width, n_extra = n_extra)
 
@@ -78,12 +71,12 @@ print1.treedata <- function(x, ..., n = NULL, width = NULL, n_extra = NULL){
     
     if(length(fields)==1 && fields==""){
         fields <- ''
+        newheader <- c("\n None available features.")
     }else{
         ff <- paste0("\t'",paste(fields, collapse="',\t'"), "'.\n")
         fields <- fields_wrap(ff)
+        newheader <- c("\nwith the following features available:", fields)
     }
-
-    newheader <- c("\nwith the following features available:", fields)
 
     msg <- .internal_print.treedata_msg(x) %>%
            writeLines()
@@ -91,6 +84,8 @@ print1.treedata <- function(x, ..., n = NULL, width = NULL, n_extra = NULL){
     print.phylo(as.phylo(x))
 
     formatstr[1] <- gsub("(A tibble:)", "The associated data tibble abstraction:", formatstr[1])
+    formatstr %<>% append(pillar::style_subtle("# The 'node', 'label' and 'isTip' are from the phylo tree."), 
+                          after=1)
     newheader %>%
       append(formatstr) %>%
       writeLines()
