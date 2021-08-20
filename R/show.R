@@ -14,31 +14,8 @@
 ##' @author Guangchuang Yu <https://guangchuangyu.github.io>
 setMethod("show", signature(object = "treedata"),
           function(object) {
-              print.treedata(object)
+              print(object)
           })
-
-##' @method print treedata
-##' @importFrom ape print.phylo
-##' @export
-print.treedata <- function(x, ...) {
-    msg <- "'treedata' S4 object"
-    files <- x@file
-    files <- files[files != ""]
-    if (length(files)) {
-        ff <- paste(files, collapse="',\n\t'")
-        msg <- paste0(msg,
-                      " that stored information of\n\t",
-                      "'", ff)
-    }
-
-    msg <- paste0(msg, "'.\n\n")
-    cat(msg)
-
-    cat("...@ phylo: ")
-    print.phylo(as.phylo(x))
-    print_fields(x)
-}
-
 
 print_fields <- function(object) {
     fields <- get.fields(object)
@@ -68,4 +45,85 @@ fields_wrap <- function(ff) {
         }
     }
     return(ff)
+}
+
+##' @method print treedata
+##' @export
+print.treedata <- function(x, ..., n = NULL, width = NULL, n_extra = NULL){
+    show.data = getOption('show_data_for_treedata', default=TRUE)
+    if (show.data){
+        print1.treedata(x, n = n, width = width, n_extra = n_extra, ...)
+    }else{
+        print2.treedata(x, ...)
+    }
+}
+
+print1.treedata <- function(x, ..., n = NULL, width = NULL, n_extra = NULL){
+    if (nrow(x@data) == 0 && nrow(x@extraInfo) == 0){
+        print2.treedata(x)
+        return()
+    }
+
+    trdf <- x@phylo %>% 
+            as_tibble() %>% 
+            .internal_add_isTip()
+
+    annotda <- trdf %>% 
+               dplyr::left_join(get_tree_data(x), by="node")
+    annotda <- annotda[, !colnames(annotda) %in% c("parent", "branch.length")]
+
+    formatstr <- annotda %>% format(..., n = n, width = width, n_extra = n_extra)
+
+    fields <- get.fields(x)
+    
+    if(length(fields)==1 && fields==""){
+        fields <- ''
+    }else{
+        ff <- paste0("\t'",paste(fields, collapse="',\t'"), "'.\n")
+        fields <- fields_wrap(ff)
+    }
+
+    newheader <- c("\nwith the following features available:", fields)
+
+    msg <- .internal_print.treedata_msg(x) %>%
+           writeLines()
+
+    print.phylo(as.phylo(x))
+
+    formatstr[1] <- gsub("(A tibble:)", "The associated data tibble abstraction:", formatstr[1])
+    newheader %>%
+      append(formatstr) %>%
+      writeLines()
+
+    invisible(x)
+}
+
+#' @importFrom ape print.phylo
+print2.treedata <- function(x, ...) {
+    msg <- .internal_print.treedata_msg(x)
+    writeLines(msg)
+    print.phylo(as.phylo(x))
+    print_fields(x)
+}
+
+.internal_print.treedata_msg <- function(x){
+    msg <- "'treedata' S4 object"
+    files <- x@file
+    files <- files[files != ""]
+    if (length(files)) {
+        ff <- paste(files, collapse="',\n\t'")
+        msg <- paste0(msg,
+                      " that stored information of\n\t",
+                      "'", ff)
+    }
+
+    msg <- paste0(msg, "'.\n")
+    msg <- c(msg, "...@ phylo:")
+    
+    return(msg) 
+}
+
+.internal_add_isTip <- function(x){
+    x %<>% mutate(isTip=ifelse(!.data$node %in% .data$parent, TRUE, FALSE))
+    return(x)
 }
