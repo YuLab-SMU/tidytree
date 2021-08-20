@@ -23,7 +23,10 @@ Suggests:
     rmarkdown,
     prettydoc,
     testthat,
-    treeio
+    treeio,
+    pillar,
+    utils,
+    tidyr
 VignetteBuilder: knitr
 ByteCompile: true
 License: Artistic-2.0

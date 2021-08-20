@@ -55,3 +55,7 @@ dplyr::full_join
 ##' @importFrom rlang .data
 ##' @export
 rlang::.data
+
+##' @importFrom dplyr left_join
+##' @export
+dplyr::left_join
