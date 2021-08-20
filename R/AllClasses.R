@@ -2,6 +2,9 @@
 setOldClass("phylo")
 ## setOldClass("multiPhylo")
 setOldClass("DNAbin")
+setOldClass("AAbin")
+
+setClassUnion("DNAbin_Or_AAbin", c("DNAbin", "AAbin", "NULL"))
 
 ##' Class "treedata"
 ##' This class stores phylogenetic tree with associated data
@@ -35,8 +38,8 @@ setClass("treedata",
              phylo       = "phylo",
              data        = "tbl_df",
              extraInfo   = "tbl_df",
-             tip_seq     = "DNAbin",
-             anc_seq     = "DNAbin",
+             tip_seq     = "DNAbin_Or_AAbin",
+             anc_seq     = "DNAbin_Or_AAbin",
              seq_type    = "character",
              tipseq_file = "character",
              ancseq_file = "character",
@@ -45,8 +48,8 @@ setClass("treedata",
          prototype = prototype(
              data      = tibble(),
              extraInfo = tibble(),
-             anc_seq = ape::as.DNAbin(character(0)),
-             tip_seq = ape::as.DNAbin(character(0))
+             anc_seq = NULL,#ape::as.DNAbin(character(0)),
+             tip_seq = NULL#ape::as.DNAbin(character(0))
          )
          )
 
