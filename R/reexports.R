@@ -47,7 +47,6 @@ dplyr::summarise
 ##' @export
 dplyr::summarize
 
-
 ##' @importFrom dplyr full_join
 ##' @export
 dplyr::full_join
@@ -59,3 +58,15 @@ rlang::.data
 ##' @importFrom dplyr left_join
 ##' @export
 dplyr::left_join
+
+##' @importFrom dplyr pull
+##' @export
+dplyr::pull
+
+##' @importFrom dplyr rename
+##' @export
+dplyr::rename
+
+##' @importFrom tidyr unnest
+##' @export
+tidyr::unnest

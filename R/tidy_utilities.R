@@ -26,6 +26,9 @@
 }
 
 .update.treedata <- function(td, da, dat, type=NULL){
+    if (inherits(td, "phylo")){
+        td %<>% treeio::as.treedata()
+    }
     data.nm <- get.fields.data(td)
     extra.nm <- get.fields.extraInfo(td) 
     data.nm <- intersect(data.nm, colnames(da))
@@ -75,3 +78,5 @@ drop_class <- function(x, name) {
     res <- do.call(nest, params)
     return(res)
 }
+
+tbl_df_returned_message <- "# A tbl_df is returned for independent data analysis."

@@ -106,3 +106,31 @@ test_that("left_join for treedata",{
                    dplyr::arrange(ind)
     )
 })
+
+test_that("pull for treedata",{
+    expect_equal(tree %>% 
+                   pull(label, name=node),
+                 tree %>%
+                   as_tibble() %>%
+                   pull(label, name=node)
+    )
+})
+
+test_that("rename for treedata", {
+    expect_equal(tree %>%
+                   rename(type=test) %>%
+                   select(node, group, type) %>%
+                   dplyr::slice(seq_len(5)),
+                 tree@data %>% 
+                   rename(type=test)
+    )
+    dat <- data.frame(node=c(1, 2, 3, 4, 5), GT="b", BMW="a")
+    tree %<>% left_join(dat, by="node") 
+
+    expect_equal(tree %>%
+                   rename(Group=GT, BW=BMW) %>%
+                   select(node, Group, BW), 
+                 tree@extraInfo %>% 
+                   rename(Group=GT, BW=BMW)
+    )
+})
