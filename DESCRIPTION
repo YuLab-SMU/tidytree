@@ -16,7 +16,9 @@ Imports:
     magrittr,
     methods,
     rlang,
-    tibble
+    tibble,
+    tidyr,
+    tidyselect
 Suggests:
     ggtree,
     knitr,
@@ -25,8 +27,7 @@ Suggests:
     testthat,
     treeio,
     pillar,
-    utils,
-    tidyr
+    utils
 VignetteBuilder: knitr
 ByteCompile: true
 License: Artistic-2.0
