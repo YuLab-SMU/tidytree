@@ -1,5 +1,6 @@
-# tidytree 0.3.4.991
+# tidytree 0.3.4.992
 
++ add `select`, `filter`, `mutate`, `left_join`, `unnest`, `pull` and `rename` verbs for `treedata` object (2021-08-22, Sun; @xiangpin, #19)
 + update `print` and `show` methods for `treedata`
   - with `options(show_data_for_treedata=TRUE)` to control whether show associated data (2021-08-20, Fri; @xiangpin, #18)
 
