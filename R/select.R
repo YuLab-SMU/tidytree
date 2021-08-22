@@ -6,3 +6,15 @@ select.ggtree <- function(.data, ...) {
     dplyr::select(.data$data, !!!dots)
 }
 
+##' @method select treedata
+##' @export
+select.treedata <- function(.data, ..., keep.td=FALSE){
+    dots <- rlang::quos(...)
+    dat <- .extract_annotda.treedata(.data)
+    da <- dplyr::select(dat, !!!dots)
+    if (keep.td){
+        .data <- .update.treedata(td=.data, da=da, dat=dat)
+        return(.data)
+    }
+    return(da)
+}

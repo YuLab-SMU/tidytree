@@ -16,14 +16,18 @@ Imports:
     magrittr,
     methods,
     rlang,
-    tibble
+    tibble,
+    tidyr,
+    tidyselect
 Suggests:
     ggtree,
     knitr,
     rmarkdown,
     prettydoc,
     testthat,
-    treeio
+    treeio,
+    pillar,
+    utils
 VignetteBuilder: knitr
 ByteCompile: true
 License: Artistic-2.0

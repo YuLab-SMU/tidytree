@@ -4,6 +4,7 @@
 \name{get.fields}
 \alias{get.fields}
 \alias{get.fields,treedata-method}
+\alias{get.fields,treedata}
 \title{get.fields method}
 \usage{
 get.fields(object, ...)
@@ -19,7 +20,5 @@ get.fields(object, ...)
 available annotation variables
 }
 \description{
-get.fields method
-
 get.fields method
 }
