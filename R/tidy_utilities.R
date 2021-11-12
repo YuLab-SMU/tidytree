@@ -27,7 +27,7 @@
 
 .update.treedata <- function(td, da, dat, type=NULL){
     if (inherits(td, "phylo")){
-        td %<>% treeio::as.treedata()
+        td <- treedata(phylo=td)
     }
     data.nm <- get.fields.data(td)
     extra.nm <- get.fields.extraInfo(td) 
