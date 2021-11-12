@@ -3,8 +3,7 @@ context("dplyr-methods")
 nwk <- '(((((((A:4,B:4):6,C:5):8,D:6):3,E:21):10,((F:4,G:12):14,H:8):13):13,((I:5,J:2):30,(K:11,L:11):2):17):4,M:56);'
 dat <- tibble(node=c(1, 2, 3, 4, 5), group=c("A", "A", "A", "B", "B"), test=c(10, 20, 30, 40, 50))
 
-tree <- read.tree(text=nwk) %>% treeio::as.treedata()
-tree@data <- dat
+tree <- treedata(phylo=read.tree(text=nwk), data = dat)
 
 test_that("select fields from treedata and return tbl_df directly ",{
     expect_equal(tree %>% select(group) %>% nrow(), tree %>% as_tibble() %>% nrow())
@@ -69,17 +68,15 @@ test_that("mutate fields for treedata and return treedata", {
                   "treedata")
     )
     tree2 <- tree %>% mutate(type="A", keep.td=TRUE)
-    p <- ggtree::ggtree(tree2)
-    expect_true(inherits(p, "ggtree"))
     expect_equal(tree2@extraInfo %>% nrow(), 
-                 tree %>% treeio::Nnode(internal.only=FALSE) 
+                 ape::Nnode(tree@phylo, internal.only=FALSE)
     )
 })
 
 test_that("left_join for treedata",{
     set.seed(123)
     df <- data.frame(label=tree@phylo$tip.label, value=abs(rnorm(length(tree@phylo$tip.label))))
-    N <- tree %>% treeio::Nnode(internal.only=FALSE)
+    N <- ape::Nnode(tree@phylo, internal.only=FALSE)
     dt <- data.frame(ind=rep(seq_len(N), 2), group=rep(c("A","B"), each=N))
 
     tr2 <- tree %>% left_join(df, by="label")

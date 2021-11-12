@@ -23,8 +23,8 @@ left_join.treedata <- function(x, y, by = NULL, copy = FALSE, ...){
 #' @method left_join phylo
 #' @export
 left_join.phylo <- function(x, y, by=NULL, copy=FALSE, ...){
-    x %<>% treeio::as.treedata()
-    tr <- x %>% left_join(y, by = by, copy = copy)
+    x <- treedata(phylo=x)
+    tr <- x %>% left_join(y, by = by, copy = copy, ...)
     return(tr)
 }
 

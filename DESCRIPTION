@@ -21,12 +21,10 @@ Imports:
     tidyselect,
     yulab.utils (>= 0.0.4)
 Suggests:
-    ggtree,
     knitr,
     rmarkdown,
     prettydoc,
     testthat,
-    treeio,
     pillar,
     utils
 VignetteBuilder: knitr
@@ -35,5 +33,6 @@ License: Artistic-2.0
 URL: https://yulab-smu.top/treedata-book/
 BugReports: https://github.com/YuLab-SMU/tidytree/issues
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+LazyData: true
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
