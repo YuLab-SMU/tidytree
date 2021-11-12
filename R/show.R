@@ -18,13 +18,21 @@ setMethod("show", signature(object = "treedata"),
           })
 
 print_fields <- function(object) {
+    if (!has_fields(object)) return()
+
+    fields <- get.fields(object)
+
+    cat("\nwith the following features available:\n")
+    ff <- paste0("  '",paste(fields, collapse="', '"), "'.\n")
+    writeLines(yulab.utils::str_wrap(ff))
+}
+
+has_fields <- function(object) {
     fields <- get.fields(object)
     if (length(fields) == 1 && fields == "") {
-        return()
+        return(FALSE)
     }
-    cat("\nwith the following features available:\n")
-    ff <- paste0("\t'",paste(fields, collapse="',\t'"), "'.\n")
-    cat(fields_wrap(ff))
+    return(TRUE)
 }
 
 fields_wrap <- function(ff) {
@@ -50,7 +58,7 @@ fields_wrap <- function(ff) {
 ##' @method print treedata
 ##' @export
 print.treedata <- function(x, ..., n = NULL, width = NULL, n_extra = NULL){
-    show.data = getOption('show_data_for_treedata', default=TRUE)
+    show.data <- getOption('show_data_for_treedata', default=TRUE)
     if (show.data){
         print1.treedata(x, n = n, width = width, n_extra = n_extra, ...)
     }else{
@@ -64,40 +72,49 @@ print1.treedata <- function(x, ..., n = NULL, width = NULL, n_extra = NULL){
     }
 
     annotda <- .extract_annotda.treedata(x)
-
     formatstr <- annotda %>% format(..., n = n, width = width, n_extra = n_extra)
 
-    fields <- get.fields(x)
+    ## fields <- get.fields(x)
     
-    if(length(fields)==1 && fields==""){
-        fields <- ''
-        newheader <- c("\n None available features.")
-    }else{
-        ff <- paste0("\t'",paste(fields, collapse="',\t'"), "'.\n")
-        fields <- fields_wrap(ff)
-        newheader <- c("\nwith the following features available:", fields)
+    ## if(length(fields)==1 && fields==""){
+    ##     fields <- ''
+    ##     newheader <- c("\n None available features.")
+    ## }else{
+    ##     ff <- paste0("\t'",paste(fields, collapse="',\t'"), "'.\n")
+    ##     fields <- yulab.utils::str_wrap(ff) ## fields_wrap(ff)
+    ##     newheader <- c("\nwith the following features available:", fields)
+    ## }
+
+    ## msg <- .internal_print.treedata_msg(x) %>%
+    ##     yulab.utils::str_wrap() %>% 
+    ##     writeLines()
+
+    ## phyloinfo <- utils::capture.output(print.phylo(as.phylo(x)))
+    ## writeLines(yulab.utils::str_wrap(phyloinfo))
+
+    print2.treedata(x,  ...)
+
+    if (has_fields(x)) {
+        formatstr[1] <- gsub("(A tibble:)", "The associated data tibble abstraction:", formatstr[1])
+        formatstr %<>% append(pillar::style_subtle("# The 'node', 'label' and 'isTip' are from the phylo tree."), 
+                              after=1)
+        ## newheader %>%
+        ##     append(formatstr) %>%
+        ##     # yulab.utils::str_wrap() %>% 
+        ##     writeLines()
+        writeLines(formatstr)
     }
-
-    msg <- .internal_print.treedata_msg(x) %>%
-           writeLines()
-
-    print.phylo(as.phylo(x))
-
-    formatstr[1] <- gsub("(A tibble:)", "The associated data tibble abstraction:", formatstr[1])
-    formatstr %<>% append(pillar::style_subtle("# The 'node', 'label' and 'isTip' are from the phylo tree."), 
-                          after=1)
-    newheader %>%
-      append(formatstr) %>%
-      writeLines()
 
     invisible(x)
 }
 
 #' @importFrom ape print.phylo
+#' @importFrom yulab.utils str_wrap
 print2.treedata <- function(x, ...) {
     msg <- .internal_print.treedata_msg(x)
-    writeLines(msg)
-    print.phylo(as.phylo(x))
+    writeLines(yulab.utils::str_wrap(msg))
+    phyloinfo <- utils::capture.output(print.phylo(as.phylo(x)))
+    writeLines(yulab.utils::str_wrap(phyloinfo))
     print_fields(x)
 }
 

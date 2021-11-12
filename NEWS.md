@@ -1,3 +1,7 @@
+# tidytree 0.3.6
+
++ use `yulab.utils::str_wrap` to print tree (2021-10-09, Sat)
+
 # tidytree 0.3.5
 
 + add `select`, `filter`, `mutate`, `left_join`, `unnest`, `pull` and `rename` verbs for `treedata` object (2021-08-22, Sun; @xiangpin, #19)
