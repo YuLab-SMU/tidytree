@@ -7,11 +7,14 @@ rename.treedata <- function(.data, ...){
     cols <- eval_select(rlang::expr(c(...)), dat)
 
     loc <- check_names_from_phylo(x=dat, recol=cols)
+    
     clnames <- colnames(dat)
 
     .data@data <- .update.td.rename(x=.data@data, loc=loc, clnames=clnames)
 
     .data@extraInfo <- .update.td.rename(x=.data@extraInfo, loc=loc, clnames=clnames)
+
+    .data@phylo <- .update.phylo.rename(x=.data@phylo, loc = loc, clnames = clnames)
 
     return(.data)
 }
@@ -41,5 +44,18 @@ check_names_from_phylo <- function(x, recol){
     clnmda[ind.da2] <- names(loc)[ind.da1]
 
     colnames(x) <- clnmda
+    return(x)
+}
+
+.update.phylo.rename <- function(x, loc, clnames){
+    aa <- names(attributes(x))
+    group <- aa[!aa %in% c("names", "class", "order", "reroot", "node_map")]
+    if (length(group) == 0) return(x)
+
+    loc <- sort(loc)
+    ind.da1 <- which(clnames[loc] %in% aa)
+    ind.da2 <- which(aa %in% clnames[loc])
+    aa[ind.da2] <- names(loc)[ind.da1]
+    names(attributes(x)) <- aa
     return(x)
 }
