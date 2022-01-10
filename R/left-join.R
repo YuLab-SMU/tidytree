@@ -34,13 +34,15 @@ left_join.phylo <- function(x, y, by=NULL, copy=FALSE, ...){
 #' @param da tbl_df after left_join.
 #' @noRd
 .update.td.join <- function(td, da){
+    aa <- names(attributes(td@phylo))
+    aa <- aa[!aa %in% c("names", "class", "order", "reroot", "node_map")]
     data.nm <- get.fields.data(td)
     if (length(data.nm)==1 && data.nm==""){
         td@data <- tibble()
     }else{
         td@data <- da %>% select(c("node", data.nm))
     }
-    extra.nm <- colnames(da)[!colnames(da) %in% c("node", "label", "isTip", data.nm)]
+    extra.nm <- colnames(da)[!colnames(da) %in% c("node", "label", "isTip", data.nm, aa)]
     if (length(extra.nm) > 0){
         td@extraInfo <- da %>% select(c("node", extra.nm))
     }

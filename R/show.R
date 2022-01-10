@@ -57,22 +57,20 @@ fields_wrap <- function(ff) {
 
 ##' @method print treedata
 ##' @export
-print.treedata <- function(x, ..., n = NULL, width = NULL, n_extra = NULL){
-    show.data <- getOption('show_data_for_treedata', default=TRUE)
+print.treedata <- function(x, ..., n = 10, width = NULL, max_extra_cols = NULL, max_footer_lines = NULL){
+    show.data = getOption('show_data_for_treedata', default=TRUE)
     if (show.data){
-        print1.treedata(x, n = n, width = width, n_extra = n_extra, ...)
+        print1.treedata(x, n = n, width = width, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines, ...)
     }else{
         print2.treedata(x, ...)
     }
 }
 
-print1.treedata <- function(x, ..., n = NULL, width = NULL, n_extra = NULL){
-    if (nrow(x@data) == 0 && nrow(x@extraInfo) == 0){
-        n = 10
-    }
-
+print1.treedata <- function(x, ..., n = 10, width = NULL, max_extra_cols = NULL, max_footer_lines = NULL){
+    
     annotda <- .extract_annotda.treedata(x)
-    formatstr <- annotda %>% format(..., n = n, width = width, n_extra = n_extra)
+
+    formatstr <- annotda %>% format(..., n = n, width = width, max_extra_cols = max_extra_cols, max_footer_lines = max_footer_lines)
 
     ## fields <- get.fields(x)
     
