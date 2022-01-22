@@ -1,3 +1,7 @@
+# tidytree 0.3.7
+
++ update startup message to randomly print two citation items of the ggtree package suite (2022-01-10, Mon)
+
 # tidytree 0.3.6
 
 + use `yulab.utils::str_wrap` to print tree (2021-10-09, Sat)
