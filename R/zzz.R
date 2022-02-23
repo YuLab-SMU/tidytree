@@ -37,7 +37,7 @@ random_ref <- function(){
     paste0(
       "G Yu. ", 
       "Data Integration, Manipulation and Visualization of Phylogenetic Trees (1st ed.). ", 
-      "Chapman and Hall/CRC. 2022. doi: 10.1201/9781003279242\n"
+      "Chapman and Hall/CRC. 2022. ISBN: 9781032233574\n"
     )
   )
   refs <- paste0(sample(refs, 2), collapse="\n")
