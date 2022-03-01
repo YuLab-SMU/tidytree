@@ -19,13 +19,13 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
-    yulab.utils (>= 0.0.4)
+    yulab.utils (>= 0.0.4),
+    pillar
 Suggests:
     knitr,
     rmarkdown,
     prettydoc,
     testthat,
-    pillar,
     utils
 VignetteBuilder: knitr
 ByteCompile: true
