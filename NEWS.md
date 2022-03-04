@@ -1,3 +1,7 @@
+# tidytree 0.3.9
+
++ update package startup message (2022-03-04, Fri)
+
 # tidytree 0.3.8
 
 + add the CRC book in startup message (2022-02-17, Thu)
