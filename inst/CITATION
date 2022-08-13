@@ -1,4 +1,4 @@
-citHeader("To cite TDbook in publications use:")
+citHeader("To cite tidytree in publications use:")
 
 citEntry(
     entry  = "book",
