@@ -1,6 +1,6 @@
 Package: tidytree
 Title: A Tidy Tool for Phylogenetic Tree Data Manipulation
-Version: 0.3.9
+Version: 0.4.0
 Authors@R: c(
            person("Guangchuang", "Yu",   email = "guangchuangyu@gmail.com", role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-6485-8781")),
            person("Bradley", "Jones",    email = "brj1@sfu.ca",             role = "ctb"),
@@ -30,8 +30,8 @@ Suggests:
 VignetteBuilder: knitr
 ByteCompile: true
 License: Artistic-2.0
-URL: https://yulab-smu.top/treedata-book/
+URL: https://www.amazon.com/Integration-Manipulation-Visualization-Phylogenetic-Computational-ebook/dp/B0B5NLZR1Z/
 BugReports: https://github.com/YuLab-SMU/tidytree/issues
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)

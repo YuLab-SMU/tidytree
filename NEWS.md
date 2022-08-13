@@ -1,3 +1,7 @@
+# tidytree 0.4.0
+
++ update citation with the tree data book (2022-08-13, Sat)
+
 # tidytree 0.3.9
 
 + update package startup message (2022-03-04, Fri)

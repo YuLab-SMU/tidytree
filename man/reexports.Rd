@@ -34,7 +34,7 @@ below to see their documentation.
 
   \item{magrittr}{\code{\link[magrittr:compound]{\%<>\%}}, \code{\link[magrittr:pipe]{\%>\%}}}
 
-  \item{rlang}{\code{\link[rlang:tidyeval-data]{.data}}}
+  \item{rlang}{\code{\link[rlang:dot-data]{.data}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{tibble}}}
 
