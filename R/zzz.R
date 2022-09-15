@@ -15,7 +15,7 @@ random_ref <- function(pkgname = NULL, pkgVersion = NULL, random_n = 2){
   refs <- c(
     ggtreeBook = paste("Guangchuang Yu. (2022).",
                         "Data Integration, Manipulation and Visualization of Phylogenetic Trees (1st edition).",
-                        "Chapman and Hall/CRC.\n"),
+                        "Chapman and Hall/CRC. doi:10.1201/9781003279242\n"),
     ggtreeCPB = paste0(
       "Guangchuang Yu. ",
       "Using ggtree to visualize data on tree-like structures. ",
