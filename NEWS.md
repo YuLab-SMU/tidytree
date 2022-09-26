@@ -1,3 +1,7 @@
+# tidytree 0.4.1
+
++ update citation with the ggtree imeta paper (2022-08-13, Sat)
+
 # tidytree 0.4.0
 
 + update citation with the tree data book (2022-08-13, Sat)

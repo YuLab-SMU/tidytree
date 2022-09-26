@@ -13,14 +13,17 @@ random_ref <- function(pkgname = NULL, pkgVersion = NULL, random_n = 2){
   }
   msg <- "If you use the ggtree package suite in published research, please cite the appropriate paper(s):\n\n" 
   refs <- c(
-    ggtreeBook = paste("Guangchuang Yu. (2022).",
+    ggtreeBook = paste("Guangchuang Yu. ",
                         "Data Integration, Manipulation and Visualization of Phylogenetic Trees (1st edition).",
-                        "Chapman and Hall/CRC. doi:10.1201/9781003279242\n"),
+                        "Chapman and Hall/CRC. 2022, doi:10.1201/9781003279242\n"),
     ggtreeCPB = paste0(
       "Guangchuang Yu. ",
       "Using ggtree to visualize data on tree-like structures. ",
       "Current Protocols in Bioinformatics. 2020, 69:e96. doi:10.1002/cpbi.96\n"
     ),
+    ggtree_imeta = paste0("Shuangbin Xu, Lin Li, Xiao Luo, Meijun Chen, Wenli Tang, Li Zhan, Zehan Dai, Tommy T. Lam, Yi Guan, Guangchuang Yu. ",
+                        "Ggtree: A serialized data object for visualization of a phylogenetic tree and annotation data. ",
+                        "iMeta 2022, 4(1):e56. doi:10.1002/imt2.56\n"),
     ggtreeMBE = paste0(
       "Guangchuang Yu, Tommy Tsan-Yuk Lam, Huachen Zhu, Yi Guan. ",
       "Two methods for mapping and visualizing associated data on phylogeny using ggtree. ",
