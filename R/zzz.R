@@ -23,7 +23,7 @@ random_ref <- function(pkgname = NULL, pkgVersion = NULL, random_n = 2){
     ),
     ggtree_imeta = paste0("Shuangbin Xu, Lin Li, Xiao Luo, Meijun Chen, Wenli Tang, Li Zhan, Zehan Dai, Tommy T. Lam, Yi Guan, Guangchuang Yu. ",
                         "Ggtree: A serialized data object for visualization of a phylogenetic tree and annotation data. ",
-                        "iMeta 2022, 4(1):e56. doi:10.1002/imt2.56\n"),
+                        "iMeta 2022, 1(4):e56. doi:10.1002/imt2.56\n"),
     ggtreeMBE = paste0(
       "Guangchuang Yu, Tommy Tsan-Yuk Lam, Huachen Zhu, Yi Guan. ",
       "Two methods for mapping and visualizing associated data on phylogeny using ggtree. ",
