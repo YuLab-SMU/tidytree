@@ -8,14 +8,15 @@ left_join.treedata <- function(x, y, by = NULL, copy = FALSE, ...){
     }
 
     dat <- .extract_annotda.treedata(x)
-    ornm <- colnames(dat) 
-    da <- dat %>%
-          dplyr::left_join(y, by = by, copy = copy, suffix = suffix, !!!dots)
+    ornm <- colnames(dat)
+    da <- rlang::inject(
+      dplyr::left_join(dat, y, by = by, copy = copy, suffix = suffix, !!!dots)
+    )
 
     if (any(duplicated(da$node))){
         da %<>% .internal_nest(keepnm=ornm)
     }
-    
+
     tr <- .update.td.join(td=x, da=da)
     return(tr)
 }
