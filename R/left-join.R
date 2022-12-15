@@ -1,17 +1,25 @@
 #' @method left_join treedata
+#' @importFrom cli cli_warn
 #' @export
-left_join.treedata <- function(x, y, by = NULL, copy = FALSE, ...){
-    dots <- rlang::quos(...)
-    suffix <- c("", ".y")
-    if ("suffix" %in% names(dots)){
-        dots <- dots[names(dots)!="suffix"]
-    }
-
+left_join.treedata <- function(x, y, by = NULL, copy = FALSE, suffix=c("", ".y"), ..., keep=NULL){
     dat <- .extract_annotda.treedata(x)
     ornm <- colnames(dat)
-    da <- rlang::inject(
-      dplyr::left_join(dat, y, by = by, copy = copy, suffix = suffix, !!!dots)
-    )
+    msg <- c("The {.arg suffix} requires a character vector containing 2 different elements,",
+             "The first element must be \"\", and the second element must not be \"\",",
+             "it was set {.code suffix=c(\"\", \".y\")} automatically.")
+    if (all(nchar(suffix)!=0)){
+        cli::cli_warn(msg)
+        suffix[1] = ""
+    }
+    if (all(nchar(suffix)==0)){
+        cli::cli_warn(msg)
+        suffix[2] = ".y"
+    }
+    if (nchar(suffix[1])!=0 && nchar(suffix[2])==0){
+        cli::cli_warn(msg)
+        suffix <- rev(suffix[seq_len(2)])
+    }
+    da <- dplyr::left_join(dat, y, by = by, copy = copy, suffix = suffix, ..., keep = keep)
 
     if (any(duplicated(da$node))){
         da %<>% .internal_nest(keepnm=ornm)

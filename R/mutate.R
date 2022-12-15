@@ -14,6 +14,12 @@ mutate.treedata <- function(.data, ..., keep.td=TRUE){
     dat <- .extract_annotda.treedata(.data)
     da <- dplyr::mutate(dat, !!!dots)
     if (keep.td){
+        if ('label' %in% names(dots)){
+            .data@phylo$tip.label <- as.vector(da[da$isTip, 'label', drop = TRUE])
+            if (!is.null(.data@phylo$node.label)){
+                .data@phylo$node.label <- as.vector(da[!da$isTip, 'label', drop = TRUE])
+            }
+        }
         .data <- .update.treedata(td = .data, 
                                   da = da, 
                                   dat = dat, 
