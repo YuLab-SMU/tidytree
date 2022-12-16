@@ -20,7 +20,8 @@ Imports:
     tidyr,
     tidyselect,
     yulab.utils (>= 0.0.4),
-    pillar
+    pillar,
+    cli
 Suggests:
     knitr,
     rmarkdown,
@@ -33,5 +34,5 @@ License: Artistic-2.0
 URL: https://www.amazon.com/Integration-Manipulation-Visualization-Phylogenetic-Computational-ebook/dp/B0B5NLZR1Z/
 BugReports: https://github.com/YuLab-SMU/tidytree/issues
 Encoding: UTF-8
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
