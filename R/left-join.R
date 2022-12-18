@@ -1,7 +1,7 @@
 #' @method left_join treedata
 #' @importFrom cli cli_warn
 #' @export
-left_join.treedata <- function(x, y, by = NULL, copy = FALSE, suffix=c("", ".y"), ..., keep=NULL){
+left_join.treedata <- function(x, y, by = NULL, copy = FALSE, suffix=c("", ".y"), ...){
     dat <- .extract_annotda.treedata(x)
     ornm <- colnames(dat)
     msg <- c("The {.arg suffix} requires a character vector containing 2 different elements,",
@@ -19,7 +19,7 @@ left_join.treedata <- function(x, y, by = NULL, copy = FALSE, suffix=c("", ".y")
         cli::cli_warn(msg)
         suffix <- rev(suffix[seq_len(2)])
     }
-    da <- dplyr::left_join(dat, y, by = by, copy = copy, suffix = suffix, ..., keep = keep)
+    da <- dplyr::left_join(dat, y, by = by, copy = copy, suffix = suffix, ...)
 
     if (any(duplicated(da$node))){
         da %<>% .internal_nest(keepnm=ornm)
