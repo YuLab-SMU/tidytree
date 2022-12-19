@@ -1,3 +1,7 @@
+# tidytree 0.4.2
+
++ fixed the `dots` issue of `left_join` (2022-12-16, Fri, #30, #31)
+
 # tidytree 0.4.1
 
 + update citation with the ggtree imeta paper (2022-08-13, Sat)
