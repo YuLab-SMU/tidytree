@@ -1,3 +1,7 @@
+# tidytree 0.4.3
+
++ add `print()` method for 'tbl_tree' object to avoid confusion with `tbl_df` (2023-07-12, Wed)
+
 # tidytree 0.4.2
 
 + fixed the `dots` issue of `left_join` (2022-12-16, Fri, #30, #31)
