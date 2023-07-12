@@ -116,6 +116,33 @@ print2.treedata <- function(x, ...) {
     print_fields(x)
 }
 
+##' @method print tbl_tree
+##' @export
+print.tbl_tree <- function(x, width = NULL, ..., n = NULL, 
+                           max_extra_cols = NULL, max_footer_lines = NULL){
+    formatted_tb <- x %>% format(..., n = n, width = width, 
+                                 max_extra_cols = max_extra_cols, 
+                                 max_footer_lines = max_footer_lines)
+    if (valid.tbl_tree2(x)){
+        new_head = "A tbl_tree abstraction:"
+        formatted_tb_tree <- formatted_tb %>%
+              {
+                 x = (.);
+                 x[1] = gsub("(A tibble:)", new_head, x[1]);
+                 x
+              }
+        formatted_tb_tree <- append(formatted_tb_tree,
+                               pillar::style_subtle("# which can be converted to treedata or phylo \n# via as.treedata or as.phylo"),
+                               after = 1
+        )
+        writeLines(formatted_tb_tree)
+    }else{
+        writeLines(formatted_tb)
+    }
+    invisible(x)
+}
+
+
 .internal_print.treedata_msg <- function(x){
     msg <- "'treedata' S4 object"
     files <- x@file
