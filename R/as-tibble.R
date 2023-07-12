@@ -106,3 +106,15 @@ valid.tbl_tree <- function(object, cols = c("parent", "node", "label")) {
         msg <- paste0("invalid tbl_tree object.\n  missing column:\n    ", paste(cc, collapse=","), ".")
     }
 }
+
+valid.tbl_tree2 <- function(object, cols = c("parent", "node", "label")) {
+    cc <- cols[!cols %in% colnames(object)]
+    if (length(cc) > 0) {
+        msg <- paste0("invalid tbl_tree object. Missing column: ", paste(cc, collapse=","), ".")
+        msg <- strwrap(style_subtle(msg))
+        message(msg)
+        return(FALSE)
+    }else{
+        return(TRUE)
+    }
+}

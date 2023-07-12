@@ -80,3 +80,5 @@ drop_class <- function(x, name) {
 }
 
 tbl_df_returned_message <- "# A tbl_df is returned for independent data analysis."
+
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
