@@ -132,7 +132,7 @@ print.tbl_tree <- function(x, width = NULL, ..., n = NULL,
                  x
               }
         formatted_tb_tree <- append(formatted_tb_tree,
-                               pillar::style_subtle("which can be converted to treedata or phylo \nvia as.treedata or as.phylo"),
+                               pillar::style_subtle("# which can be converted to treedata or phylo \n# via as.treedata or as.phylo"),
                                after = 1
         )
         writeLines(formatted_tb_tree)
