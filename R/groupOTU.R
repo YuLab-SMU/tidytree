@@ -28,7 +28,9 @@ groupOTU.tbl_tree <- function(.data, .node,
     return(.data)
 }
 
+##' @noRd
 ##' @importFrom dplyr group_by
+##' @keywords internal 
 groupOTU.tbl_tree_item <- function(.data, .node,
                                    focus_label = NULL,
                                    group_name,

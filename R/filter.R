@@ -19,3 +19,14 @@ filter.treedata <- function(.data, ..., .preserve=FALSE, keep.td=TRUE){
     }
     return(da)
 }
+
+
+##' @method filter tbl_tree
+##' @export
+filter.tbl_tree <- function(.data, ..., .preserve = FALSE){
+    x <- NextMethod()
+    if (!valid.tbl_tree2(x)){
+        x <- drop_class(x, name='tbl_tree')
+    }
+    return(x)
+}

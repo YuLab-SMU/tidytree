@@ -44,7 +44,8 @@ as_tibble.phylo <- function(x, ...) {
             }
         }
     }
-    class(res) <- c("tbl_tree", class(res))
+    #class(res) <- c("tbl_tree", class(res))
+    res <- add_class(res, 'tbl_tree')
     return(res)
 }
 
@@ -114,7 +115,23 @@ valid.tbl_tree2 <- function(object, cols = c("parent", "node", "label")) {
         msg <- strwrap(style_subtle(msg))
         message(msg)
         return(FALSE)
-    }else{
+    }
+    if (valid.edge(object)){
         return(TRUE)
+    }else{
+        return(FALSE)
+    }
+}
+
+valid.edge <- function(x){
+    x <- as.matrix(x[,c(1, 2)])
+    tip.num  <- sum(!(x[,2] %in% x[,1]))
+    root.num <- sum(x[,1] == x[,2])
+    node.index <- min(x[,2])==1 && all(diff(x[,2])==1)
+    if (root.num==1 && tip.num > 1 && !any(duplicated(x[,2])) && node.index){
+        return(TRUE)
+    }else{
+        cli::cli_alert_warning("# Invaild edge matrix for {.cls phylo}. A {.cls tbl_df} is returned.")
+        return(FALSE)
     }
 }

@@ -3,7 +3,9 @@
 ##' @export
 mutate.tbl_tree <- function(.data, ...) {
     res <- NextMethod()
-    class(res) <- class(.data)
+    if (!valid.tbl_tree2(res)){
+        res <- drop_class(res, 'tbl_tree')
+    }
     res
 }
 

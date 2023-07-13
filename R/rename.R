@@ -19,6 +19,17 @@ rename.treedata <- function(.data, ...){
     return(.data)
 }
 
+##' @method rename tbl_tree
+##' @export
+rename.tbl_tree <- function(.data, ...){
+    x <- NextMethod()
+    if (!valid.tbl_tree2(x)){
+        x <- drop_class(x, 'tbl_tree')
+    }
+    return(x)
+}
+
+
 #' @param x the data before rename
 #' @param recol the column will be renamed
 #' @noRd

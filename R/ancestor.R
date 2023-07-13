@@ -117,6 +117,8 @@ MRCA.tbl_tree <- function(.data, .node1, .node2 = NULL, ...) {
     }
 }
 
+#' @noRd
+#' @keywords internal 
 MRCA.tbl_tree_internal <- function(.data, .node1, .node2, ...) {
     anc1 <- ancestor(.data, .node1)
     if (nrow(anc1) == 0) {
