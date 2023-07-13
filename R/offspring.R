@@ -41,7 +41,8 @@ offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FAL
     return(res)
 }
 
-
+#' @noRd
+#' @keywords internal
 offspring.tbl_tree_item <- function(.data, .node, tiponly = FALSE, self_include = FALSE, ...) {
     x <- child.tbl_tree(.data, .node)
 

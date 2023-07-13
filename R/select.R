@@ -18,3 +18,13 @@ select.treedata <- function(.data, ..., keep.td=FALSE){
     }
     return(da)
 }
+
+##' @method select tbl_tree
+##' @export
+select.tbl_tree <- function(.data, ...){
+    x <- NextMethod()
+    if (!valid.tbl_tree2(x)){
+        x <- drop_class(x, name = 'tbl_tree')
+    }
+    return(x)
+}

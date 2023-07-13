@@ -37,6 +37,17 @@ left_join.phylo <- function(x, y, by=NULL, copy=FALSE, ...){
     return(tr)
 }
 
+#' @method left_join tbl_tree
+#' @export
+left_join.tbl_tree <- function(x, y, by = NULL, copy = FALSE, 
+                               suffix = c(".x", ".y"), ..., keep = NULL){
+    x <- NextMethod()
+    if (!valid.tbl_tree2(x)){
+        x <- drop_class(x, 'tbl_tree')
+    }
+    return(x)
+}
+
 
 #' @keywords internal
 #' @param td treedata object

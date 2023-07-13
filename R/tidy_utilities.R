@@ -59,6 +59,14 @@ drop_class <- function(x, name) {
     x
 }
 
+add_class <- function(x, name){
+    xx <- setdiff(name, class(x))
+    if (length(xx)>0){
+        class(x) <- base::union(xx, class(x))
+    }
+    return (x)
+}
+
 .internal_nest <- function(x, keepnm, ..., .names_sep = NULL){
     nest <- utils::getFromNamespace("nest", "tidyr")
     if (missing(...)){
