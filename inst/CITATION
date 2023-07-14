@@ -1,7 +1,7 @@
 citHeader("To cite tidytree in publications use:")
 
-citEntry(
-    entry  = "book",
+bibentry(
+    bibtype  = "book",
     title = "Data Integration, Manipulation and Visualization of Phylogenetic Treess",
     author = person("Guangchuang", "Yu"),
 	publisher = "Chapman and Hall/{CRC}",
