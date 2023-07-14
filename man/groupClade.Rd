@@ -4,12 +4,17 @@
 \alias{groupClade}
 \title{groupClade}
 \usage{
-groupClade(.data, .node, ...)
+groupClade(.data, .node, group_name = "group", overlap = "overwrite", ...)
 }
 \arguments{
 \item{.data}{tree object (phylo, treedata, tbl_tree, ggtree etc.)}
 
 \item{.node}{selected nodes}
+
+\item{group_name}{character the name of the group cluster, default is \code{group}.}
+
+\item{overlap}{character one of \code{overwrite},\code{origin} and \code{abandon},
+default is \code{overwrite}.}
 
 \item{...}{additional parameter}
 }

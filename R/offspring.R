@@ -29,11 +29,11 @@ offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FAL
         stop(".node is required")
     }
     if (length(.node) == 1) {
-        res <- offspring.tbl_tree_item(.data = .data, .node = .node,
+        res <- .offspring.tbl_tree_item(.data = .data, .node = .node,
                                        tiponly = tiponly, self_include = self_include, ...)
     } else {
         res <- lapply(.node, function(node) {
-            offspring.tbl_tree_item(.data = .data, .node = node,
+            .offspring.tbl_tree_item(.data = .data, .node = node,
                                     tiponly = tiponly, self_include = self_include, ...)
         })
         names(res) <- .node
@@ -43,7 +43,7 @@ offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FAL
 
 #' @noRd
 #' @keywords internal
-offspring.tbl_tree_item <- function(.data, .node, tiponly = FALSE, self_include = FALSE, ...) {
+.offspring.tbl_tree_item <- function(.data, .node, tiponly = FALSE, self_include = FALSE, ...) {
     x <- child.tbl_tree(.data, .node)
 
     ## https://github.com/GuangchuangYu/ggtree/issues/239
