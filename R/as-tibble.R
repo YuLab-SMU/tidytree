@@ -113,7 +113,10 @@ valid.tbl_tree2 <- function(object, cols = c("parent", "node", "label")) {
     if (length(cc) > 0) {
         msg <- paste0("invalid tbl_tree object. Missing column: ", paste(cc, collapse=","), ".")
         msg <- strwrap(style_subtle(msg))
-        message(msg)
+        flag <- getOption(x="check.tbl_tree.verbose", default=TRUE)
+        if (flag){
+           cli::cli_alert_info(msg)
+        }
         return(FALSE)
     }
     if (valid.edge(object)){
@@ -131,7 +134,10 @@ valid.edge <- function(x){
     if (root.num==1 && tip.num > 1 && !any(duplicated(x[,2])) && node.index){
         return(TRUE)
     }else{
-        cli::cli_alert_warning("# Invaild edge matrix for {.cls phylo}. A {.cls tbl_df} is returned.")
+        flag <- getOption(x="check.tbl_tree.verbose", default=TRUE)
+        if (flag){
+            cli::cli_alert_warning("# Invaild edge matrix for {.cls phylo}. A {.cls tbl_df} is returned.")
+        }
         return(FALSE)
     }
 }
