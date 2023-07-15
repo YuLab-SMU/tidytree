@@ -8,13 +8,13 @@ groupOTU.tbl_tree <- function(.data, .node,
     .data[[group_name]] <- NULL
     if ( is(.node, "list") ) {
         for (i in seq_along(.node)) {
-            .data <- groupOTU.tbl_tree_item(.data, .node[[i]],
+            .data <- .groupOTU.tbl_tree_item(.data, .node[[i]],
                                             names(.node)[i],
                                             group_name = group_name,
                                             ...)
         }
     } else {
-        .data <- groupOTU.tbl_tree_item(.data, .node,
+        .data <- .groupOTU.tbl_tree_item(.data, .node,
                                         group_name = group_name,
                                         ...)
     }
@@ -31,7 +31,7 @@ groupOTU.tbl_tree <- function(.data, .node,
 ##' @noRd
 ##' @importFrom dplyr group_by
 ##' @keywords internal 
-groupOTU.tbl_tree_item <- function(.data, .node,
+.groupOTU.tbl_tree_item <- function(.data, .node,
                                    focus_label = NULL,
                                    group_name,
                                    overlap="overwrite",

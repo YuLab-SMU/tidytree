@@ -101,14 +101,14 @@ ancestor.tbl_tree <- function(.data, .node, ...) {
 ##' @export
 MRCA.tbl_tree <- function(.data, .node1, .node2 = NULL, ...) {
     if (length(.node1) == 1 && length(.node2) == 1) {
-        return(MRCA.tbl_tree_internal(.data, .node1, .node2, ...))
+        return(.MRCA.tbl_tree_internal(.data, .node1, .node2, ...))
     } else if (is.null(.node2) && length(.node1) >= 1) {
         if (length(.node1) == 1) return(itself(.data, .node1))
         ## else length(.node1) > 1
-        node <- MRCA.tbl_tree_internal(.data, .node1[1], .node1[2])
+        node <- .MRCA.tbl_tree_internal(.data, .node1[1], .node1[2])
         if (length(.node1) > 2) {
             for (i in 3:length(.node1)) {
-                node <- MRCA.tbl_tree_internal(.data, .node1[i], node$node)
+                node <- .MRCA.tbl_tree_internal(.data, .node1[i], node$node)
             }
         }
         return(node)
@@ -119,7 +119,7 @@ MRCA.tbl_tree <- function(.data, .node1, .node2 = NULL, ...) {
 
 #' @noRd
 #' @keywords internal 
-MRCA.tbl_tree_internal <- function(.data, .node1, .node2, ...) {
+.MRCA.tbl_tree_internal <- function(.data, .node1, .node2, ...) {
     anc1 <- ancestor(.data, .node1)
     if (nrow(anc1) == 0) {
         ## .node1 is root

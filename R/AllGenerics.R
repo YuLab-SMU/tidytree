@@ -44,11 +44,12 @@ setGeneric("get.data", function(object, ...) standardGeneric("get.data"))
 ##' @title groupOTU
 ##' @param .data tree object (phylo, treedata, tbl_tree, ggtree etc.)
 ##' @param .node selected nodes
+##' @param group_name character the name of the group cluster, default is \code{group}.
 ##' @param ... additional parameter
 ##' @return updated tree with group information or group index
 ##' @author Guangchuang Yu
 ##' @export
-groupOTU <- function(.data, .node, ...) {
+groupOTU <- function(.data, .node, group_name = 'group', ...) {
     UseMethod("groupOTU")
 }
 
@@ -57,10 +58,12 @@ groupOTU <- function(.data, .node, ...) {
 ##'
 ##' @title groupClade
 ##' @inheritParams groupOTU
+##' @param overlap character one of \code{overwrite},\code{origin} and \code{abandon},
+##' default is \code{overwrite}.
 ##' @return updated tree with group information or group index
 ##' @author Guangchuang Yu
 ##' @export
-groupClade <- function(.data, .node, ...) {
+groupClade <- function(.data, .node, group_name = 'group', overlap = 'overwrite', ...) {
     UseMethod("groupClade")
 }
 

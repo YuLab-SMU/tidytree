@@ -4,12 +4,14 @@
 \alias{groupOTU}
 \title{groupOTU}
 \usage{
-groupOTU(.data, .node, ...)
+groupOTU(.data, .node, group_name = "group", ...)
 }
 \arguments{
 \item{.data}{tree object (phylo, treedata, tbl_tree, ggtree etc.)}
 
 \item{.node}{selected nodes}
+
+\item{group_name}{character the name of the group cluster, default is \code{group}.}
 
 \item{...}{additional parameter}
 }
