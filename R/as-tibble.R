@@ -130,7 +130,7 @@ valid.edge <- function(x){
     x <- as.matrix(x[,c(1, 2)])
     tip.num  <- sum(!(x[,2] %in% x[,1]))
     root.num <- sum(x[,1] == x[,2])
-    node.index <- min(x[,2])==1 && all(diff(x[,2])==1)
+    node.index <- nrow(x) >=2 && min(x[,2])==1 && all(diff(x[,2])==1)
     if (root.num==1 && tip.num > 1 && !any(duplicated(x[,2])) && node.index){
         return(TRUE)
     }else{
