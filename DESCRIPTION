@@ -27,7 +27,11 @@ Suggests:
     rmarkdown,
     prettydoc,
     testthat,
-    utils
+    utils,
+    igraph,
+    purrr,
+    treeio,
+    Biostrings
 VignetteBuilder: knitr
 ByteCompile: true
 License: Artistic-2.0

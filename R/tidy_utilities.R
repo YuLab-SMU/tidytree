@@ -67,6 +67,13 @@ add_class <- function(x, name){
     return (x)
 }
 
+nodeIds <- function(tree, internal.only=TRUE) {
+    if (internal.only) {
+        return(Ntip(tree) + 1:Nnode(tree, internal.only))
+    }
+    1:Nnode(tree, internal.only)
+}
+
 .internal_nest <- function(x, keepnm, ..., .names_sep = NULL){
     nest <- utils::getFromNamespace("nest", "tidyr")
     if (missing(...)){
@@ -87,6 +94,29 @@ add_class <- function(x, name){
     return(res)
 }
 
+.rev.edge <- function(x, nodes, index){
+    ind <- x[,index] %in% nodes
+    x[ind,] <- t(apply(x[ind,],1,rev))
+    return(x)
+}
+
+.check.no.tree.network <- function(x, nodes){
+    is.tree <- length(table(x)) - nrow(x) != 1
+    is.tree || any(((x[,1] %in% nodes) + (x[,2] %in% nodes)) ==2)
+}
+
 tbl_df_returned_message <- "# A tbl_df is returned for independent data analysis."
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
+
+is_numeric <- function(x) !anyNA(suppressWarnings(as.numeric(as.character(x))))
+
+filename <- function(file) {
+    ## textConnection(text_string) will work just like a file
+    ## in this case, just set the filename as ""
+    file_name <- ""
+    if (is.character(file)) {
+        file_name <- file
+    }
+    return(file_name)
+}
