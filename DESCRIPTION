@@ -29,9 +29,7 @@ Suggests:
     testthat,
     utils,
     igraph,
-    purrr,
-    treeio,
-    Biostrings
+    purrr
 VignetteBuilder: knitr
 ByteCompile: true
 License: Artistic-2.0

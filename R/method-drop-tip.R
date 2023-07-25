@@ -3,10 +3,13 @@
 ##' @exportMethod drop.tip
 ##' @author Casey Dunn \url{http://dunnlab.org}  and Guangchuang Yu \url{https://guangchuangyu.github.io}
 ##' @examples
-##' nhxfile <- system.file("extdata/NHX", "ADH.nhx", package="treeio")
-##' nhx <- read.nhx(nhxfile)
-##' tr1 <- drop.tip(nhx, c("ADH2", "ADH1"))
-##' tr2 <- keep.tip(nhx, c("ADH2", "ADH1"))
+##' library(tidytree)
+##' set.seed(123)
+##' tr <- ape::rtree(6)
+##' da <- data.frame(id=tip.label(tr), value = letters[seq_len(6)])
+##' trda <- tr %>% dplyr::left_join(da, by = c('label'='id'))
+##' tr1 <- drop.tip(tr, c("t2", "t1"))
+##' tr2 <- keep.tip(tr, c("t2", "t1"))
 setMethod("drop.tip", signature(object="treedata"),
           function(object, tip, ...) {
               drop.tip.treedata(object, tip, ...)

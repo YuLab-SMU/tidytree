@@ -21,14 +21,9 @@
 #' with \code{ggtree}
 #'
 #' @examples
-#' \dontrun{
-#'   nwk <- system.file("extdata", "sample.nwk", package="treeio")
-#'   tree <- read.tree(nwk)
-#'
-#'   sub_tree <- tree_subset(tree, node = "A", levels_back = 3)
-#'   ggtree(sub_tree) + geom_tiplab() + geom_nodelab()
-#' }
-#'
+#' set.seed(123)
+#' tree <- ape::rtree(6)
+#' sub_tree <- tree_subset(tree, node = "t1", levels_back = 2)
 #' @rdname tree_subset
 #' @export
 tree_subset <- function(tree, node, levels_back = 5, group_node = TRUE,
@@ -40,15 +35,6 @@ tree_subset <- function(tree, node, levels_back = 5, group_node = TRUE,
 #' @method tree_subset phylo
 #' @rdname tree_subset
 #' @importFrom magrittr %>%
-#' @examples
-#' \dontrun{
-#'   nwk <- system.file("extdata", "sample.nwk", package="treeio")
-#'   tree <- read.tree(nwk)
-#'
-#'   sub_tree <- tree_subset(tree, node = "A", levels_back = 3)
-#'   ggtree(sub_tree) + geom_tiplab() + geom_nodelab()
-#' }
-#'
 #' @importFrom utils tail
 #' @importFrom utils head
 #' @importFrom rlang quo .data

@@ -62,20 +62,7 @@ tree that is of class phylo. This allows for easy graphing of the tree
 with \code{ggtree}
 }
 \examples{
-\dontrun{
-  nwk <- system.file("extdata", "sample.nwk", package="treeio")
-  tree <- read.tree(nwk)
-
-  sub_tree <- tree_subset(tree, node = "A", levels_back = 3)
-  ggtree(sub_tree) + geom_tiplab() + geom_nodelab()
-}
-
-\dontrun{
-  nwk <- system.file("extdata", "sample.nwk", package="treeio")
-  tree <- read.tree(nwk)
-
-  sub_tree <- tree_subset(tree, node = "A", levels_back = 3)
-  ggtree(sub_tree) + geom_tiplab() + geom_nodelab()
-}
-
+set.seed(123)
+tree <- ape::rtree(6)
+sub_tree <- tree_subset(tree, node = "t1", levels_back = 2)
 }
