@@ -1,3 +1,13 @@
+# tidytree 0.4.4.001
+
++ update `valid.edge()` to avoid warning (2023-7-18, Tue)
+
+# tidytree 0.4.4
+
++ update old-style 'CITATION' from `citEntry()` to `bibentry()` (2023-07-14, Fri, #38)
++ update dplyr-verb for 'tbl_tree' object to print information to avoid confusion (2023-07-13, Thu, #37, #39)
++ add accessor function of node label for 'tbl_tree', 'phylo' and 'treedata' object (2023-07-13, Thu, #37)
+
 # tidytree 0.4.3
 
 + add `print()` method for 'tbl_tree' object to avoid confusion with `tbl_df` (2023-07-12, Wed)
