@@ -131,6 +131,7 @@ child.treedata <- function(.data, .node, type = 'children', ...) {
         }
         if (type %in% c('tips', 'external')){
             res <- res[res %in% alltips]
+        }else if (type == "internal") {
             res <- res[!res %in% alltips]
         }
     }
