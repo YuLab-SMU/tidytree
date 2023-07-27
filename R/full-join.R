@@ -40,6 +40,6 @@ full_join.treedata <- function(x, y, by = NULL,
 ##' @export
 full_join.phylo <- function(x, y, by = NULL,
                             copy = FALSE, suffix = c("", ".y"), ...) {
-    full_join(as.treedata(x), y = y, by = by,
+    full_join(treedata(phylo=x), y = y, by = by,
               copy = copy, suffix = suffix, ...)
 }

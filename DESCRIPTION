@@ -27,9 +27,7 @@ Suggests:
     rmarkdown,
     prettydoc,
     testthat,
-    utils,
-    igraph,
-    purrr
+    utils
 VignetteBuilder: knitr
 ByteCompile: true
 License: Artistic-2.0

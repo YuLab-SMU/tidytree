@@ -94,17 +94,6 @@ nodeIds <- function(tree, internal.only=TRUE) {
     return(res)
 }
 
-.rev.edge <- function(x, nodes, index){
-    ind <- x[,index] %in% nodes
-    x[ind,] <- t(apply(x[ind,],1,rev))
-    return(x)
-}
-
-.check.no.tree.network <- function(x, nodes){
-    is.tree <- length(table(x)) - nrow(x) != 1
-    is.tree || any(((x[,1] %in% nodes) + (x[,2] %in% nodes)) ==2)
-}
-
 tbl_df_returned_message <- "# A tbl_df is returned for independent data analysis."
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
