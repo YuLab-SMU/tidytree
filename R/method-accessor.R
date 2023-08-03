@@ -14,7 +14,7 @@ node.label <- function(x, node='internal', ...){
 #' @export
 node.label.tbl_tree <- function(x, node = 'internal', ...){
     node <- match.arg(node, c("internal", "external", "all", "tip"))
-    isTip <- isTip.tbl_tree(x)
+    isTip <- .isTip.tbl_tree(x)
     if (node %in% c('external', 'tip')){
         lab <- x[isTip, "label", drop=TRUE]
     }else if (node == 'internal'){
@@ -121,7 +121,7 @@ NULL
 #' @rdname td-label-assign
 #' @export
 `node.label<-.tbl_tree` <- function(x, value){
-    isTip <- isTip.tbl_tree(x)
+    isTip <- .isTip.tbl_tree(x)
     if (check.lab(value, Nnode(x))){
         x[!isTip, 'label',drop=TRUE] <- as.character(value)
     }else{
@@ -154,7 +154,7 @@ NULL
 #' @rdname td-label-assign
 #' @export
 `tip.label<-.tbl_tree` <- function(x, value){
-    isTip <- isTip.tbl_tree(x)
+    isTip <- .isTip.tbl_tree(x)
     if (check.lab(value, Ntip(x))){
         x[isTip,'label',drop=TRUE] <- as.character(value)
     }else{
@@ -181,7 +181,7 @@ Nnode.tbl_tree <- function(phy, internal.only = TRUE, ...){
 }
 
 #' @noRd
-isTip.tbl_tree <- function(x){
+.isTip.tbl_tree <- function(x){
     !x[,2,drop=TRUE] %in% x[,1,drop=TRUE]
 }
 
