@@ -41,8 +41,9 @@ as.ultrametric.treedata <- function(tree, ...){
 }
 
 #' @method as.ultrametric tbl_tree
+#' @export
 as.ultrametric.tbl_tree <- function(tree, ...){
     tree <- as.treedata(tree)
-    tree <- as.ultrametric(tree)
+    tree <- as.ultrametric(tree, ...)
     return(tree)
 }
