@@ -1,3 +1,7 @@
+# tidytree 0.4.5.001
+
++ check before `setOldClass()`, which suppose to fix the #47 issue (2023-11-29, Wed)
+
 # tidytree 0.4.5
 
 + mv tree operation functions (e.g., `parent()`, `child()`, `tree_subset()`, etc.) from the 'treeio' package (2023-08-03, Thu, #44)

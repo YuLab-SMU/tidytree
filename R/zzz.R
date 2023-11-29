@@ -3,6 +3,7 @@
   if (!is.null(ref)) packageStartupMessage(ref)
 }
 
+
 #' @importFrom pillar style_subtle
 random_ref <- function(pkgname = NULL, pkgVersion = NULL, random_n = 2){
   if (!is.null(pkgname) && !is.null(pkgVersion)){
