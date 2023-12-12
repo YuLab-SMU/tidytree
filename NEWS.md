@@ -1,5 +1,6 @@
-# tidytree 0.4.5.001
+# tidytree 0.4.6
 
++ import `methods::setClassUnion()` to fix R check (2023-12-12, Tue)
 + check before `setOldClass()`, which suppose to fix the #47 issue (2023-11-29, Wed)
 
 # tidytree 0.4.5

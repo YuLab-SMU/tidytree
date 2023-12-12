@@ -6,6 +6,7 @@ if (!isClass("phylo")) setOldClass("phylo")
 if (!isClass("DNAbin")) setOldClass("DNAbin")
 if (!isClass("AAbin")) setOldClass("AAbin")
 
+#' @importFrom methods setClassUnion
 setClassUnion("DNAbin_Or_AAbin", c("DNAbin", "AAbin", "NULL"))
 
 ##' Class "treedata"
