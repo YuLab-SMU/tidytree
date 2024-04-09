@@ -42,6 +42,13 @@ Ntip.treedata <- function(phy) {
     Ntip(as.phylo(phy))
 }
 
+##' @method Ntip treedataList
+##' @importFrom ape Ntip
+##' @export
+Ntip.treedataList <- function(phy) {
+    Ntip(phy[[1]])
+}
+
 ##' number of nodes
 ##'
 ##'

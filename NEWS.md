@@ -1,3 +1,7 @@
+# tidytree 0.4.6.001
+
++ `Ntip()` method for 'treedataList' object (2024-04-08, Mon)
+
 # tidytree 0.4.6
 
 + import `methods::setClassUnion()` to fix R check (2023-12-12, Tue)
