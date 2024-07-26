@@ -1,5 +1,6 @@
-# tidytree 0.4.6.001
+# tidytree 0.4.6.002
 
++ deprecate `random_ref()` and use `yulab.utils::yulab_msg()` (2024-07-26, Fri)
 + `Ntip()` method for 'treedataList' object (2024-04-08, Mon)
 
 # tidytree 0.4.6

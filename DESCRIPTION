@@ -1,6 +1,6 @@
 Package: tidytree
 Title: A Tidy Tool for Phylogenetic Tree Data Manipulation
-Version: 0.4.6
+Version: 0.4.6.002
 Authors@R: c(
            person("Guangchuang", "Yu",   email = "guangchuangyu@gmail.com", role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-6485-8781")),
            person("Bradley", "Jones",    email = "brj1@sfu.ca",             role = "ctb"),
@@ -19,7 +19,7 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
-    yulab.utils (>= 0.0.4),
+    yulab.utils (>= 0.1.5),
     pillar,
     cli
 Suggests:
@@ -34,5 +34,5 @@ License: Artistic-2.0
 URL: https://www.amazon.com/Integration-Manipulation-Visualization-Phylogenetic-Computational-ebook/dp/B0B5NLZR1Z/
 BugReports: https://github.com/YuLab-SMU/tidytree/issues
 Encoding: UTF-8
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)

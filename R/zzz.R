@@ -1,9 +1,10 @@
-.onAttach <- function(...){
-  ref <- random_ref()
-  if (!is.null(ref)) packageStartupMessage(ref)
+##' @importFrom yulab.utils yulab_msg
+.onAttach <- function(libname, pkgname) {
+    packageStartupMessage(yulab_msg(pkgname))
 }
 
 
+# deprecated, for backward compatibility, 2024-07-26
 #' @importFrom pillar style_subtle
 random_ref <- function(pkgname = NULL, pkgVersion = NULL, random_n = 2){
   if (!is.null(pkgname) && !is.null(pkgVersion)){
