@@ -11,7 +11,7 @@ Phylogenetic tree generally contains multiple components including node, edge, b
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://www.amazon.com/Integration-Manipulation-Visualization-Phylogenetic-Computational-ebook/dp/B0B5NLZR1Z/}
+  \item \url{https://yulab-smu.top/contribution-tree-data/}
   \item Report bugs at \url{https://github.com/YuLab-SMU/tidytree/issues}
 }
 
