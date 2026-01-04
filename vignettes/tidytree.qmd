@@ -1,0 +1,21 @@
+---
+title: "tidytree: A Tidy Tool for Phylogenetic Tree Data Manipulation"
+format: 
+    html:
+        theme: none
+        embed-resources: true
+        fontsize: 1.1em
+        linestretch: 1.7
+author: "Guangchuang Yu\\
+
+        School of Basic Medical Sciences, Southern Medical University"
+date: "`r Sys.Date()`"
+vignette: >
+  %\VignetteIndexEntry{tidytree}
+  %\VignetteEngine{quarto::html}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+Please go to <https://yulab-smu.top/treedata-book-2ed/chapter2.html> for the full vignette.
+

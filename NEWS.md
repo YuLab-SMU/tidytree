@@ -1,5 +1,6 @@
 # tidytree 0.4.7
 
++ use `quarto` to build vignette (2026-01-04, Sun)
 + optimize `ancestor()` and `offspring()` (2026-01-04, Sun)
 + `full_join()` method for `simmap` object (2026-01-04, Sun)
 + deprecate `random_ref()` and use `yulab.utils::yulab_msg()` (2024-07-26, Fri)

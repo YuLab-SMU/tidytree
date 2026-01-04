@@ -46,4 +46,9 @@ full_join.phylo <- function(x, y, by = NULL,
 
 #' @method full_join simmap
 #' @export
-full_join.simmap <- full_join.phylo
+full_join.simmap <- function(x, y, by = NULL,
+                            copy = FALSE, suffix = c("", ".y"), ...) {
+    class(x) <- setdiff(class(x), "simmap")                            
+    full_join.phylo(x = x, y = y, by = by,
+              copy = copy, suffix = suffix, ...)
+}

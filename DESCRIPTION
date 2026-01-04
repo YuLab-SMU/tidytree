@@ -23,12 +23,10 @@ Imports:
     pillar,
     cli
 Suggests:
-    knitr,
-    rmarkdown,
-    prettydoc,
+    quarto,
     testthat,
     utils
-VignetteBuilder: knitr
+VignetteBuilder: quarto
 ByteCompile: true
 License: Artistic-2.0
 URL: https://www.amazon.com/Integration-Manipulation-Visualization-Phylogenetic-Computational-ebook/dp/B0B5NLZR1Z/
