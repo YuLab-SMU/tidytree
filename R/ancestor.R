@@ -1,12 +1,12 @@
-##' @importFrom lazyeval interp
-##' @method parent tbl_tree
-##' @export
-##' @rdname parent
-##' @examples
-##' library(ape)
-##' tree <- rtree(4)
-##' x <- as_tibble(tree)
-##' parent(x, 2)
+#' @importFrom lazyeval interp
+#' @method parent tbl_tree
+#' @export
+#' @rdname parent
+#' @examples
+#' library(ape)
+#' tree <- rtree(4)
+#' x <- as_tibble(tree)
+#' parent(x, 2)
 parent.tbl_tree <- function(.data, .node, ...) {
     valid.tbl_tree(.data)
     ## x <- filter_(.data, ~ (node == .node | label == .node) & node != parent)
@@ -35,8 +35,8 @@ itself <- function(.data, .node) {
     return(.data[i, ])
 }
 
-##' @method parent phylo
-##' @export
+#' @method parent phylo
+#' @export
 parent.phylo <- function(.data, .node, ...) {
     vapply(.node, function(nn) {
         if ( nn == rootnode(.data) )
@@ -55,22 +55,22 @@ parent.phylo <- function(.data, .node, ...) {
     }, numeric(1))
 }
 
-##' @method parent treedata
-##' @export
+#' @method parent treedata
+#' @export
 parent.treedata <- function(.data,  .node,  ...) {
     parent.phylo(as.phylo(.data), .node, ...)
 }
 
 
 
-##' @method ancestor tbl_tree
-##' @export
-##' @rdname ancestor
-##' @examples
-##' library(ape)
-##' tree <- rtree(4)
-##' x <- as_tibble(tree)
-##' ancestor(x, 3)
+#' @method ancestor tbl_tree
+#' @export
+#' @rdname ancestor
+#' @examples
+#' library(ape)
+#' tree <- rtree(4)
+#' x <- as_tibble(tree)
+#' ancestor(x, 3)
 ancestor.tbl_tree <- function(.data, .node, ...) {
     ## prevent using filter
     ## see https://github.com/GuangchuangYu/tidytree/issues/4
@@ -107,24 +107,50 @@ ancestor.tbl_tree <- function(.data, .node, ...) {
     .data[children %in% id,]
 }
 
-##' @method ancestor phylo
-##' @export
+#' @method ancestor phylo
+#' @export
 ancestor.phylo <- function(.data, .node, ...) {
     root <- rootnode(.data)
     if (.node == root) {
         return(NA)
     }
-    p <- parent(.data, .node)
+    
+    edge <- .data[["edge"]]
+    parent <- edge[,1]
+    child <- edge[,2]
+
+    if (anyDuplicated(child)) {
+        stop("multiple parent found...")
+    }
+    
+    ## pvec <- integer(max(edge))
+    ## pvec[child] <- parent
+    ## p <- pvec[.node]
+    
+    ## use match, which is faster than index access 
+    ## if the index is large (e.g. node labels are strict integers but sparse?)
+    ## node IDs in phylo are 1:N, so index access is safe and fast.
+    
+    max_id <- max(edge)
+    pvec <- integer(max_id)
+    pvec[child] <- parent
+    
+    p <- pvec[.node]
+    
+    if (length(p) == 0 || p == 0) {
+        stop("cannot found parent node...")
+    }
+    
     res <- p
     while(p != root) {
-        p <- parent(.data, p)
+        p <- pvec[p]
         res <- c(res, p)
     }
     return(res)
 }
 
-##' @method ancestor treedata
-##' @export
+#' @method ancestor treedata
+#' @export
 ancestor.treedata <- function(.data, .node, ...) {
     ancestor.phylo(as.phylo(.data), .node, ...)
 }
@@ -146,8 +172,8 @@ ancestor.treedata <- function(.data, .node, ...) {
 ## }
 
 
-##' @method MRCA tbl_tree
-##' @export
+#' @method MRCA tbl_tree
+#' @export
 MRCA.tbl_tree <- function(.data, .node1, .node2 = NULL, ...) {
     if (length(.node1) == 1 && length(.node2) == 1) {
         return(.MRCA.tbl_tree_internal(.data, .node1, .node2, ...))
@@ -189,16 +215,16 @@ MRCA.tbl_tree <- function(.data, .node1, .node2 = NULL, ...) {
     return(p)
 }
 
-##' @method rootnode tbl_tree
-##' @export
+#' @method rootnode tbl_tree
+#' @export
 rootnode.tbl_tree <- function(.data, ...) {
     valid.tbl_tree(.data)
     ## filter_(.data, ~ parent == node)
     .data[.data$parent == .data$node, ]
 }
 
-##' @method rootnode phylo
-##' @export
+#' @method rootnode phylo
+#' @export
 rootnode.phylo <- function(.data, ...) {
     edge <- .data[["edge"]]
     ## 1st col is parent,

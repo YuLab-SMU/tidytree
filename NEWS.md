@@ -1,5 +1,7 @@
-# tidytree 0.4.6.002
+# tidytree 0.4.7
 
++ optimize `ancestor()` and `offspring()` (2026-01-04, Sun)
++ `full_join()` method for `simmap` object (2026-01-04, Sun)
 + deprecate `random_ref()` and use `yulab.utils::yulab_msg()` (2024-07-26, Fri)
 + `Ntip()` method for 'treedataList' object (2024-04-08, Mon)
 

@@ -1,6 +1,6 @@
-##' @method mutate tbl_tree
-##' @importFrom dplyr mutate
-##' @export
+#' @method mutate tbl_tree
+#' @importFrom dplyr mutate
+#' @export
 mutate.tbl_tree <- function(.data, ...) {
     res <- NextMethod()
     if (!valid.tbl_tree2(res)){
@@ -9,8 +9,8 @@ mutate.tbl_tree <- function(.data, ...) {
     res
 }
 
-##' @method mutate treedata
-##' @export
+#' @method mutate treedata
+#' @export
 mutate.treedata <- function(.data, ..., keep.td=TRUE){
     dots <- rlang::quos(...)
     dat <- .extract_annotda.treedata(.data)

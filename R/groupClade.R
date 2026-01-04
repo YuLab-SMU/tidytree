@@ -1,5 +1,5 @@
-##' @method groupClade tbl_tree
-##' @export
+#' @method groupClade tbl_tree
+#' @export
 groupClade.tbl_tree <- function(.data, .node,
                                 group_name = "group",
                                 overlap = "overwrite", ...) {

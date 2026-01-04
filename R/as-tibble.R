@@ -1,8 +1,8 @@
-##' @method as_tibble phylo
-##' @export
-##' @importFrom dplyr full_join
-##' @importFrom ape Ntip
-##' @importFrom ape Nnode
+#' @method as_tibble phylo
+#' @export
+#' @importFrom dplyr full_join
+#' @importFrom ape Ntip
+#' @importFrom ape Nnode
 as_tibble.phylo <- function(x, ...) {
     phylo <- x
     ntip <- Ntip(phylo)
@@ -50,9 +50,9 @@ as_tibble.phylo <- function(x, ...) {
 }
 
 
-##' @method as_tibble treedata
-##' @importFrom tibble as_tibble
-##' @export
+#' @method as_tibble treedata
+#' @importFrom tibble as_tibble
+#' @export
 as_tibble.treedata <- function(x, ...) {
     res <- as_tibble(x@phylo)
     tree_anno <- as_tibble(get_tree_data(x))
@@ -69,14 +69,14 @@ as_tibble.treedata <- function(x, ...) {
 }
 
 
-##' get associated data stored in treedata object
-##'
-##'
-##' @title get_tree_data
-##' @param tree_object a `treedata` object
-##' @return tbl_df
-##' @export
-##' @author guangchuang yu
+#' get associated data stored in treedata object
+#'
+#'
+#' @title get_tree_data
+#' @param tree_object a `treedata` object
+#' @return tbl_df
+#' @export
+#' @author guangchuang yu
 get_tree_data <- function(tree_object) {
     tree_anno <- tree_object@data
     extraInfo <- tree_object@extraInfo

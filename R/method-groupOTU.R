@@ -1,5 +1,5 @@
 
-##' @importFrom ape which.edge
+#' @importFrom ape which.edge
 gfocus <- function(phy, focus, group_name, focus_label=NULL,
                    overlap="overwrite", connect = FALSE) {
 
@@ -53,8 +53,8 @@ gfocus <- function(phy, focus, group_name, focus_label=NULL,
     phy
 }
 
-##' @method groupOTU phylo
-##' @export
+#' @method groupOTU phylo
+#' @export
 groupOTU.phylo <- function(.data, .node, group_name="group", ...) {
     phy <- .data
     focus <- .node
@@ -72,24 +72,24 @@ groupOTU.phylo <- function(.data, .node, group_name="group", ...) {
     return(phy)
 }
 
-##' @method groupOTU treedata
-##' @export
+#' @method groupOTU treedata
+#' @export
 groupOTU.treedata <- function(.data, .node, group_name = "group", ...) {
     .data@phylo <- groupOTU(as.phylo(.data), .node, group_name, ...)
     return(.data)
 }
 
 
-##' calculate total number of nodes
-##'
-##'
-##' @title getNodeNum
-##' @param tree tree object
-##' @return number
-##' @export
-##' @examples
-##' getNodeNum(rtree(30))
-##' @author Guangchuang Yu
+#' calculate total number of nodes
+#'
+#'
+#' @title getNodeNum
+#' @param tree tree object
+#' @return number
+#' @export
+#' @examples
+#' getNodeNum(rtree(30))
+#' @author Guangchuang Yu
 getNodeNum <- function(tree) {
     Nnode(tree, internal.only=FALSE)
 }

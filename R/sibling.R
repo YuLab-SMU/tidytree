@@ -1,5 +1,5 @@
-##' @method sibling tbl_tree
-##' @export
+#' @method sibling tbl_tree
+#' @export
 sibling.tbl_tree <- function(.data, .node, ...) {
     valid.tbl_tree(.data)
 
@@ -9,8 +9,8 @@ sibling.tbl_tree <- function(.data, .node, ...) {
     child(.data, p$node) %>% filter(.data$node != .node)
 }
 
-##' @method sibling phylo
-##' @export
+#' @method sibling phylo
+#' @export
 sibling.phylo <- function(.data, .node, ...) {
     root <- rootnode(.data)
     if (.node == root) {

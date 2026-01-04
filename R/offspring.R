@@ -1,11 +1,11 @@
-##' @method child tbl_tree
-##' @export
-##' @rdname child
-##' @examples
-##' library(ape)
-##' tree <- rtree(4)
-##' x <- as_tibble(tree)
-##' child(x, 4)
+#' @method child tbl_tree
+#' @export
+#' @rdname child
+#' @examples
+#' library(ape)
+#' tree <- rtree(4)
+#' x <- as_tibble(tree)
+#' child(x, 4)
 child.tbl_tree <- function(.data, .node, ...) {
     valid.tbl_tree(.data)
 
@@ -16,14 +16,14 @@ child.tbl_tree <- function(.data, .node, ...) {
     .data[.data$parent == .node & .data$parent != .data$node,]
 }
 
-##' @method offspring tbl_tree
-##' @export
-##' @rdname offspring
-##' @examples
-##' library(ape)
-##' tree <- rtree(4)
-##' x <- as_tibble(tree)
-##' offspring(x, 4)
+#' @method offspring tbl_tree
+#' @export
+#' @rdname offspring
+#' @examples
+#' library(ape)
+#' tree <- rtree(4)
+#' x <- as_tibble(tree)
+#' offspring(x, 4)
 offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FALSE, ...) {
     if (missing(.node) || is.null(.node)) {
         stop(".node is required")
@@ -69,17 +69,23 @@ offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FAL
     parent <- .data$parent
     children <- .data$node
     ## n <- length(parent)
-    n <- max(parent)
+    ## n <- max(parent)
+    
+    kids <- split(children, parent)
 
-    kids <- vector("list", n)
-    for (i in seq_along(parent)) {
-        kids[[parent[i]]] <-c(kids[[parent[i]]], children[i])
-    }
-
+    ## id <- x$node
+    ## i <- 1
+    ## while(i <= length(id)) {
+    ##     id <- c(id, kids[[id[i]]])
+    ##     i <- i + 1
+    ## }
+    
     id <- x$node
     i <- 1
     while(i <= length(id)) {
-        id <- c(id, kids[[id[i]]])
+        cx <- as.character(id[i])
+        ## kids[cx][[1]] returns NULL if not found, preventing error
+        id <- c(id, kids[cx][[1]])
         i <- i + 1
     }
 
@@ -94,15 +100,15 @@ offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FAL
     return(sp)
 }
 
-##' @method child phylo
-##' @export
+#' @method child phylo
+#' @export
 child.phylo <- function(.data, .node, type = 'children', ...) {
     res <- offspring(.data=.data, .node = .node, type = type)
     return(res)
 }
 
-##' @method child treedata
-##' @export
+#' @method child treedata
+#' @export
 child.treedata <- function(.data, .node, type = 'children', ...) {
     child.phylo(as.phylo(.data), .node, type = type, ...)
 }
@@ -138,8 +144,8 @@ child.treedata <- function(.data, .node, type = 'children', ...) {
     return(unname(res))
 }
 
-##' @method offspring phylo
-##' @export
+#' @method offspring phylo
+#' @export
 offspring.phylo <- function(.data, .node, tiponly = FALSE, self_include = FALSE, type = 'all', ...){
     type <- match.arg(type, c("children", 'tips', 'internal', 'external', 'all'))
 
@@ -185,8 +191,8 @@ offspring.phylo <- function(.data, .node, tiponly = FALSE, self_include = FALSE,
 }
 
 
-##' @method offspring treedata
-##' @export
+#' @method offspring treedata
+#' @export
 offspring.treedata <- function(.data, .node, tiponly = FALSE, self_include = FALSE, type = 'all', ...) {
     offspring.phylo(as.phylo(.data), .node,
                     tiponly = tiponly, self_include = self_include,

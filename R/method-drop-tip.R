@@ -1,15 +1,15 @@
-##' @rdname drop.tip-methods
-##' @aliases drop.tip,treedata
-##' @exportMethod drop.tip
-##' @author Casey Dunn \url{http://dunnlab.org}  and Guangchuang Yu \url{https://guangchuangyu.github.io}
-##' @examples
-##' library(tidytree)
-##' set.seed(123)
-##' tr <- ape::rtree(6)
-##' da <- data.frame(id=tip.label(tr), value = letters[seq_len(6)])
-##' trda <- tr %>% dplyr::left_join(da, by = c('label'='id'))
-##' tr1 <- drop.tip(tr, c("t2", "t1"))
-##' tr2 <- keep.tip(tr, c("t2", "t1"))
+#' @rdname drop.tip-methods
+#' @aliases drop.tip,treedata
+#' @exportMethod drop.tip
+#' @author Casey Dunn \url{http://dunnlab.org}  and Guangchuang Yu \url{https://guangchuangyu.github.io}
+#' @examples
+#' library(tidytree)
+#' set.seed(123)
+#' tr <- ape::rtree(6)
+#' da <- data.frame(id=tip.label(tr), value = letters[seq_len(6)])
+#' trda <- tr %>% dplyr::left_join(da, by = c('label'='id'))
+#' tr1 <- drop.tip(tr, c("t2", "t1"))
+#' tr2 <- keep.tip(tr, c("t2", "t1"))
 setMethod("drop.tip", signature(object="treedata"),
           function(object, tip, ...) {
               drop.tip.treedata(object, tip, ...)
@@ -54,30 +54,30 @@ drop.tip.treedata <- function(object, tip, ...){
     return (object)
 }
 
-##' @rdname drop.tip-methods
-##' @exportMethod drop.tip
-##' @aliases drop.tip,phylo
-##' @source
-##' drop.tip for phylo object is a wrapper method of ape::drop.tip
-##' from the ape package. The documentation you should
-##' read for the drop.tip function can be found here: \link[ape]{drop.tip}
-##' @seealso
-##' \link[ape]{drop.tip}
+#' @rdname drop.tip-methods
+#' @exportMethod drop.tip
+#' @aliases drop.tip,phylo
+#' @source
+#' drop.tip for phylo object is a wrapper method of ape::drop.tip
+#' from the ape package. The documentation you should
+#' read for the drop.tip function can be found here: \link[ape]{drop.tip}
+#' @seealso
+#' \link[ape]{drop.tip}
 setMethod("drop.tip", signature(object="phylo"),
           function(object, tip, ...){
               ape::drop.tip(object, tip, ...)
           })
 
-##' @rdname drop.tip-methods
-##' @export
+#' @rdname drop.tip-methods
+#' @export
 setMethod("keep.tip", signature(object = 'treedata'),
           function(object, tip, ...){
      .internal.keep.tip(object, tip, ...)  
   }
 )
 
-##' @rdname drop.tip-methods 
-##' @export
+#' @rdname drop.tip-methods 
+#' @export
 setMethod('keep.tip', signature(object = 'phylo'),
   function(object, tip, ...){
     .internal.keep.tip(object, tip, ...)

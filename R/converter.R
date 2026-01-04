@@ -1,15 +1,15 @@
 
-##' @method as.phylo treedata
-##' @export
+#' @method as.phylo treedata
+#' @export
 as.phylo.treedata <- function(x, ...) {
     return(x@phylo)
 }
 
 
-##' @importFrom dplyr mutate
-##' @importFrom ape as.phylo
-##' @method as.phylo tbl_tree
-##' @export
+#' @importFrom dplyr mutate
+#' @importFrom ape as.phylo
+#' @method as.phylo tbl_tree
+#' @export
 ## original contributed by Bradley Jones and modified by Guangchuang Yu
 as.phylo.tbl_tree <- function(x, ...) {
     valid.tbl_tree(x)
@@ -40,18 +40,18 @@ as.phylo.tbl_tree <- function(x, ...) {
 }
 
 
-##' @importFrom methods new
-##' @method as.treedata tbl_tree
-##' @export
-##' @rdname as.treedata
-##' @examples
-##' library(ape)
-##' set.seed(2017)
-##' tree <- rtree(4)
-##' d <- tibble(label = paste0('t', 1:4),
-##'            trait = rnorm(4))
-##' x <- as_tibble(tree)
-##' full_join(x, d, by = 'label') %>% as.treedata
+#' @importFrom methods new
+#' @method as.treedata tbl_tree
+#' @export
+#' @rdname as.treedata
+#' @examples
+#' library(ape)
+#' set.seed(2017)
+#' tree <- rtree(4)
+#' d <- tibble(label = paste0('t', 1:4),
+#'            trait = rnorm(4))
+#' x <- as_tibble(tree)
+#' full_join(x, d, by = 'label') %>% as.treedata
 as.treedata.tbl_tree <- function(tree, ...) {
     data <- tree
     cn <- colnames(data)

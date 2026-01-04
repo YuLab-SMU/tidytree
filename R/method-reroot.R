@@ -11,23 +11,23 @@ old_new_node_mapping <- function(oldtree, newtree){
     return(node_map)
 }
 
-# ##' re-root a tree
-# ##'
-# ##'
-# ##' @title root
-# ##' @rdname root-method
-# ##' @param phy tree object
-# ##' @param outgroup a vector of mode numeric or character specifying the new outgroup
-# ##' @param node node to reroot
-# ##' @param edgelabel a logical value specifying whether to treat node labels as 
-# ##' edge labels and thus eventually switching them so that they are associated 
-# ##' with the correct edges.
-# ##' @param ... additional parameters passed to ape::root.phylo
-# ##' @return rerooted tree
-# ##' @importFrom ape root
-# ##' @method root phylo
-# ##' @export
-# ##' @author Guangchuang Yu
+# #' re-root a tree
+# #'
+# #'
+# #' @title root
+# #' @rdname root-method
+# #' @param phy tree object
+# #' @param outgroup a vector of mode numeric or character specifying the new outgroup
+# #' @param node node to reroot
+# #' @param edgelabel a logical value specifying whether to treat node labels as 
+# #' edge labels and thus eventually switching them so that they are associated 
+# #' with the correct edges.
+# #' @param ... additional parameters passed to ape::root.phylo
+# #' @return rerooted tree
+# #' @importFrom ape root
+# #' @method root phylo
+# #' @export
+# #' @author Guangchuang Yu
 # 
 # root.phylo <- function(phy, outgroup, node = NULL, edgelabel = TRUE, ...){
 #     tree <- ape::root.phylo(phy, outgroup = outgroup, node = node,
@@ -40,20 +40,20 @@ old_new_node_mapping <- function(oldtree, newtree){
 # }
 
 
-##' re-root a tree
-##'
-##' @title root
-##' @rdname root-method
-##' @param phy tree object
-##' @param outgroup a vector of mode numeric or character specifying the new outgroup
-##' @param node node to reroot
-##' @param edgelabel a logical value specifying whether to treat node labels as
-##' edge labels and thus eventually switching them so that they are associated
-##' with the correct edges.
-##' @param ... additional parameters passed to ape::root.phylo
-##' @return rerooted treedata
-##' @method root treedata
-##' @export
+#' re-root a tree
+#'
+#' @title root
+#' @rdname root-method
+#' @param phy tree object
+#' @param outgroup a vector of mode numeric or character specifying the new outgroup
+#' @param node node to reroot
+#' @param edgelabel a logical value specifying whether to treat node labels as
+#' edge labels and thus eventually switching them so that they are associated
+#' with the correct edges.
+#' @param ... additional parameters passed to ape::root.phylo
+#' @return rerooted treedata
+#' @method root treedata
+#' @export
 
 root.treedata <- function(phy, outgroup, node = NULL, edgelabel = TRUE, ...){
     if (!missing(outgroup) && is.character(outgroup)){
@@ -140,21 +140,21 @@ root.treedata <- function(phy, outgroup, node = NULL, edgelabel = TRUE, ...){
 ## }
 ## 
 ## 
-## ##' re-root a tree
-## ##'
-## ##' 
-## ##' @title root
-## ##' @rdname root-method
-## ##' @param phy tree object
-## ##' @param outgroup a vector of mode numeric or character specifying the new outgroup
-## ##' @param node node to reroot
-## ##' @param resolve.root a logical specifying whether to resolve the new root as a bifurcating node
-## ##' @param ... additional parameters passed to ape::root.phylo
-## ##' @return rerooted tree
-## ##' @importFrom ape root
-## ##' @method root phylo
-## ##' @export
-## ##' @author Guangchuang Yu
+## #' re-root a tree
+## #'
+## #' 
+## #' @title root
+## #' @rdname root-method
+## #' @param phy tree object
+## #' @param outgroup a vector of mode numeric or character specifying the new outgroup
+## #' @param node node to reroot
+## #' @param resolve.root a logical specifying whether to resolve the new root as a bifurcating node
+## #' @param ... additional parameters passed to ape::root.phylo
+## #' @return rerooted tree
+## #' @importFrom ape root
+## #' @method root phylo
+## #' @export
+## #' @author Guangchuang Yu
 ## root.phylo <- function(phy, outgroup, node = NULL, resolve.root = TRUE, ...) {
 ##     ## pos <- 0.5* object$edge.length[which(object$edge[,2] == node)]
 ##     
@@ -180,9 +180,9 @@ root.treedata <- function(phy, outgroup, node = NULL, edgelabel = TRUE, ...){
 ## }
 ## 
 ## 
-## ##' @rdname root-method
-## ##' @method root treedata
-## ##' @export
+## #' @rdname root-method
+## #' @method root treedata
+## #' @export
 ## root.treedata <- function(phy, outgroup, node = NULL, resolve.root = TRUE, ...) {
 ##     ## warning message
 ##     message("The use of this method may cause some node data to become incorrect (e.g. bootstrap values).")

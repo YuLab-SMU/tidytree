@@ -1,17 +1,17 @@
-##' show method for `treedata` instance
-##'
-##'
-##' @name show
-##' @docType methods
-##' @rdname show-methods
-##'
-##' @title show method
-##' @param object `treedata` object
-##' @return print info
-##' @importFrom methods show
-##' @exportMethod show
-##' @usage show(object)
-##' @author Guangchuang Yu <https://guangchuangyu.github.io>
+#' show method for `treedata` instance
+#'
+#'
+#' @name show
+#' @docType methods
+#' @rdname show-methods
+#'
+#' @title show method
+#' @param object `treedata` object
+#' @return print info
+#' @importFrom methods show
+#' @exportMethod show
+#' @usage show(object)
+#' @author Guangchuang Yu <https://guangchuangyu.github.io>
 setMethod("show", signature(object = "treedata"),
           function(object) {
               print(object)
@@ -55,8 +55,8 @@ fields_wrap <- function(ff) {
     return(ff)
 }
 
-##' @method print treedata
-##' @export
+#' @method print treedata
+#' @export
 print.treedata <- function(x, ..., n = 10, width = NULL, max_extra_cols = NULL, max_footer_lines = NULL){
     show.data = getOption('show_data_for_treedata', default=TRUE)
     if (show.data){
@@ -116,8 +116,8 @@ print2.treedata <- function(x, ...) {
     print_fields(x)
 }
 
-##' @method print tbl_tree
-##' @export
+#' @method print tbl_tree
+#' @export
 print.tbl_tree <- function(x, width = NULL, ..., n = NULL, 
                            max_extra_cols = NULL, max_footer_lines = NULL){
     formatted_tb <- x %>% format(..., n = n, width = width, 

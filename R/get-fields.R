@@ -1,6 +1,6 @@
-##' @rdname get.fields-methods
-##' @aliases get.fields,treedata
-##' @exportMethod get.fields
+#' @rdname get.fields-methods
+#' @aliases get.fields,treedata
+#' @exportMethod get.fields
 setMethod("get.fields", signature(object = "treedata"),
           function(object) {
               get.fields.treedata(object)

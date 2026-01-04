@@ -1,8 +1,8 @@
-##' @importFrom dplyr full_join
-##' @importFrom tibble tibble
-##' @importFrom cli cli_warn
-##' @method full_join treedata
-##' @export
+#' @importFrom dplyr full_join
+#' @importFrom tibble tibble
+#' @importFrom cli cli_warn
+#' @method full_join treedata
+#' @export
 full_join.treedata <- function(x, y, by = NULL,
                                copy = FALSE, suffix = c("", ".y"), ...) {
 
@@ -36,10 +36,14 @@ full_join.treedata <- function(x, y, by = NULL,
     return(tr)    
 }
 
-##' @method full_join phylo
-##' @export
+#' @method full_join phylo
+#' @export
 full_join.phylo <- function(x, y, by = NULL,
                             copy = FALSE, suffix = c("", ".y"), ...) {
     full_join(treedata(phylo=x), y = y, by = by,
               copy = copy, suffix = suffix, ...)
 }
+
+#' @method full_join simmap
+#' @export
+full_join.simmap <- full_join.phylo

@@ -1,6 +1,6 @@
-##' @method groupOTU tbl_tree
-##' @export
-##' @importFrom methods is
+#' @method groupOTU tbl_tree
+#' @export
+#' @importFrom methods is
 groupOTU.tbl_tree <- function(.data, .node,
                               group_name = "group",
                               ...) {
@@ -28,9 +28,9 @@ groupOTU.tbl_tree <- function(.data, .node,
     return(.data)
 }
 
-##' @noRd
-##' @importFrom dplyr group_by
-##' @keywords internal 
+#' @noRd
+#' @importFrom dplyr group_by
+#' @keywords internal 
 .groupOTU.tbl_tree_item <- function(.data, .node,
                                    focus_label = NULL,
                                    group_name,
