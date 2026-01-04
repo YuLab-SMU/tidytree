@@ -7,7 +7,7 @@
 node.label(x, node = "internal", ...)
 }
 \arguments{
-\item{x}{object, should be one of \code{treedata},\code{phylo} or \code{tbl_tree}.}
+\item{x}{object, should be one of \code{treedata}, \code{phylo} or \code{tbl_tree}.}
 
 \item{node}{character, to extract which type node label,
 default is \code{internal}, should be one of \code{internal},

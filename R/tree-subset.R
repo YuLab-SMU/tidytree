@@ -16,9 +16,9 @@
 #' @details This function will take a tree and a specified node from
 #' that tree and subset the tree showing all relatives back to a specified
 #' number of nodes. This function allows for a combination of
-#' \code{ancestor} and \code{offspring} to return a subsetted
+#' `ancestor` and `offspring` to return a subsetted
 #' tree that is of class phylo. This allows for easy graphing of the tree
-#' with \code{ggtree}
+#' with `ggtree`
 #'
 #' @examples
 #' set.seed(123)

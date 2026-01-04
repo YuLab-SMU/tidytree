@@ -1,7 +1,7 @@
 #' @rdname drop.tip-methods
 #' @aliases drop.tip,treedata
 #' @exportMethod drop.tip
-#' @author Casey Dunn \url{http://dunnlab.org}  and Guangchuang Yu \url{https://guangchuangyu.github.io}
+#' @author Casey Dunn <http://dunnlab.org>  and Guangchuang Yu <https://guangchuangyu.github.io>
 #' @examples
 #' library(tidytree)
 #' set.seed(123)
@@ -60,9 +60,9 @@ drop.tip.treedata <- function(object, tip, ...){
 #' @source
 #' drop.tip for phylo object is a wrapper method of ape::drop.tip
 #' from the ape package. The documentation you should
-#' read for the drop.tip function can be found here: \link[ape]{drop.tip}
+#' read for the drop.tip function can be found here: [ape::drop.tip()]
 #' @seealso
-#' \link[ape]{drop.tip}
+#' [ape::drop.tip()]
 setMethod("drop.tip", signature(object="phylo"),
           function(object, tip, ...){
               ape::drop.tip(object, tip, ...)

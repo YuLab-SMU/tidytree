@@ -1,8 +1,8 @@
 #' @title extract the node label of phylo, treedata or tbl_tree
-#' @param x object, should be one of \code{treedata},\code{phylo} or \code{tbl_tree}.
+#' @param x object, should be one of `treedata`, `phylo` or `tbl_tree`.
 #' @param node character, to extract which type node label,
-#' default is \code{internal}, should be one of \code{internal},
-#' \code{external}, \code{all}, \code{tip}.
+#' default is `internal`, should be one of `internal`,
+#' `external`, `all`, `tip`.
 #' @param ... additional parameters.
 #' @return label character vector.
 #' @export
@@ -54,7 +54,7 @@ node.label.treedata <- function(x, node = 'internal', ...){
 }
 
 #' @title extract the tip label of phylo treedata or tbl_tree
-#' @param x object, should be one of \code{treedata},\code{phylo} or \code{tbl_tree}.
+#' @param x object, should be one of `treedata`, `phylo` or `tbl_tree`.
 #' @param ... additional parameters.
 #' @export
 tip.label <- function(x, ...){
@@ -80,7 +80,7 @@ tip.label.treedata <- function(x, ...){
 }
 
 #' the tip or internal node label assign of tbl_tree phylo and treedata
-#' @param x object, should be one of \code{tbl_tree}, \code{phylo} or \code{treedata}
+#' @param x object, should be one of `tbl_tree`, `phylo` or `treedata`
 #' @param value character, the character vector
 #' @name td-label-assign
 NULL

@@ -14,7 +14,7 @@
 \source{
 drop.tip for phylo object is a wrapper method of ape::drop.tip
 from the ape package. The documentation you should
-read for the drop.tip function can be found here: \link[ape]{drop.tip}
+read for the drop.tip function can be found here: \code{\link[ape:drop.tip]{ape::drop.tip()}}
 }
 \usage{
 drop.tip(object, tip, ...)
@@ -52,7 +52,7 @@ tr1 <- drop.tip(tr, c("t2", "t1"))
 tr2 <- keep.tip(tr, c("t2", "t1"))
 }
 \seealso{
-\link[ape]{drop.tip}
+\code{\link[ape:drop.tip]{ape::drop.tip()}}
 }
 \author{
 Casey Dunn \url{http://dunnlab.org}  and Guangchuang Yu \url{https://guangchuangyu.github.io}

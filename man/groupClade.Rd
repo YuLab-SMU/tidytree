@@ -13,7 +13,7 @@ groupClade(.data, .node, group_name = "group", overlap = "overwrite", ...)
 
 \item{group_name}{character the name of the group cluster, default is \code{group}.}
 
-\item{overlap}{character one of \code{overwrite},\code{origin} and \code{abandon},
+\item{overlap}{character one of \code{overwrite}, \code{origin} and \code{abandon},
 default is \code{overwrite}.}
 
 \item{...}{additional parameter}

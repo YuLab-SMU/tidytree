@@ -7,7 +7,7 @@
 tip.label(x, ...)
 }
 \arguments{
-\item{x}{object, should be one of \code{treedata},\code{phylo} or \code{tbl_tree}.}
+\item{x}{object, should be one of \code{treedata}, \code{phylo} or \code{tbl_tree}.}
 
 \item{...}{additional parameters.}
 }
