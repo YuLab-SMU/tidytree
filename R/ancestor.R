@@ -241,3 +241,9 @@ rootnode.phylo <- function(.data, ...) {
     }
     return(root)
 }
+
+#' @method rootnode treedata
+#' @export
+rootnode.treedata <- function(.data, ...) {
+    rootnode.phylo(as.phylo(.data), ...)
+}

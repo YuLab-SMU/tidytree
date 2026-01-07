@@ -108,6 +108,7 @@ valid.tbl_tree <- function(object, cols = c("parent", "node", "label")) {
     }
 }
 
+#' @importFrom pillar style_subtle
 valid.tbl_tree2 <- function(object, cols = c("parent", "node", "label")) {
     cc <- cols[!cols %in% colnames(object)]
     if (length(cc) > 0) {
