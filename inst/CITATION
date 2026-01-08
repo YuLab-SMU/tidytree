@@ -1,4 +1,18 @@
 citHeader("To cite tidytree in publications use:")
 
-yulab.utils:::bib_ggtree("book")
+
+bibentry(
+    bibtype  = "book",
+    title = "Data Integration, Manipulation and Visualization of Phylogenetic Treess",
+    author = person("Guangchuang", "Yu"),
+	publisher = "Chapman and Hall/{CRC}",
+    year = "2022",
+	edition = "1st edition",
+    doi = "10.1201/9781003279242",
+    url = "https://www.taylorfrancis.com/books/mono/10.1201/9781003279242/",
+    textVersion = paste(
+            "Guangchuang Yu. ",
+            "Data Integration, Manipulation and Visualization of Phylogenetic Trees (1st edition).",
+            "Chapman and Hall/CRC. 2022, doi:10.1201/9781003279242, ISBN: 9781032233574\n")   
+)
 
