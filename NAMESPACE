@@ -124,6 +124,7 @@ export(node.label)
 export(nodeid)
 export(nodelab)
 export(offspring)
+export(offspring_bulk)
 export(parent)
 export(pull)
 export(read.tree)
@@ -148,52 +149,68 @@ exportMethods(get.fields)
 exportMethods(get.treetext)
 exportMethods(keep.tip)
 exportMethods(show)
-importFrom(ape,Nnode)
-importFrom(ape,Ntip)
-importFrom(ape,as.DNAbin)
-importFrom(ape,as.phylo)
-importFrom(ape,extract.clade)
-importFrom(ape,is.rooted)
-importFrom(ape,print.phylo)
-importFrom(ape,read.tree)
-importFrom(ape,root)
-importFrom(ape,rtree)
-importFrom(ape,which.edge)
+importFrom(ape,
+  Nnode,
+  Ntip,
+  as.DNAbin,
+  as.phylo,
+  extract.clade,
+  is.rooted,
+  print.phylo,
+  read.tree,
+  root,
+  rtree,
+  which.edge
+)
 importFrom(cli,cli_warn)
-importFrom(dplyr,arrange)
-importFrom(dplyr,bind_rows)
-importFrom(dplyr,filter)
-importFrom(dplyr,full_join)
-importFrom(dplyr,group_by)
-importFrom(dplyr,inner_join)
-importFrom(dplyr,left_join)
-importFrom(dplyr,mutate)
-importFrom(dplyr,pull)
-importFrom(dplyr,rename)
-importFrom(dplyr,select)
-importFrom(dplyr,summarise)
-importFrom(dplyr,summarize)
-importFrom(dplyr,transmute)
+importFrom(dplyr,
+  arrange,
+  bind_rows,
+  filter,
+  full_join,
+  group_by,
+  inner_join,
+  left_join,
+  mutate,
+  pull,
+  rename,
+  select,
+  summarise,
+  summarize,
+  transmute
+)
 importFrom(lazyeval,interp)
-importFrom(magrittr,"%<>%")
-importFrom(magrittr,"%>%")
-importFrom(methods,is)
-importFrom(methods,isClass)
-importFrom(methods,new)
-importFrom(methods,representation)
-importFrom(methods,setClass)
-importFrom(methods,setClassUnion)
-importFrom(methods,setGeneric)
-importFrom(methods,setOldClass)
-importFrom(methods,show)
+importFrom(magrittr,
+  "%<>%",
+  "%>%"
+)
+importFrom(methods,
+  is,
+  isClass,
+  new,
+  representation,
+  setClass,
+  setClassUnion,
+  setGeneric,
+  setOldClass,
+  show
+)
 importFrom(pillar,style_subtle)
-importFrom(rlang,.data)
-importFrom(rlang,quo)
-importFrom(tibble,as_tibble)
-importFrom(tibble,tibble)
+importFrom(rlang,
+  .data,
+  quo
+)
+importFrom(tibble,
+  as_tibble,
+  tibble
+)
 importFrom(tidyr,unnest)
 importFrom(tidyselect,eval_select)
-importFrom(utils,head)
-importFrom(utils,tail)
-importFrom(yulab.utils,str_wrap)
-importFrom(yulab.utils,yulab_msg)
+importFrom(utils,
+  head,
+  tail
+)
+importFrom(yulab.utils,
+  str_wrap,
+  yulab_msg
+)

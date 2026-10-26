@@ -16,8 +16,12 @@ groupClade.tbl_tree <- function(.data, .node,
         return(.data)
     }
 
+    ## One pass for all nodes instead of one offspring() call per node:
+    ## the latter is O(n^2) in the number of clades.
+    bulk <- offspring_bulk(.data, nodes = .node)
+
     for (i in seq_along(.node)) {
-        hit <- c(.node[i], offspring(.data, .node[i])$node)
+        hit <- c(.node[i], bulk[[i]])
 
         if (overlap == "origin") {
             sn <- hit[is.na(foc[hit]) | foc[hit] == 0]
