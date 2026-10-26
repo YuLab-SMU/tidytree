@@ -67,3 +67,34 @@ test_that("offspring_bulk() handles a star tree", {
 test_that("offspring_bulk() rejects multiPhylo", {
     expect_error(offspring_bulk(ape::rmtree(2, 5)), "multiPhylo")
 })
+
+test_that("offspring_bulk() accepts a phylo object", {
+    set.seed(4)
+    tr <- ape::rtree(10)
+    got <- offspring_bulk(tr)
+    expect_gt(length(got), 0L)
+    for (nd in as.integer(names(got))) {
+        expect_setequal(got[[as.character(nd)]], offspring(tr, nd))
+    }
+})
+
+test_that("offspring_bulk() covers the root for a phylo object", {
+    ## a phylo edge matrix never lists the root as a child, so the root has to
+    ## be found as the parent that is not a child; getting this wrong made the
+    ## root come back with no descendants at all
+    set.seed(5)
+    tr <- ape::rtree(8)
+    root <- ape::Ntip(tr) + 1L
+    got <- offspring_bulk(tr)
+    expect_true(as.character(root) %in% names(got))
+    expect_equal(length(got[[as.character(root)]]),
+                 ape::Ntip(tr) + ape::Nnode(tr) - 1L)
+})
+
+test_that("offspring_bulk() agrees with offspring() on a tbl_tree root", {
+    set.seed(6)
+    tb <- as_tibble(ape::rtree(12))
+    root <- tb$node[tb$parent == tb$node][1]
+    got <- offspring_bulk(tb)
+    expect_setequal(got[[as.character(root)]], offspring(tb, root)$node)
+})

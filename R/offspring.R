@@ -32,10 +32,23 @@ offspring.tbl_tree <- function(.data, .node, tiponly = FALSE, self_include = FAL
         res <- .offspring.tbl_tree_item(.data = .data, .node = .node,
                                        tiponly = tiponly, self_include = self_include, ...)
     } else {
-        res <- lapply(.node, function(node) {
-            .offspring.tbl_tree_item(.data = .data, .node = node,
-                                    tiponly = tiponly, self_include = self_include, ...)
+        ## One post-order pass for all nodes instead of walking each subtree
+        ## from scratch: the latter is O(n^2) in the number of nodes. The
+        ## result shape is unchanged -- still a named list of tbl_tree.
+        ids <- offspring_bulk(.data, nodes = .node, tips_only = tiponly)
+        res <- lapply(ids, function(id) {
+            .data[.data$node %in% id, ]
         })
+        if (self_include) {
+            ## with tiponly the node itself only comes back when it is a tip,
+            ## which is what the single-node path does
+            n_tip <- sum(!.data$node %in% .data$parent)
+            res <- lapply(seq_along(res), function(i) {
+                nd <- .node[i]
+                if (tiponly && nd > n_tip) return(res[[i]])
+                rbind(.data[.data$node == nd, ], res[[i]])
+            })
+        }
         names(res) <- .node
     }
     return(res)

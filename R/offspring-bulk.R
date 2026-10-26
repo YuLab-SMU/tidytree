@@ -110,8 +110,15 @@ offspring_bulk <- function(tree, nodes = NULL, tips_only = FALSE) {
         kids[[as.integer(names(split_kids)[k])]] <- split_kids[[k]]
     }
 
+    ## A phylo edge matrix never lists the root as a child, so a self
+    ## reference is absent there; the root is the parent that never appears
+    ## in `node`. A tbl_tree does carry the self reference.
     roots <- node[parent == node]
+    if (length(roots) == 0L) {
+        roots <- setdiff(parent, node)
+    }
     if (length(roots) == 0L) return(depth)
+    roots <- roots[roots <= max_id]
     depth[roots] <- 0L
 
     frontier <- roots
