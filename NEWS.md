@@ -1,3 +1,14 @@
+# tidytree 0.4.9
+
++ add `offspring_bulk()`, which returns the descendants of many nodes in a
+  single post-order pass, instead of calling `offspring()` once per node
+  (2026-10-26, Mon)
++ optimize `offspring()`: cache the children index and root node, and stop
+  growing the result vector with `c()`; multi-node calls now run in a single
+  pass, removing the O(n^2) cost of walking each subtree separately
+  (2026-10-26, Mon)
++ `groupClade()` now uses `offspring_bulk()` (2026-10-26, Mon)
+
 # tidytree 0.4.8
 
 + improve `tree_subset()` error handling for unmatched nodes and pass
