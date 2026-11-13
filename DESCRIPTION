@@ -27,8 +27,7 @@ Imports:
     pillar,
     cli
 Suggests:
-    testthat,
-    utils
+    testthat
 ByteCompile: true
 License: Artistic-2.0
 URL: https://yulab-smu.top/contribution-tree-data/
